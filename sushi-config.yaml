@@ -40,7 +40,7 @@ dependencies:
   hl7.fhir.eu.extensions: 0.1.x
   [r4-end]
   [r5-init]
-  hl7.fhir.eu.extensions.r5: current
+  hl7.fhir.eu.r5.extensions: current
   [r5-end]
   # eu.terminology.ehdsi: 0.1.0
 
