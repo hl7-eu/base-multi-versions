@@ -40,7 +40,7 @@ dependencies:
   hl7.fhir.eu.extensions: 0.1.x
   [r4-end]
   [r5-init]
-  hl7.fhir.eu.r5.extensions: current
+  hl7.fhir.eu.r5.extensions: 0.1.1
   [r5-end]
   # eu.terminology.ehdsi: 0.1.0
 
@@ -234,7 +234,7 @@ resources:
 
 
 #------------ Logical Models -------------
-
+  [r4-init]
   Patient/patient-eu-core-example:
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/patient-eu
   Practitioner/practitioner-eu-core-example:
@@ -243,6 +243,18 @@ resources:
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu
   Organization/organization-eu-core-example :
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/organization-eu
+  [r4-end]
+
+  [r5-init]
+  Patient/patient-eu-core-example:
+    exampleCanonical: http://hl7.eu/fhir/base/r5/StructureDefinition/patient-eu
+  Practitioner/practitioner-eu-core-example:
+    exampleCanonical: http://hl7.eu/fhir/base/r5/StructureDefinition/practitioner-eu
+  PractitionerRole/practitionerRole-eu-core-example :
+    exampleCanonical: http://hl7.eu/fhir/base/r5/StructureDefinition/practitionerRole-eu
+  Organization/organization-eu-core-example :
+    exampleCanonical: http://hl7.eu/fhir/base/r5/StructureDefinition/organization-eu
+  [r5-end]
 
 #  StructureDefinition/Subject:
 #    name: A.1.1, A.1.2 - Subject of care
