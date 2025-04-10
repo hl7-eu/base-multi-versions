@@ -9,7 +9,7 @@ Description:   "Body Structure site qualifier. It indicates - for example - the 
 // * ^copyright = "HL7 Europe"
 
 * insert SNOMEDCopyrightForVS
-* insert SetFmmandStatusRule ( 2, trial-use)
+* insert SetFmmandStatusRule ( 2, draft)
 
 //* include codes from valueset $BodystructureLocationQualifierR5
 //* exclude codes from valueset LabLateralityEuVs

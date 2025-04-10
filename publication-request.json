@@ -1,16 +1,16 @@
 
 {
   [r4-init]
-  "package-id" : "hl7.fhir.eu.base",
+  "package-id" : "hl7.fhir.eu.r4.base",
   "version" : "0.1.0-ballot",
-  "path" : "http://hl7.eu/fhir/base/0.1.1-ballot",
+  "path" : "http://hl7.eu/fhir/base/0.1.0-ballot",
   "ci-build": "https://build.fhir.org/ig/hl7-eu/base",
   [r4-end]
 
   [r5-init]
   "package-id" : "hl7.fhir.eu.r5.base",
   "version" : "0.1.0-ballot",
-  "path" : "http://hl7.eu/fhir/r5/base/0.1.1-ballot",
+  "path" : "http://hl7.eu/fhir/r5/base/0.1.0-ballot",
   "ci-build": "https://build.fhir.org/ig/hl7-eu/base-r5",
   [r5-end]
 
@@ -20,7 +20,10 @@
   "introduction" : "This guide lists the base and core profiles specified for the European REALM.",
   "title" : "HL7 Europe Base and Core",
   "status" : "ballot",
-  "sequence" : "Release",
+  "sequence" : "Release"
+  [do-not-include-init]
+  ,
   "mode": "milestone"
+  [do-not-include-end]
 }
 
