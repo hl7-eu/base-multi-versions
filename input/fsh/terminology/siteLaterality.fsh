@@ -5,7 +5,7 @@ Description:   "Body Structure site laterality qualifier. It indicates - for exa
 
 
 * insert SNOMEDCopyrightForVS
-* insert SetFmmandStatusRule ( 2, trial-use)
+* insert SetFmmandStatusRule ( 2, draft)
 
 * $sct#7771000	"Left (qualifier value)"
 * $sct#24028007 "Right (qualifier value)"

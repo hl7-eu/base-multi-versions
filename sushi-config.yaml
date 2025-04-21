@@ -6,7 +6,7 @@ fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 [r4-end]
 [r5-init]
 id: hl7.fhir.eu.base-r5
-canonical: http://hl7.eu/fhir/base/r5
+canonical: http://hl7.eu/fhir/r5/base
 fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 [r5-end]
 
@@ -234,7 +234,7 @@ resources:
 
 
 #------------ Logical Models -------------
-
+  [r4-init]
   Patient/patient-eu-core-example:
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/patient-eu
   Practitioner/practitioner-eu-core-example:
@@ -243,6 +243,18 @@ resources:
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu
   Organization/organization-eu-core-example :
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/organization-eu
+  [r4-end]
+
+  [r5-init]
+  Patient/patient-eu-core-example:
+    exampleCanonical: http://hl7.eu/fhir/base/r5/StructureDefinition/patient-eu
+  Practitioner/practitioner-eu-core-example:
+    exampleCanonical: http://hl7.eu/fhir/base/r5/StructureDefinition/practitioner-eu
+  PractitionerRole/practitionerRole-eu-core-example :
+    exampleCanonical: http://hl7.eu/fhir/base/r5/StructureDefinition/practitionerRole-eu
+  Organization/organization-eu-core-example :
+    exampleCanonical: http://hl7.eu/fhir/base/r5/StructureDefinition/organization-eu
+  [r5-end]
 
 #  StructureDefinition/Subject:
 #    name: A.1.1, A.1.2 - Subject of care
