@@ -21,11 +21,6 @@
   "title" : "HL7 Europe Base and Core",
   "status" : "ballot",
   "sequence" : "Release",
-  "mode": "working"
-  
-  [do-not-include-init]
-  ,
   "mode": "milestone"
-  [do-not-include-end]
 }
 
