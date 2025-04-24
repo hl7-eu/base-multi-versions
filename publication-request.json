@@ -10,7 +10,7 @@
   [r5-init]
   "package-id" : "hl7.fhir.eu.base-r5",
   "version" : "0.1.0-ballot",
-  "path" : "http://hl7.eu/fhir/r5/base/0.1.0-ballot",
+  "path" : "http://hl7.eu/fhir/base-r5/0.1.0-ballot",
   "ci-build": "https://build.fhir.org/ig/hl7-eu/base-r5",
   [r5-end]
 
