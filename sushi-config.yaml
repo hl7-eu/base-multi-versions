@@ -167,11 +167,18 @@ menu:
     Copyright: copyright.html
     Cross-version Analysis: crossversionanalysis.html
   Artifacts: artifacts.html
-  [r4-init]
+  [r4-build-init]
   R5 IG: https://build.fhir.org/ig/hl7-eu/base-r5
+  [r4-build-end]
+  [r5-build-init]
+  R4 IG: https://build.fhir.org/ig/hl7-eu/base
+  [r5-build-end]
+
+  [r4-init]
+  R5 IG: https://hl7.eu/fhir/base-r5
   [r4-end]
   [r5-init]
-  R4 IG: https://build.fhir.org/ig/hl7-eu/base
+  R4 IG: https://hl7.eu/fhir/base
   [r5-end]
 
 
