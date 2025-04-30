@@ -6,6 +6,6 @@ Description: "This profile sets minimum expectations for the Organization resour
 * insert SetFmmandStatusRule ( 2, draft)
 [r4-init]
 * insert ImposeProfile($Organization-uv-ips, 0)
-[r5-end]
+[r4-end]
 * name 1..
 * partOf only Reference (OrganizationEuCore)
