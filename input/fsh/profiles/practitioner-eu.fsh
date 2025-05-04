@@ -8,7 +8,7 @@ Id:       practitioner-eu
 Title:    "Practitioner (EU base)"
 Description: """This profile specifies how the HL7 FHIR Practitioner resource should be used for conveying commonly used concepts in the European context."""
 //-------------------------------------------------------------------------------------------
-* insert SetFmmandStatusRule (2, trial-use)
+* insert SetFmmandStatusRule (2, draft)
 * . obeys name-or-identier
 * identifier ^short = "Practitioner identifier"
 * address only AddressEu
@@ -23,7 +23,7 @@ Title:    "PractitionerRole (EU base)"
 Description: """This profile specifies how the HL7 FHIR PractitionerRole resource should be used for conveying commonly used concepts in the European context."""
 //-------------------------------------------------------------------------------------------
 
-* insert SetFmmandStatusRule (2, trial-use)
+* insert SetFmmandStatusRule (2, draft)
 * identifier ^short = "Business identifier"
 * organization only Reference (OrganizationEu)
 * practitioner only Reference (PractitionerEu)
