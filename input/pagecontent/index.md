@@ -30,12 +30,12 @@ Distinct HL7 FHIR Implementation Guides may be developed in the future to docume
 This guide is published for two versions of HL7 FHIR:
 
 [r4-init]
-- **HL7 FHIR R4 Base IG** (hl7.fhir.eu.base.r4). This Guide.
-- **HL7 FHIR R5 Base IG** (hl7.fhir.eu.base.r5). Published at [this link](https://hl7.eu/fhir/base-r5).
+- **HL7 FHIR R4 Base IG** (hl7.fhir.eu.base). This Guide.
+- **HL7 FHIR R5 Base IG** (hl7.fhir.eu.base-r5). Published at [this link](https://hl7.eu/fhir/base-r5).
 [r4-end]
 
 [r5-init]
-- **HL7 FHIR R4 Base IG** (hl7.fhir.eu.base.r4). Published at [this link](https://hl7.eu/fhir/base).
-- **HL7 FHIR R5 Base IG** (hl7.fhir.eu.base.r5). This Guide.
+- **HL7 FHIR R4 Base IG** (hl7.fhir.eu.base). Published at [this link](https://hl7.eu/fhir/base).
+- **HL7 FHIR R5 Base IG** (hl7.fhir.eu.base-r5). This Guide.
 [r5-end]
 
