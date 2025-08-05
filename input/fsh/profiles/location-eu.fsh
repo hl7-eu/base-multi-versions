@@ -6,6 +6,10 @@ Description: "This profile sets minimum expectations for the Location resource t
 
 * insert SetFmmandStatusRule (2, draft)
 
+* managingOrganization	only Reference(OrganizationEu) 
+  * ^short = "Managing organization"
+  * ^comment = "The managing organization is the organization responsible for the location, such as a hospital or clinic."
+
 [r4-init]
 * physicalType ^short = "Location type"
 * telecom ^short = "Location telecom"
