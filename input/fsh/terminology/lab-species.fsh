@@ -1,7 +1,7 @@
 ValueSet:      SpeciesTypesEuVs
 Id:	       speciesType-eu
 Title:	       "Types of species"
-Description:   """Types of animal species for non-human subjects"""
+Description:   """Animal species types for non-human subjects"""
 
 
 * insert SNOMEDCopyrightForVS
