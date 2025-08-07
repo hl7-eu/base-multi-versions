@@ -8,6 +8,9 @@ When the ips-pat-1 invariant is satisfied \(Patient.name.given, Patient.name.fam
 * insert SetFmmandStatusRule (2, draft)
 
 * name 1..*
+* name.extension contains $data-absent-reason named name-absent-reason 0..1
+* name.extension[name-absent-reason] ^short = "Reason for not providing the name."
+* name.extension[name-absent-reason] ^definition = "Reason for not providing the name."
 * name obeys eu-pat-1
 
 * birthDate 1.. // MS according to IPS
