@@ -23,6 +23,15 @@ Description: "System identifiers (uri) used for the EHIC#6 Personal Identificati
 * $uri#http://hl7.it/sid/codiceFiscale "Codice Fiscale"
 
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ValueSet: VsEHICCardIdUri
+Id: uri-ehicCardId
+Title: "EHIC Card ID (system IDs - uri)"
+Description: "System identifiers (uri) used for the EHIC#8 Card Identification Number"
+//-------------------------------------------------------------------------------------------
+* ^experimental = false
+* $uri#http://hl7.it/sid/team "Numero Identificativo TEAM"
+
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 ValueSet: VsEHICPersonalIdOid

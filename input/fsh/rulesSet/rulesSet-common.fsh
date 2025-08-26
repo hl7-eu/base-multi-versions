@@ -35,6 +35,14 @@ RuleSet: SectionComRules (short, def, code)
 /* * emptyReason ..0
 * emptyReason ^mustSupport = false */
 
+RuleSet: SetSlicePerValue (short, def, path)
+// Slicing rules for based on code value
+* ^slicing.discriminator[0].type = #value
+* ^slicing.discriminator[0].path = "{path}"
+* ^slicing.ordered = false
+* ^slicing.rules = #open
+* ^short = "{short}"
+* ^definition = "{def}"
 
 RuleSet: SectionSliceComRules (short, def)
 // Slicing rules for section based on code value
