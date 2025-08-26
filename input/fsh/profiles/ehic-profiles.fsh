@@ -8,7 +8,12 @@ Description: "Coverage profile for the European Health Insurance Card"
 
 * insert SetFmmandStatusRule ( 2, draft)
 * identifier 1..* // #8 card number
-* identifier insert SetSlicePerValue ("EHIC Id", "Identifier for the EHIC card number", "system")
+  * ^slicing.discriminator[0].type = #value
+  * ^slicing.discriminator[0].path = "system"
+  * ^slicing.ordered = false
+  * ^slicing.rules = #open
+  * ^short = "EHIC Id"
+  * ^definition = "Identifier for the EHIC card number"
 * identifier contains ehic 0..1 // should be 1..1 when the value set will be completed
 * identifier[ehic]
   * ^short = "EHIC#8 - Identification number of the card"
