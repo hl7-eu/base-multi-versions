@@ -1,4 +1,4 @@
-Profile: Profile: PatientAnimalEuCore
+Profile: PatientAnimalEuCore
 Parent: PatientEu
 Id: patient-animal-eu-core
 Title:    "Patient: Animal (EU core)"
