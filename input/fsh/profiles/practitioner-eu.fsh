@@ -13,6 +13,7 @@ Description: """This profile specifies how the HL7 FHIR Practitioner resource sh
 * identifier ^short = "Practitioner identifier"
 * address only AddressEu
 * name ^short = "Practitioner Name" // only HumanNameEu
+* telecom ^short = "Contact details for the practitioner"
 //-------------------------------------------------------------------------------------------
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -27,4 +28,7 @@ Description: """This profile specifies how the HL7 FHIR PractitionerRole resourc
 * identifier ^short = "Business identifier"
 * organization only Reference (OrganizationEu)
 * practitioner only Reference (PractitionerEu)
-//-------------------------------------------------------------------------------------------
+* location only Reference (LocationEu)
+* telecom ^short = "Contact details that are specific to the role, location, or service"
+* code ^short = "Roles which this practitioner may perform."
+* specialty ^short = "Specialty of the practitioner"

@@ -10,6 +10,7 @@ Description: "This profile sets minimum expectations for the Location resource t
   * ^short = "Managing organization"
   * ^comment = "The managing organization is the organization responsible for the location, such as a hospital or clinic."
 
+* identifier ^short = "Location identifier"
 [r4-init]
 * physicalType ^short = "Location type"
 * telecom ^short = "Location telecom"
@@ -19,5 +20,6 @@ Description: "This profile sets minimum expectations for the Location resource t
 * contact.telecom ^short = "Location telecom"
 [r5-end]
 * name ^short = "Location name"
+* partOf ^short = "Location this one is physically a part of"
 
 * address only AddressEu
