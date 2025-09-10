@@ -14,7 +14,7 @@ title: HL7 Europe Base and Core FHIR IG
 name:  Hl7EuBaseIg
 description: This guide collects base and core profiles to be used in the European context. It also includes common artifacts, such as the profiles describing the European Health Insurance Card.
 status: draft # draft | active | retired | unknown
-version: 0.1.0-ballotRecon #
+version: 0.1.0-snapshot-1 #
 copyrightYear: 2024+
 releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
@@ -86,6 +86,8 @@ pages:
     title: Logical Models
   missing-data.md:
     title: Handling Missing Data
+  changes.md:
+    title: Change Log
 
  #  recommendations.md:
 #    title: Recommendations
@@ -172,9 +174,11 @@ menu:
     Known Issues: knownissues.html
     Download: downloads.html
     Dependencies: dependencies.html
+    Change Log: changes.html
     Copyright: copyright.html
     Cross-version Analysis: crossversionanalysis.html
   Artifacts: artifacts.html
+  
   [r4-build-init]
   R5 IG: https://build.fhir.org/ig/hl7-eu/base-r5
   [r4-build-end]
