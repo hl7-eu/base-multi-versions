@@ -2,15 +2,15 @@
 {
   [r4-init]
   "package-id" : "hl7.fhir.eu.base",
-  "version" : "0.1.0-snapshot-1",
-  "path" : "http://hl7.eu/fhir/base/0.1.0-snapshot-1",
+  "version" : "0.1.0-snapshot",
+  "path" : "http://hl7.eu/fhir/base/0.1.0-snapshot",
   "ci-build": "https://build.fhir.org/ig/hl7-eu/base",
   [r4-end]
 
   [r5-init]
   "package-id" : "hl7.fhir.eu.base-r5",
-  "version" : "0.1.0-snapshot-1",
-  "path" : "http://hl7.eu/fhir/base-r5/0.1.0-snapshot-1",
+  "version" : "0.1.0-snapshot",
+  "path" : "http://hl7.eu/fhir/base-r5/0.1.0-snapshot",
   "ci-build": "https://build.fhir.org/ig/hl7-eu/base-r5",
   [r5-end]
 
