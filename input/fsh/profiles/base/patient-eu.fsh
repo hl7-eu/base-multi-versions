@@ -53,6 +53,6 @@ Description: """This profile specifies how the HL7 FHIR Patient resource should 
     * ^short = "Contact name"
 
 * generalPractitioner ^short = "Patient's nominated primary care provider."
-* generalPractitioner only Reference(OrganizationEu or PractitionerRoleEu or PractitionerEu) 
+// * generalPractitioner only Reference(OrganizationEu or PractitionerRoleEu or PractitionerEu) 
 * communication.language ^short = "Communication language"
 
