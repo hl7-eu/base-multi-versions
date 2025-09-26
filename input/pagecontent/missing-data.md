@@ -1,6 +1,6 @@
 ### Missing Data
 
-This page provide general rules to deal with missing data, not all these rules may apply to this version of this guide. 
+This page provides general rules to deal with missing data, not all these rules may apply to this version of this guide. 
 
 The content of this page is adapted from the [HL7 International Patient Summary Implementation Guide (IPS)](https://hl7.org/fhir/uv/ips/)
 
