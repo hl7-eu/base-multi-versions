@@ -32,7 +32,7 @@ Description: """This profile specifies how the HL7 FHIR PractitionerRole resourc
 
 // * organization only Reference (OrganizationEu)
 // * practitioner only Reference (PractitionerEu)
-// * location only Reference (LocationEu)
+// * location only Reference (LocationEuCore)
 [r4-init]
 * telecom ^short = "Contact details that are specific to the role, location, or service"
 [r4-end]
