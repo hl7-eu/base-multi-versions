@@ -5,7 +5,7 @@ Description:   """Animal species types for non-human subjects"""
 
 
 * insert SNOMEDCopyrightForVS
-* insert SetFmmandStatusRule (2, draft)
+* insert SetFmmandStatusRule (2, trial-use)
 
 
 * $sct#125097000 "Domestic goat"

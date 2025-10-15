@@ -21,6 +21,7 @@
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-sexParameterForClinicalUse'.%
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-citizenship%
 %There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-nationality%
+%There are multiple different potential matches for the url 'http://hl7.org/fhir/StructureDefinition/patient-birthTime%
 
 # SNOMED CT related warnings
 %This SNOMED-CT based include has some concepts with semantic tags (FSN terms) and some without (preferred terms)%
@@ -31,6 +32,8 @@
 %The extension http://hl7.org/fhir/StructureDefinition/composition-clinicaldocument-versionNumber|5.2.0 is deprecated%
 %The extension http://hl7.org/fhir/StructureDefinition/elementdefinition-maxValueSet|5.2.0 is deprecated%
 
+# Context will be fixed
+The extension http://hl7.org/fhir/5.0/StructureDefinition/extension-BodyStructure.includedStructure.laterality from FHIR version 5.0 is not allowed to be used at this point (this element is [BodyStructure]; allowed for this version = e:BodyStructure.includedStructure; this is a warning since contexts may be renamed between FHIR versions)
 
 # Not found Code System
 A definition for CodeSystem 'http://terminology.hl7.eu/CodeSystem/v3-ActCode' could not be found, so the code cannot be validated 
