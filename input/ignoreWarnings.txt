@@ -80,3 +80,11 @@ The canonical URL for an Implementation Guide must point directly to the impleme
 The URL should refer directly to the ImplementationGuide resource (e.g. include '/ImplementationGuide/')
 
 
+# Reference to experimental
+Reference to experimental CodeSystem http://hl7.org/fhir/guide-parameter-code|5.0.0
+The definition for the element 'BodyStructure.includedStructure.bodyLandmarkOrientation.surfaceOrientation' binds to the value set 'http://hl7.org/fhir/ValueSet/bodystructure-relative-location|5.0.0' which is experimental, but this structure is not labeled as experimental
+The definition for the element 'PractitionerRole.specialty' binds to the value set 'http://hl7.org/fhir/ValueSet/c80-practice-codes|5.0.0' which is experimental, but this structure is not labeled as experimental
+
+
+
+
