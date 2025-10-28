@@ -6,7 +6,7 @@ Description: """This profile sets minimum expectations for the AllergyIntoleranc
 
 * ^purpose = "This profile constrains the AllergyIntolerance resource for the purpose of project."
 
-* insert SetFmmAndStatusRule (1, draft)
+* insert SetFmmandStatusRule (1, draft)
 // * insert ImposeProfile($AllergyIntolerance-uv-ips, 0)
 
 * extension contains $allergyintolerance-abatement named abatement 0..1
@@ -29,7 +29,7 @@ Description: """This profile sets minimum expectations for the AllergyIntoleranc
 // * code ^binding.extension[+].extension[+].url = "key"
 // * code ^binding.extension[=].extension[=].valueId = "96948958-8a49-472e-91ee-967b8545d27c"
 * code ^binding.extension[=].extension[+].url = "valueSet"
-* code ^binding.extension[=].extension[=].valueCanonical = Canonical(AllergensHdrVS)
+* code ^binding.extension[=].extension[=].valueCanonical = $eHDSIAllergenNoDrug // Canonical(AllergensHdrVS)
 * code ^binding.extension[=].extension[+].url = "documentation"
 * code ^binding.extension[=].extension[=].valueMarkdown = "Type of the substance/product for MyHealth@EU"
 * code ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"

@@ -7,7 +7,7 @@ Description: """This profile sets minimum expectations for the MedicationRequest
 This profile is adapted from the MPD work."""
 //-------------------------------------------------------------------------------------------
 
-* insert SetFmmAndStatusRule (1, draft)
+* insert SetFmmandStatusRule (1, draft)
 
 // MedicationRequest R4
 * extension contains $medicationRequest-effectiveDosePeriod-r5 named effectiveDosePeriod 0..1

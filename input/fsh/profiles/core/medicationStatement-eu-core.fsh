@@ -7,7 +7,7 @@ Description: """This profile sets minimum expectations for the MedicationStateme
 This profile is adapted from the MPD work."""
 //-------------------------------------------------------------------------------------------
 
-* insert SetFmmAndStatusRule (1, draft)
+* insert SetFmmandStatusRule (1, draft)
 
 
 * identifier 

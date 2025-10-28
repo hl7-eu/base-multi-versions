@@ -8,7 +8,7 @@ Description: """This profile sets minimum expectations for the Condition resourc
 
 // follow the same apporach of lab for collection or add laterality to the bodySite ?
 * extension contains $bodySite-reference named bodySite 0..1
-* extension[bodySite].valueReference only Reference(BodyStructureEu)
+* extension[bodySite].valueReference only Reference(BodyStructureEuCore)
 
 * category only CodeableConceptIPS
 
@@ -18,7 +18,7 @@ Description: """This profile sets minimum expectations for the Condition resourc
 
 * code 1..1 
 * code only $CodeableConcept-uv-ips
-* code from ConditionHdrVS (preferred)
+* code from $eHDSIIllnessandDisorder (preferred) // CHANGE value set 
   * ^definition = "The problem code specifies the problem. Depending on the setting, different code systems can be used. The ProblemCodelist provides an overview of the possible code systems."
   * ^binding.description = "Valueset to describe the actual problem experienced by the patient"
 
