@@ -6,7 +6,7 @@ Title:    "Flag (EU core) [WIP]"
 Description: """This profile sets minimum expectations for the Flag resource common to most of the use cases."""
 //-------------------------------------------------------------------------------------------
 
-// * insert SetFmmAndStatusRule (1, draft)
+// * insert SetFmmandStatusRule (1, draft)
 
 * extension contains $flag-detail named flagDetailExt 0..*
 * extension contains $flag-priority named flagPriorityExt 0..1

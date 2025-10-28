@@ -12,11 +12,16 @@ Description: """This profile sets minimum expectations for the Immunization reso
 
 // * insert ImposeProfile($Immunization-uv-ips, 0)
 
+[r4-init]
 * extension contains $immunization-basedOn-r5 named basedOn 0..1
-* extension[basedOn].valueReference only Reference ( ImmunizationRecommendationEuCore )
-
+* extension[basedOn].valueReference only Reference ( ImmunizationRecommendation )
+[r4-end]
+[r5-init]
+* basedOn
+[r5-end]
 
 // check preadoption of R5 element
+// Check if the R5 now works...
 * extension contains ImmunizationAdministeredProduct named administeredProduct 0..1
 * extension[administeredProduct].extension[concept]
 * extension[administeredProduct].extension[reference].valueReference only Reference ( MedicationEuCore )
@@ -56,7 +61,7 @@ Description: """This profile sets minimum expectations for the Immunization reso
 
 * patient only Reference(PatientEuCore)
 * occurrence[x] only dateTime
-* location only Reference(LocationEu)
+* location only Reference(LocationEuCore)
 * manufacturer ^short = "Vaccine manufacturer/MAH"
 * lotNumber ^short = "Batch/lot number"
 
@@ -85,7 +90,7 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * protocolApplied.targetDisease.coding[sctCovid19Diseases] 
 * protocolApplied.targetDisease.coding[sctCovid19Diseases] from Covid19Diseases
  */
-* protocolApplied.targetDisease from ConditionHdrVS (preferred) // Check Value Set
+* protocolApplied.targetDisease from $eHDSIIllnessandDisorder (preferred) // Check Value Set
 * protocolApplied.doseNumberPositiveInt ^short = "Dose Number"
 * protocolApplied.seriesDosesPositiveInt ^short = "Number of doses"
 
@@ -114,7 +119,7 @@ Description: """This profile defines how to represent Immunization Recommandatio
 
 
   * ^short = "Generic description of the vaccine/prophylaxis or its component(s)"
-* recommendation.targetDisease from ConditionHdrVS (preferred) // Check Value Set
+* recommendation.targetDisease from $eHDSIIllnessandDisorder (preferred) // Check Value Set
   * ^short = "Disease or agent that the vaccination provides protection against"
 * recommendation.forecastStatus ^short = "Recommendation status"
 * recommendation.dateCriterion ^slicing.discriminator[0].type = #value

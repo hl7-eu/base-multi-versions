@@ -8,7 +8,7 @@ Description: "This profile represents the constraints applied to the Procedure r
 // * insert ImposeProfile ( $Procedure-uv-ips, 0 )  // Check if this is appropriate (see  support)
 
 * extension contains $procedure-targetBodyStructure named bodySite 0..1
-* extension[bodySite].valueReference only Reference(BodyStructureEuLab)
+* extension[bodySite].valueReference only Reference(BodyStructureEuCore)
 
 * text ^short = "Textual representation of the procedur"
  // textual representation of the procedure should be provided according to the EHN data set
@@ -42,7 +42,7 @@ Description: "This profile represents the constraints applied to the Procedure r
 * complication ^short = "Complications that occurred during the procedure (code)"
 * complicationDetail ^short = "Complications that occurred during the procedure (details)"
 * focalDevice ^short = "Device implanted, removed or otherwise manipulated"
-* focalDevice.manipulated only Reference ( DeviceEuCore )
+* focalDevice.manipulated only Reference ( Device ) // DeviceEuCore
 * bodySite only CodeableConceptIPS
 * bodySite from SNOMEDCTBodyStructures (preferred)
 * bodySite

@@ -7,20 +7,18 @@ Description: """This profile sets minimum expectations for the Medication resour
 This profile is adapted from the MPD work."""
 //-------------------------------------------------------------------------------------------
 
-* insert SetFmmAndStatusRule (1, draft)
+* insert SetFmmandStatusRule (1, draft)
 
 // Only R4 rules
 
 * ingredient
-//  * itemCodeableConcept from $eHDSISubstance (example)
+  * itemCodeableConcept from $eHDSISubstance (example)
   * itemReference only Reference (MedicationEuCore)
   * strength ^short = "Amount of substance in product (presentation or concentration strength)"
   * strength ^definition = """Definitional resources should be used for specifying the different types of strengths: presentation; concentration."""
   * strength  // item.ingredient.strengthInfo (does not map exactly)  
     * extension contains $ihe-ext-medication-strengthsubstance named strengthSubstance 0..1 
     * extension[strengthSubstance] ^short = "Substance for which the strength is provided (this could be different from the precise active ingredient)." 
-//* form from $eHDSIDoseForm (example)
-//  * ^short = "Dose form. For a branded product, this would most likely be authorised dose form, but it could also be administrable dose form. For package items, it could be item's individual dose form." // doseForm
 
 
 // Common R4 R5
@@ -51,3 +49,6 @@ This profile is adapted from the MPD work."""
   * ^short = "Ingredient or a part product. For combination packs, each ingredient can be a separate manufactured item with its own ingredients, dose form, and strength" // item
   * isActive ^short = "Active ingredient flag" // item.ingredient.role
 * form ^short = "Dose Form"
+* form from $eHDSIDoseForm (example)
+  * ^short = "Dose form. For a branded product, this would most likely be authorised dose form, but it could also be administrable dose form. For package items, it could be item's individual dose form." // doseForm
+
