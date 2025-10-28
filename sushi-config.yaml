@@ -82,12 +82,22 @@ pages:
     title: Introduction
   modelmap.html:
     title: Model Map
+  modelmap2.html:
+    title: Model Map 2
   logicalmodels.md:
     title: Logical Models
   missing-data.md:
     title: Handling Missing Data
   changes.md:
     title: Change Log
+
+  # Model Mapping
+  map-ehdshumanname.html:
+     title: EHDShumanname to FHIR HumanName Mapping
+  map-ehdslocation.html:
+     title: EHDSlocation to FHIR Location Mapping
+  map-ehdspatient.html:
+     title: EHDSpatient to FHIR Patient Mapping
 
  #  recommendations.md:
 #    title: Recommendations
@@ -112,7 +122,7 @@ parameters: #see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Pa
 # path-resource:
 #    - input/resources
 #    - fsh-generated/resources
-#  path-pages:
+# path-pages:
 #    - input/pagecontent
 #    - input/intro-notes
 #  active-tables: false
@@ -167,6 +177,7 @@ menu:
 #   Workflow 
   Implementation:
     Mapping to Profiles: modelmap.html
+    Mapping to Profiles 2: modelmap2.html
 #    Examples: examples.html
 #    Implementation Notes: implementationnotes.html  
   About:
