@@ -1,119 +1,139 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-        <title>EHDS Logical Models → FHIR Profiles</title>
-        <style type="text/css">
-      body {
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        margin: 1rem;
-        background:#f5f7fb;
-        color:#1a1a1a;
-        line-height:1.4;
-      }
-      h1 { margin-bottom: 0.5rem; }
-      p.lead { max-width: 70ch; }
-      .note-block {
-        background:#fff8d6;
-        border:1px solid #e0d29c;
-        border-radius:10px;
-        padding:12px 16px;
-        max-width:70ch;
-        margin: 1rem 0;
-        font-size:0.9rem;
-      }
-      .version-block {
-        background:#fff;
-        border:1px solid #d0d7de;
-        border-radius:10px;
-        padding:12px 16px;
-        max-width:70ch;
-        margin: 1rem 0;
-        font-size:0.85rem;
-        color:#444;
-      }
+<!-- BEGIN: EHDS Logical Models → FHIR Profiles block -->
+<div class="model-map-block">
 
-      table.model-index {
-        border-collapse:collapse;
-        width:100%;
-        max-width:1100px;
-        table-layout:auto;
-        background:#fff;
-        border:1px solid #d0d7de;
-        border-radius:10px;
-        box-shadow:0 1px 2px rgba(0,0,0,0.04);
-        overflow:hidden;
-        font-size:0.9rem;
-      }
-      .model-index th {
-        background:#f6f8fa;
-        font-weight:600;
-        text-align:left;
-        border-bottom:1px solid #d0d7de;
-        padding:8px;
-        white-space:nowrap;
-      }
-      .model-index td {
-        border-top:1px solid #d0d7de;
-        padding:8px;
-        vertical-align:top;
-      }
-      .model-index td a {
-        text-decoration:none;
-      }
+    <style type="text/css">
+    /****************************
+     * SCOPED STYLES
+     * All selectors are prefixed with .model-map-block
+     * so we don't leak styling outside this fragment.
+     ****************************/
 
-      /* pill link style */
-      a.pill {
-        display:inline-block;
-        background:#fff;
-        border:1px solid #d0d7de;
-        border-radius:999px;
-        padding:3px 8px;
-        font-size:0.8rem;
-        line-height:1.2;
-        text-decoration:none;
-        white-space:nowrap;
-      }
+    .model-map-block h3 {
+      /* Keep IG defaults for font family/size/weight,
+         only ensure spacing is nice in embeds */
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
 
-      /* footer note */
-      .future-block {
-        font-size:0.8rem;
-        color:#555;
-        max-width:70ch;
-        margin-top:2rem;
-      }
-        </style>
-    </head>
+    /* Let text flow across the full width of the parent now */
+    .model-map-block p {
+      line-height: 1.4;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      max-width: 100%;
+    }
 
-    <body>
-        <h3>EHDS Logical Models → FHIR Profiles</h3>
+    /****************************
+     * CALLOUT BOX
+     ****************************/
+    .model-map-block .callout-wrapper {
+      /* no flex row anymore, just a block that spans full width */
+      margin: 1rem 0 2rem 0;
+    }
 
-        <p class="lead">
-      The Xt-EHR Joint Action defines EHDS logical data models for core clinical and administrative concepts.
-      This Implementation Guide provides HL7 FHIR profiles that realise those models.
-        </p>
+    .model-map-block .callout-box {
+      border-radius: 8px;
+      border: 1px solid #d6c78a;
+      background: #fff8d6;
+      /* remove custom font size so it inherits the IG default */
+      padding: 0.75rem 1rem;
+      line-height: 1.4;
+    }
 
-        <div class="note-block">
+    .model-map-block .callout-box strong {
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /****************************
+     * TABLE
+     ****************************/
+    .model-map-block .table-wrapper {
+      border: 1px solid #d0d7de;
+      border-radius: 10px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+      overflow: hidden;
+      max-width: 100%;
+      background: #fff;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .model-map-block table.model-index {
+      border-collapse: collapse;
+      width: 100%;
+      table-layout: auto;
+      font-size: 0.9rem;
+      background: #fff;
+    }
+
+    .model-map-block .model-index thead th {
+      background: #f6f8fa;
+      font-weight: 600;
+      text-align: left;
+      border-bottom: 1px solid #d0d7de;
+      padding: 8px;
+      white-space: nowrap;
+    }
+
+    .model-map-block .model-index tbody td {
+      border-top: 1px solid #d0d7de;
+      padding: 8px;
+      vertical-align: top;
+    }
+
+    .model-map-block .model-index code {
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: 4px;
+      padding: 0 2px;
+      font-size: 0.8rem;
+    }
+
+    .model-map-block a.pill {
+      display: inline-block;
+      background: #ffffff;
+      border: 1px solid #d0d7de;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 0.8rem;
+      line-height: 1.2;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .model-map-block a.pill:hover {
+      background: #f6f8fa;
+    }
+    </style>
+
+    <!-- Heading level adapted for embedded use -->
+    <h3>EHDS Logical Models → FHIR Profiles</h3>
+
+    <!-- Main narrative now spans full width (no max-width cap) -->
+    <p>
+    The Xt-EHR Joint Action defines EHDS logical data models for core clinical and
+    administrative concepts. This Implementation Guide provides HL7 FHIR profiles
+    that realise those models.
+    </p>
+
+    <!-- Single full-width callout box with default font size -->
+    <div class="callout-wrapper">
+        <div class="callout-box">
             <strong>Ongoing alignment:</strong>
-            <br/>
-      The Xt-EHR logical models are under active revision and continuous refinement. Updates from Xt-EHR will be
-      progressively incorporated into this Implementation Guide to maintain alignment with the evolving EHDS
-      specifications.
+      The Xt-EHR logical models are under active revision and continuous refinement.
+      Updates from Xt-EHR will be progressively incorporated into this Implementation
+      Guide to maintain alignment with the evolving EHDS specifications.
         </div>
+    </div>
 
-        <div class="version-block">
-            <strong>Version alignment</strong>
-            <br/>
-      Xt-EHR baseline model version:             <!-- e.g. 0.2.x / September 2025 -->
-            <br/>
-      This IG release:             <!-- e.g. v0.x.y -->
-        </div>
+    <p>
+    The table below lists each EHDS logical model and the corresponding FHIR profile(s)
+    or datatype(s) used in this IG. Each row links to a dedicated mapping page with
+    element-by-element traceability.
+    </p>
 
-        <p class="lead">
-      The table below lists each EHDS logical model and the corresponding FHIR profile(s) or datatype(s) used in this IG.
-      Each row links to a dedicated mapping page with element-by-element traceability.
-        </p>
-
+    <div class="table-wrapper">
         <table class="model-index">
             <thead>
                 <tr>
@@ -190,7 +210,8 @@
                 <tr>
                     <td>EHDSHealthProfessional</td>
                     <td>
-                        <code>PractitionerRoleEuCore</code>,                        <code>PractitionerEuCore</code>
+                        <code>PractitionerRoleEuCore</code>,
+                        <code>PractitionerEuCore</code>
                     </td>
                     <td>
                         <a class="pill" href="map-ehdshealthprofessional.html">EHDSHealthProfessional Mapping</a>
@@ -206,10 +227,10 @@
                     </td>
                 </tr>
 
-                <!-- future clinical/medication additions -->
+                <!-- Future clinical / medication models -->
                 <tr>
                     <td>EHDSCondition</td>
-                    <td>                        <!-- e.g. ConditionEuCore --> Condition profile in this IG</td>
+                    <td>Condition profile in this IG</td>
                     <td>
                         <a class="pill" href="map-ehdscondition.html">EHDSCondition Mapping</a>
                     </td>
@@ -217,7 +238,7 @@
 
                 <tr>
                     <td>EHDSProcedure</td>
-                    <td>                        <!-- e.g. ProcedureEuCore --> Procedure profile in this IG</td>
+                    <td>Procedure profile in this IG</td>
                     <td>
                         <a class="pill" href="map-ehdsprocedure.html">EHDSProcedure Mapping</a>
                     </td>
@@ -225,7 +246,7 @@
 
                 <tr>
                     <td>EHDSAllergyIntolerance</td>
-                    <td>                        <!-- e.g. AllergyIntoleranceEuCore --> AllergyIntolerance profile in this IG</td>
+                    <td>AllergyIntolerance profile in this IG</td>
                     <td>
                         <a class="pill" href="map-ehdsallergyintolerance.html">EHDSAllergyIntolerance Mapping</a>
                     </td>
@@ -233,7 +254,7 @@
 
                 <tr>
                     <td>EHDSImmunisation</td>
-                    <td>                        <!-- e.g. ImmunizationEuCore --> Immunization profile in this IG</td>
+                    <td>Immunization profile in this IG</td>
                     <td>
                         <a class="pill" href="map-ehdsimmunisation.html">EHDSImmunisation Mapping</a>
                     </td>
@@ -257,7 +278,7 @@
 
                 <tr>
                     <td>EHDSAlert</td>
-                    <td>                        <!-- e.g. Flag / Alert profile --> Alert profile in this IG</td>
+                    <td>Alert / Flag profile in this IG</td>
                     <td>
                         <a class="pill" href="map-ehdsalert.html">EHDSAlert Mapping</a>
                     </td>
@@ -265,10 +286,7 @@
 
             </tbody>
         </table>
+    </div>
 
-        <p class="future-block">
-      Additional EHDS logical models (e.g. Alert, Condition, Procedure, Immunisation, Medication) are being actively
-      integrated. Mapping pages will be extended as they become available.
-        </p>
-    </body>
-</html>
+</div>
+<!-- END: EHDS Logical Models → FHIR Profiles block -->
