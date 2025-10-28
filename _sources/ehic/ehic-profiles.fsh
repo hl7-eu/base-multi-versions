@@ -6,7 +6,7 @@ Title:    "Coverage (EHIC)"
 Description: "Coverage profile for the European Health Insurance Card"
 //-------------------------------------------------------------------------------------------
 
-* insert SetFmmandStatusRule ( 2, draft)
+* insert SetFmmandStatusRule ( 2, trial-use)
 * identifier 1..* // #8 card number
   * ^slicing.discriminator[0].type = #value
   * ^slicing.discriminator[0].path = "system"
@@ -56,7 +56,7 @@ Id: patient-eu-ehic
 Title: "Patient (EHIC)"
 Description: "This profile represents the constraints applied to the Patient resource when used with the EHIC coverage profile."
 
-* insert SetFmmandStatusRule ( 2, draft)
+* insert SetFmmandStatusRule ( 2, trial-use)
 * identifier 1.. 
 * identifier
   * system from VsEHICPersonalIdUri (extensible)

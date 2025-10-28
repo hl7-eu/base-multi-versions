@@ -9,11 +9,12 @@
   "package-id" : "hl7.fhir.eu.base-r5",
   "path" : "http://hl7.eu/fhir/base-r5/0.1.0",
   [r5-end]
-
   "version" : "0.1.0",
   "desc" : "First STU publication of the HL7 Europe Base and Core FHIR IG",
-  "status" : "preview",
+  "descmd" : "First STU publication of the HL7 Europe Base and Core FHIR IG",
+  "status" : "trial-use",
   "sequence" : "Release",
-  "mode": "working"  
+  "mode": "milestone",
+  "changes" : "changes.html"
 }
 
