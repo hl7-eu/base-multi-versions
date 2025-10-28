@@ -4,18 +4,21 @@
     <style type="text/css">
     /****************************
      * SCOPED STYLES
-     * All selectors are prefixed with .model-map-block
-     * so we don't leak styling outside this fragment.
      ****************************/
-
     .model-map-block h3 {
-      /* Keep IG defaults for font family/size/weight,
-         only ensure spacing is nice in embeds */
       margin-top: 1.5rem;
       margin-bottom: 0.75rem;
     }
 
-    /* Let text flow across the full width of the parent now */
+    .model-map-block h4 {
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
     .model-map-block p {
       line-height: 1.4;
       margin-top: 0.5rem;
@@ -27,7 +30,6 @@
      * CALLOUT BOX
      ****************************/
     .model-map-block .callout-wrapper {
-      /* no flex row anymore, just a block that spans full width */
       margin: 1rem 0 2rem 0;
     }
 
@@ -35,7 +37,6 @@
       border-radius: 8px;
       border: 1px solid #d6c78a;
       background: #fff8d6;
-      /* remove custom font size so it inherits the IG default */
       padding: 0.75rem 1rem;
       line-height: 1.4;
     }
@@ -46,7 +47,7 @@
     }
 
     /****************************
-     * TABLE
+     * TABLE STYLE (reused for each group)
      ****************************/
     .model-map-block .table-wrapper {
       border: 1px solid #d0d7de;
@@ -55,7 +56,7 @@
       overflow: hidden;
       max-width: 100%;
       background: #fff;
-      margin-top: 1rem;
+      margin-top: 0.75rem;
       margin-bottom: 2rem;
     }
 
@@ -63,7 +64,7 @@
       border-collapse: collapse;
       width: 100%;
       table-layout: auto;
-      font-size: 0.9rem;
+              <!-- font-size: 0.9rem; -->
       background: #fff;
     }
 
@@ -87,7 +88,7 @@
       border: 1px solid #c7d2fe;
       border-radius: 4px;
       padding: 0 2px;
-      font-size: 0.8rem;
+              <!-- font-size: 0.8rem; -->
     }
 
     .model-map-block a.pill {
@@ -96,7 +97,7 @@
       border: 1px solid #d0d7de;
       border-radius: 999px;
       padding: 3px 8px;
-      font-size: 0.8rem;
+              <!-- font-size: 0.8rem; -->
       line-height: 1.2;
       text-decoration: none;
       white-space: nowrap;
@@ -105,19 +106,23 @@
     .model-map-block a.pill:hover {
       background: #f6f8fa;
     }
+
+    /* small helper so emoji headers align nicely on some renderers */
+    .model-map-block .group-emoji {
+      font-size: 1.4rem;
+      line-height: 1;
+    }
     </style>
 
-    <!-- Heading level adapted for embedded use -->
+    <!-- Section heading for the fragment -->
     <h3>EHDS Logical Models → FHIR Profiles</h3>
 
-    <!-- Main narrative now spans full width (no max-width cap) -->
     <p>
     The Xt-EHR Joint Action defines EHDS logical data models for core clinical and
     administrative concepts. This Implementation Guide provides HL7 FHIR profiles
     that realise those models.
     </p>
 
-    <!-- Single full-width callout box with default font size -->
     <div class="callout-wrapper">
         <div class="callout-box">
             <strong>Ongoing alignment:</strong>
@@ -128,10 +133,14 @@
     </div>
 
     <p>
-    The table below lists each EHDS logical model and the corresponding FHIR profile(s)
-    or datatype(s) used in this IG. Each row links to a dedicated mapping page with
-    element-by-element traceability.
+    The sections below group the EHDS logical models into categories. Each table shows:
+    (1) the logical model, (2) the FHIR datatype or profile(s) used in this IG,
+    and (3) a link to the detailed element-by-element mapping.
     </p>
+
+    <!-- 🧩 Foundational Models -->
+    <h4>
+        <span class="group-emoji">🧩</span> Foundational Models</h4>
 
     <div class="table-wrapper">
         <table class="model-index">
@@ -145,20 +154,20 @@
             <tbody>
 
                 <tr>
-                    <td>EHDSHumanName</td>
-                    <td>FHIR <code>HumanName</code>
-                    </td>
-                    <td>
-                        <a class="pill" href="map-ehdshumanname.html">EHDSHumanName Mapping</a>
-                    </td>
-                </tr>
-
-                <tr>
                     <td>EHDSAddress</td>
                     <td>
                         <code>AddressEu</code> profile</td>
                     <td>
                         <a class="pill" href="map-ehdsaddress.html">EHDSAddress Mapping</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>EHDSHumanName</td>
+                    <td>FHIR <code>HumanName</code>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdshumanname.html">EHDSHumanName Mapping</a>
                     </td>
                 </tr>
 
@@ -170,6 +179,35 @@
                         <a class="pill" href="map-ehdstelecom.html">EHDSTelecom Mapping</a>
                     </td>
                 </tr>
+
+                <tr>
+                    <td>EHDSBodyStructure</td>
+                    <td>
+                        <code>BodyStructureEuCore</code> profile</td>
+                    <td>
+                        <a class="pill" href="map-ehdsbodystructure.html">EHDSBodyStructure Mapping</a>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- 🧑‍⚕️ Entity Models -->
+    <h4>
+        <span class="group-emoji">🧑‍⚕️</span> Entity Models</h4>
+
+    <div class="table-wrapper">
+        <table class="model-index">
+            <thead>
+                <tr>
+                    <th>EHDS Logical Model</th>
+                    <th>FHIR Profile / Type in this IG</th>
+                    <th>Mapping Details</th>
+                </tr>
+            </thead>
+            <tbody>
 
                 <tr>
                     <td>EHDSPatient</td>
@@ -186,6 +224,17 @@
                         <code>PatientAnimalEuCore</code> profile</td>
                     <td>
                         <a class="pill" href="map-ehdspatientanimal.html">EHDSPatientAnimal Mapping</a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>EHDSHealthProfessional</td>
+                    <td>
+                        <code>PractitionerRoleEuCore</code>,
+                        <code>PractitionerEuCore</code>
+                    </td>
+                    <td>
+                        <a class="pill" href="map-ehdshealthprofessional.html">EHDSHealthProfessional Mapping</a>
                     </td>
                 </tr>
 
@@ -207,27 +256,42 @@
                     </td>
                 </tr>
 
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- 🩺 Clinical Information Models -->
+    <h4>
+        <span class="group-emoji">🩺</span> Clinical Information Models</h4>
+
+    <div class="table-wrapper">
+        <table class="model-index">
+            <thead>
                 <tr>
-                    <td>EHDSHealthProfessional</td>
+                    <th>EHDS Logical Model</th>
+                    <th>FHIR Profile / Type in this IG</th>
+                    <th>Mapping Details</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>EHDSAlert</td>
+                    <td>Alert / Flag profile in this IG</td>
                     <td>
-                        <code>PractitionerRoleEuCore</code>,
-                        <code>PractitionerEuCore</code>
-                    </td>
-                    <td>
-                        <a class="pill" href="map-ehdshealthprofessional.html">EHDSHealthProfessional Mapping</a>
+                        <a class="pill" href="map-ehdsalert.html">EHDSAlert Mapping</a>
                     </td>
                 </tr>
 
                 <tr>
-                    <td>EHDSBodyStructure</td>
+                    <td>EHDSAllergyIntolerance</td>
+                    <td>AllergyIntolerance profile in this IG</td>
                     <td>
-                        <code>BodyStructureEuCore</code> profile</td>
-                    <td>
-                        <a class="pill" href="map-ehdsbodystructure.html">EHDSBodyStructure Mapping</a>
+                        <a class="pill" href="map-ehdsallergyintolerance.html">EHDSAllergyIntolerance Mapping</a>
                     </td>
                 </tr>
 
-                <!-- Future clinical / medication models -->
                 <tr>
                     <td>EHDSCondition</td>
                     <td>Condition profile in this IG</td>
@@ -245,20 +309,32 @@
                 </tr>
 
                 <tr>
-                    <td>EHDSAllergyIntolerance</td>
-                    <td>AllergyIntolerance profile in this IG</td>
-                    <td>
-                        <a class="pill" href="map-ehdsallergyintolerance.html">EHDSAllergyIntolerance Mapping</a>
-                    </td>
-                </tr>
-
-                <tr>
                     <td>EHDSImmunisation</td>
                     <td>Immunization profile in this IG</td>
                     <td>
                         <a class="pill" href="map-ehdsimmunisation.html">EHDSImmunisation Mapping</a>
                     </td>
                 </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- 💊 Medication Models -->
+    <h4>
+        <span class="group-emoji">💊</span> Medication Models</h4>
+
+    <div class="table-wrapper">
+        <table class="model-index">
+            <thead>
+                <tr>
+                    <th>EHDS Logical Model</th>
+                    <th>FHIR Profile / Type in this IG</th>
+                    <th>Mapping Details</th>
+                </tr>
+            </thead>
+            <tbody>
 
                 <tr>
                     <td>EHDSMedication</td>
@@ -273,14 +349,6 @@
                     <td>MedicationStatement profile(s)</td>
                     <td>
                         <a class="pill" href="map-ehdsmedicationstatement.html">EHDSMedicationStatement Mapping</a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>EHDSAlert</td>
-                    <td>Alert / Flag profile in this IG</td>
-                    <td>
-                        <a class="pill" href="map-ehdsalert.html">EHDSAlert Mapping</a>
                     </td>
                 </tr>
 
