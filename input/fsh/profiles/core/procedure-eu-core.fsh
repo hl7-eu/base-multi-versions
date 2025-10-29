@@ -53,7 +53,7 @@ Description: "This profile represents the constraints applied to the Procedure r
 * outcome ^short = "Outcome of the procedure"
 [r4-init]
 * complication ^short = "Complications that occurred during the procedure (code)"
-* complicationDetail only CodeableReference(ConditionEuCore)
+* complicationDetail only Reference(ConditionEuCore)
   * ^short = "Complications that occurred during the procedure (details)"
 [r4-end]
 [r5-init]

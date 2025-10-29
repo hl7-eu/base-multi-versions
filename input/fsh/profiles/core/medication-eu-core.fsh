@@ -67,9 +67,13 @@ This profile is adapted from the MPD work."""
 * ingredient
   * itemReference only Reference (MedicationEuCore)
   * itemCodeableConcept from $medicine-active-substances-uv-ips (example)
-    * ^binding.additional.purpose = #candidate
-    * ^binding.additional.valueSet = $eHDSISubstance
-    * ^binding.additional.documentation = """MyHealth@EU crossborder value set for substances. Based on EMA SPOR SMS.""" 
+    * ^binding.extension[0].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+    * ^binding.extension[=].extension[0].url = "purpose"
+    * ^binding.extension[=].extension[=].valueCode = #candidate
+    * ^binding.extension[=].extension[+].url = "valueSet"
+    * ^binding.extension[=].extension[=].valueCanonical = $eHDSISubstance
+    * ^binding.extension[=].extension[+].url = "documentation"
+    * ^binding.extension[=].extension[=].valueMarkdown = "MyHealth@EU crossborder value set for substances. Based on EMA SPOR SMS."
   * strength ^short = "Amount of substance in product (presentation or concentration strength)"
   * strength ^definition = """Definitional resources should be used for specifying the different types of strengths: presentation; concentration."""
   * strength // MS // item.ingredient.strengthInfo (does not map exactly)
