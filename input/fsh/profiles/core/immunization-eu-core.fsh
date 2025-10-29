@@ -21,13 +21,8 @@ Description: """This profile sets minimum expectations for the Immunization reso
 [r5-end]
 
 // check preadoption of R5 element
-<<<<<<< .mine
 // Check if the R5 now works...
 // extension only for the R5 version
-=======
-// Check if the R5 now works...
-
->>>>>>> .theirs
 * extension contains ImmunizationAdministeredProduct named administeredProduct 0..1
 * extension[administeredProduct].extension[concept]
 * extension[administeredProduct].extension[reference].valueReference only Reference ( MedicationEuCore )
