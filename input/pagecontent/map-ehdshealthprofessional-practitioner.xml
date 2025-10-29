@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>EHDSLocation → LocationEuCore</title>
+    <title>EHDSHealthProfessional → PractitionerEuCore</title>
 <style type="text/css">
   body {
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -50,23 +50,23 @@
 
 
   <body>
-    <h3>EHDSLocation → LocationEuCore</h3>
+    <h3>EHDSHealthProfessional → PractitionerEuCore</h3>
 
     <p>
-      This page describes the element-by-element mapping from the <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSLocation"><strong>EHDSLocation</strong></a> logical model to the <a href="StructureDefinition-location-eu-core.html"><strong>LocationEuCore</strong></a> FHIR profile, which represents physical service delivery sites and care locations.
+      This page describes the element-by-element mapping from the <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSHealthProfessional"><strong>EHDSHealthProfessional</strong></a> logical model to the <a href="StructureDefinition-practitioner-eu-core.html"><strong>PractitionerEuCore</strong></a> FHIR profile.
     </p>
 
 
 
 
     <div class="table-wrap">
-      <table summary="EHDSLocation → LocationEuCore">
-        <caption>EHDSLocation → LocationEuCore</caption>
+      <table summary="EHDSHealthProfessional → PractitionerEuCore">
+        <caption>EHDSHealthProfessional → PractitionerEuCore</caption>
         <thead>
           <tr>
-            <th colspan="2" class="src-head">EHDSLocation (Logical Model)</th>
+            <th colspan="2" class="src-head">EHDSHealthProfessional (Logical Model)</th>
             <th class="relhead">Relationship</th>
-            <th colspan="3" class="tgt-head">LocationEuCore</th>
+            <th colspan="3" class="tgt-head">PractitionerEuCore</th>
           </tr>
           <tr>
             <th class="src-sub">Element</th>
@@ -80,67 +80,67 @@
         <tbody>
           <tr>
             <td>identifier</td>
-            <td>Identifier for the location.</td>
-            <td>equal</td>
+            <td>Identifier of the health professional (e.g. national professional ID).</td>
+            <td>narrower</td>
             <td>identifier</td>
-            <td>Unique code or number identifying the location.</td>
-            <td></td>
+            <td>Practitioner identifier.</td>
+            <td>Mapping depends on identifier type.</td>
           </tr>
           <tr>
             <td>name</td>
-            <td>Human-readable name of the location.</td>
+            <td>Name of the health professional.</td>
             <td>equal</td>
             <td>name</td>
-            <td>Location name.</td>
+            <td>Practitioner name.</td>
             <td></td>
           </tr>
           <tr>
-            <td>description</td>
-            <td>Textual description of the location and its purpose.</td>
-            <td>equal</td>
-            <td>description</td>
-            <td>Description of the location.</td>
-            <td></td>
+            <td>address</td>
+            <td>Addresses of the practitioner that are not role specific (often home).</td>
+            <td>narrower</td>
+            <td>address</td>
+            <td>Address(es) of the practitioner that are not role-specific.</td>
+            <td>Depends on address type.</td>
           </tr>
           <tr>
             <td>telecom</td>
-            <td>Contact channels for the location (phone, fax, email, etc.).</td>
-            <td>equal</td>
-            <td>telecom / contact.telecom</td>
-            <td>Location telecom / official contact details.</td>
-            <td>In R4 this is usually telecom; in R5, contact info may live under contact.telecom.</td>
+            <td>Telecom details that apply to the practitioner (not role-specific).</td>
+            <td>narrower</td>
+            <td>telecom</td>
+            <td>Contact detail for the practitioner (applies to all roles).</td>
+            <td>Depends on telecom type.</td>
           </tr>
           <tr>
-            <td>type</td>
-            <td>Type/category of the location (e.g. ward, lab, pharmacy counter).</td>
-            <td>equal</td>
-            <td>physicalType / type</td>
-            <td>Type of location.</td>
-            <td>In R4, physicalType is common; R5 shifts emphasis to type.</td>
+            <td>professionalRole</td>
+            <td>Role(s) in a given organisation.</td>
+            <td>unmatched</td>
+            <td></td>
+            <td></td>
+            <td>Represented in PractitionerRole, not Practitioner directly.</td>
           </tr>
           <tr>
-            <td>address</td>
-            <td>Physical postal address of the location.</td>
-            <td>equal</td>
-            <td>address</td>
-            <td>Address of the location.</td>
-            <td>Uses Address/AddressEu.</td>
+            <td>professionalRole.role</td>
+            <td>Health professional role.</td>
+            <td>unmatched</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
-            <td>managingOrganisation</td>
-            <td>Organisation responsible for the services provided at this location.</td>
-            <td>equal</td>
-            <td>managingOrganization</td>
-            <td>Managing organization.</td>
-            <td>Reference to OrganizationEuCore.</td>
+            <td>professionalRole.organisation</td>
+            <td>Organisation where the role is available.</td>
+            <td>unmatched</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
           <tr>
-            <td>partOf</td>
-            <td>Parent/host location of which this one is a physical part.</td>
-            <td>equal</td>
-            <td>partOf</td>
-            <td>Another Location that contains this one.</td>
-            <td>Supports hierarchical location trees.</td>
+            <td>professionalRole.specialty</td>
+            <td>Specialty practiced in that organisation.</td>
+            <td>unmatched</td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
       </table>

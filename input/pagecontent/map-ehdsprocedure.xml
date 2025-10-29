@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>EHDSLocation → LocationEuCore</title>
+    <title>EHDSProcedure → Procedure</title>
 <style type="text/css">
   body {
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -50,23 +50,23 @@
 
 
   <body>
-    <h3>EHDSLocation → LocationEuCore</h3>
+    <h3>EHDSProcedure → Procedure</h3>
 
     <p>
-      This page describes the element-by-element mapping from the <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition/EHDSLocation"><strong>EHDSLocation</strong></a> logical model to the <a href="StructureDefinition-location-eu-core.html"><strong>LocationEuCore</strong></a> FHIR profile, which represents physical service delivery sites and care locations.
+      This page describes the element-by-element mapping from the <strong>EHDSProcedure</strong> logical model to the FHIR <code>Procedure</code> profile in this Implementation Guide.
     </p>
 
 
 
 
     <div class="table-wrap">
-      <table summary="EHDSLocation → LocationEuCore">
-        <caption>EHDSLocation → LocationEuCore</caption>
+      <table summary="EHDSProcedure → Procedure">
+        <caption>EHDSProcedure → Procedure</caption>
         <thead>
           <tr>
-            <th colspan="2" class="src-head">EHDSLocation (Logical Model)</th>
+            <th colspan="2" class="src-head">EHDSProcedure (Logical Model)</th>
             <th class="relhead">Relationship</th>
-            <th colspan="3" class="tgt-head">LocationEuCore</th>
+            <th colspan="3" class="tgt-head">Procedure</th>
           </tr>
           <tr>
             <th class="src-sub">Element</th>
@@ -80,67 +80,75 @@
         <tbody>
           <tr>
             <td>identifier</td>
-            <td>Identifier for the location.</td>
+            <td>Identifier for the procedure record or act.</td>
             <td>equal</td>
             <td>identifier</td>
-            <td>Unique code or number identifying the location.</td>
+            <td>Business identifier for the procedure.</td>
             <td></td>
           </tr>
           <tr>
-            <td>name</td>
-            <td>Human-readable name of the location.</td>
+            <td>status</td>
+            <td>Status of the procedure (completed, in-progress).</td>
             <td>equal</td>
-            <td>name</td>
-            <td>Location name.</td>
+            <td>status</td>
+            <td>Procedure status.</td>
+            <td>Important for workflows and billing.</td>
+          </tr>
+          <tr>
+            <td>code</td>
+            <td>Coded description of the procedure performed.</td>
+            <td>equal</td>
+            <td>code</td>
+            <td>Procedure code.</td>
+            <td>May use national coding schemes or SNOMED CT.</td>
+          </tr>
+          <tr>
+            <td>subject</td>
+            <td>Who the procedure was performed on.</td>
+            <td>equal</td>
+            <td>subject</td>
+            <td>Patient / Animal Patient.</td>
             <td></td>
           </tr>
           <tr>
-            <td>description</td>
-            <td>Textual description of the location and its purpose.</td>
+            <td>performed[x]</td>
+            <td>Date/time or period when performed.</td>
             <td>equal</td>
-            <td>description</td>
-            <td>Description of the location.</td>
-            <td></td>
+            <td>performed[x]</td>
+            <td>When the procedure was performed.</td>
+            <td>FHIR supports multiple data types.</td>
           </tr>
           <tr>
-            <td>telecom</td>
-            <td>Contact channels for the location (phone, fax, email, etc.).</td>
+            <td>performer</td>
+            <td>Who was involved in performing the procedure.</td>
             <td>equal</td>
-            <td>telecom / contact.telecom</td>
-            <td>Location telecom / official contact details.</td>
-            <td>In R4 this is usually telecom; in R5, contact info may live under contact.telecom.</td>
+            <td>performer</td>
+            <td>Performer(s) of the procedure, and their function/role.</td>
+            <td>References PractitionerRole / Practitioner / Organization.</td>
           </tr>
           <tr>
-            <td>type</td>
-            <td>Type/category of the location (e.g. ward, lab, pharmacy counter).</td>
+            <td>location</td>
+            <td>Where the procedure was carried out.</td>
             <td>equal</td>
-            <td>physicalType / type</td>
-            <td>Type of location.</td>
-            <td>In R4, physicalType is common; R5 shifts emphasis to type.</td>
+            <td>location</td>
+            <td>Location where the procedure occurred.</td>
+            <td>Reference to LocationEuCore.</td>
           </tr>
           <tr>
-            <td>address</td>
-            <td>Physical postal address of the location.</td>
+            <td>bodySite</td>
+            <td>Body site targeted/affected.</td>
             <td>equal</td>
-            <td>address</td>
-            <td>Address of the location.</td>
-            <td>Uses Address/AddressEu.</td>
+            <td>bodySite</td>
+            <td>Target body site.</td>
+            <td>Can align with BodyStructure details.</td>
           </tr>
           <tr>
-            <td>managingOrganisation</td>
-            <td>Organisation responsible for the services provided at this location.</td>
+            <td>reason</td>
+            <td>Clinical reason / indication for performing the procedure.</td>
             <td>equal</td>
-            <td>managingOrganization</td>
-            <td>Managing organization.</td>
-            <td>Reference to OrganizationEuCore.</td>
-          </tr>
-          <tr>
-            <td>partOf</td>
-            <td>Parent/host location of which this one is a physical part.</td>
-            <td>equal</td>
-            <td>partOf</td>
-            <td>Another Location that contains this one.</td>
-            <td>Supports hierarchical location trees.</td>
+            <td>reason</td>
+            <td>Reason the procedure was performed.</td>
+            <td>In R4 often reasonCode / reasonReference; in R5 unified as reason.</td>
           </tr>
         </tbody>
       </table>
