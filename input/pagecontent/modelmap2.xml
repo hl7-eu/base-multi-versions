@@ -1,5 +1,5 @@
-<!-- BEGIN: EHDS Logical Models → FHIR Profiles block -->
-<div class="model-map-block">
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" class="model-map-block">
 
     <style type="text/css">
     /****************************
@@ -111,33 +111,32 @@
     }
     </style>
 
-    <!-- Section heading for the fragment -->
     <h3>EHDS Logical Models → FHIR Profiles</h3>
 
     <p>
-    The Xt-EHR Joint Action defines EHDS logical data models for core clinical and
-    administrative concepts. This Implementation Guide provides HL7 FHIR profiles
-    that realise those models.
+      The Xt-EHR Joint Action defines EHDS logical data models for core clinical and
+      administrative concepts. This Implementation Guide provides HL7 FHIR profiles
+      that realise those models.
     </p>
 
     <div class="callout-wrapper">
         <div class="callout-box">
             <strong>Ongoing alignment:</strong>
-      The Xt-EHR logical models are under active revision and continuous refinement.
-      Updates from Xt-EHR will be progressively incorporated into this Implementation
-      Guide to maintain alignment with the evolving EHDS specifications.
+            The Xt-EHR logical models are under active revision and continuous refinement.
+            Updates from Xt-EHR will be progressively incorporated into this Implementation
+            Guide to maintain alignment with the evolving EHDS specifications.
         </div>
     </div>
 
     <p>
-    The sections below group the EHDS logical models into categories. Each table shows:
-    (1) the logical model, (2) the FHIR datatype or profile(s) used in this IG,
-    and (3) a link to the detailed element-by-element mapping.
+      The sections below group the EHDS logical models into categories. Each table shows:
+      (1) the logical model, (2) the FHIR datatype or profile(s) used in this IG,
+      and (3) a link to the detailed element-by-element mapping.
     </p>
 
-    <!-- 🧩 Foundational Models -->
     <h4>
-        <span class="group-emoji">🧩</span> Foundational Models</h4>
+        <span class="group-emoji">🧩</span> Foundational Models
+    </h4>
 
     <div class="table-wrapper">
         <table class="model-index">
@@ -149,7 +148,6 @@
                 </tr>
             </thead>
             <tbody>
-
                 <tr>
                     <td>EHDSAddress</td>
                     <td>
@@ -158,7 +156,6 @@
                         <a class="pill" href="map-ehdsaddress.html">EHDSAddress Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSHumanName</td>
                     <td>FHIR <code>HumanName</code>
@@ -167,7 +164,6 @@
                         <a class="pill" href="map-ehdshumanname.html">EHDSHumanName Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSTelecom</td>
                     <td>FHIR <code>ContactPoint</code>
@@ -176,7 +172,6 @@
                         <a class="pill" href="map-ehdstelecom.html">EHDSTelecom Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSBodyStructure</td>
                     <td>
@@ -185,15 +180,13 @@
                         <a class="pill" href="map-ehdsbodystructure.html">EHDSBodyStructure Mapping</a>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
 
-
-    <!-- 🧑‍⚕️ Entity Models -->
     <h4>
-        <span class="group-emoji">🧑‍⚕️</span> Entity Models</h4>
+        <span class="group-emoji">🧑‍⚕️</span> Entity Models
+    </h4>
 
     <div class="table-wrapper">
         <table class="model-index">
@@ -205,7 +198,6 @@
                 </tr>
             </thead>
             <tbody>
-
                 <tr>
                     <td>EHDSPatient</td>
                     <td>
@@ -214,7 +206,6 @@
                         <a class="pill" href="map-ehdspatient.html">EHDSPatient Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSPatientAnimal</td>
                     <td>
@@ -223,18 +214,15 @@
                         <a class="pill" href="map-ehdspatientanimal.html">EHDSPatientAnimal Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSHealthProfessional</td>
                     <td>
-                        <code>PractitionerRoleEuCore</code>,
-                        <code>PractitionerEuCore</code>
+                        <code>PractitionerRoleEuCore</code>,                        <code>PractitionerEuCore</code>
                     </td>
                     <td>
                         <a class="pill" href="map-ehdshealthprofessional.html">EHDSHealthProfessional Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSOrganisation</td>
                     <td>
@@ -243,7 +231,6 @@
                         <a class="pill" href="map-ehdsorganisation.html">EHDSOrganisation Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSLocation</td>
                     <td>
@@ -252,15 +239,13 @@
                         <a class="pill" href="map-ehdslocation.html">EHDSLocation Mapping</a>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
 
-
-    <!-- 🩺 Clinical Information Models -->
     <h4>
-        <span class="group-emoji">🩺</span> Clinical Information Models</h4>
+        <span class="group-emoji">🩺</span> Clinical Information Models
+    </h4>
 
     <div class="table-wrapper">
         <table class="model-index">
@@ -272,7 +257,6 @@
                 </tr>
             </thead>
             <tbody>
-
                 <tr>
                     <td>EHDSAlert</td>
                     <td>Alert / Flag profile in this IG</td>
@@ -280,7 +264,6 @@
                         <a class="pill" href="map-ehdsalert.html">EHDSAlert Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSAllergyIntolerance</td>
                     <td>AllergyIntolerance profile in this IG</td>
@@ -288,7 +271,6 @@
                         <a class="pill" href="map-ehdsallergyintolerance.html">EHDSAllergyIntolerance Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSCondition</td>
                     <td>Condition profile in this IG</td>
@@ -296,7 +278,6 @@
                         <a class="pill" href="map-ehdscondition.html">EHDSCondition Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSProcedure</td>
                     <td>Procedure profile in this IG</td>
@@ -304,7 +285,6 @@
                         <a class="pill" href="map-ehdsprocedure.html">EHDSProcedure Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSImmunisation</td>
                     <td>Immunization profile in this IG</td>
@@ -312,15 +292,13 @@
                         <a class="pill" href="map-ehdsimmunisation.html">EHDSImmunisation Mapping</a>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
 
-
-    <!-- 💊 Medication Models -->
     <h4>
-        <span class="group-emoji">💊</span> Medication Models</h4>
+        <span class="group-emoji">💊</span> Medication Models
+    </h4>
 
     <div class="table-wrapper">
         <table class="model-index">
@@ -332,7 +310,6 @@
                 </tr>
             </thead>
             <tbody>
-
                 <tr>
                     <td>EHDSMedication</td>
                     <td>Medication profile(s)</td>
@@ -340,7 +317,6 @@
                         <a class="pill" href="map-ehdsmedication.html">EHDSMedication Mapping</a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>EHDSMedicationStatement</td>
                     <td>MedicationStatement profile(s)</td>
@@ -348,10 +324,8 @@
                         <a class="pill" href="map-ehdsmedicationstatement.html">EHDSMedicationStatement Mapping</a>
                     </td>
                 </tr>
-
             </tbody>
         </table>
     </div>
 
 </div>
-<!-- END: EHDS Logical Models → FHIR Profiles block -->
