@@ -41,9 +41,11 @@ dependencies:
   ihe.pharm.mpd.r4: 1.0.0-comment-2
   [r4-end]
   [r5-init]
-  hl7.fhir.eu.extensions.r5: 0.1.1  
+  hl7.fhir.eu.extensions.r5: 0.1.1
+  ihe.pharm.mpd: 1.0.0-comment-2
+  hl7.fhir.extensions.r5: 5.0.0
   [r5-end]
-  # eu.terminology.ehdsi: 0.1.0
+ 
 
 #   hl7.fhir.us.mcode:
 #     id: mcode

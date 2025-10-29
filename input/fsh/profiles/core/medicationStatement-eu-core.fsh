@@ -14,8 +14,12 @@ This profile is adapted from the MPD work."""
   * ^short = "Medication Statement Identifier"
 // * status ^short = "Current state of the dispensation"
 * subject only Reference( PatientEuCore )
-
+[r4-init]
 * medication[x] only CodeableConcept or Reference(MedicationEuCore)
+[r4-end]
+[r5-init]
+* medication only CodeableReference(MedicationEuCore)
+[r5-end]
 
 
 

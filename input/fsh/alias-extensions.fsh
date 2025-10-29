@@ -63,5 +63,5 @@ Alias: $ihe-ext-medication-sizeofitem = https://profiles.ihe.net/PHARM/MPD/Struc
 Alias: $ihe-ext-medication-characteristic = https://profiles.ihe.net/PHARM/MPD/StructureDefinition/ihe-ext-medication-characteristic
 Alias: $ihe-ext-medication-unitofpresentation = https://profiles.ihe.net/PHARM/MPD/StructureDefinition/ihe-ext-medication-unitofpresentation
 Alias: $ihe-ext-medicationrequest-prescribedquantity = https://profiles.ihe.net/PHARM/MPD/StructureDefinition/ihe-ext-medicationrequest-prescribedQuantity
-
+Alias: $ihe-ext-medicationrequest-offlabeluse = https://profiles.ihe.net/PHARM/MPD/StructureDefinition/ihe-ext-medicationrequest-offLabelUse
 

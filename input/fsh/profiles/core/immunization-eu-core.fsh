@@ -92,9 +92,16 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * protocolApplied.targetDisease.coding[sctCovid19Diseases] from Covid19Diseases
  */
 * protocolApplied.targetDisease from $eHDSIIllnessandDisorder (preferred) // Check Value Set
+[r4-init]
 * protocolApplied.doseNumberPositiveInt ^short = "Dose Number"
 * protocolApplied.seriesDosesPositiveInt ^short = "Number of doses"
+[r4-end]
+[r5-init]
+* protocolApplied.doseNumber ^short = "Dose Number"
+* protocolApplied.seriesDoses ^short = "Number of doses"
+[r5-end]
 
+/* 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Profile:  ImmunizationRecommendationEuCore
 Parent:   ImmunizationRecommendation
@@ -131,5 +138,5 @@ Description: """This profile defines how to represent Immunization Recommandatio
 * recommendation.dateCriterion[nextDose].value 1..1
 * recommendation.doseNumberPositiveInt ^short = "Dose Number"
 * recommendation.seriesDosesPositiveInt ^short = "Number of doses"
-
+ */
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

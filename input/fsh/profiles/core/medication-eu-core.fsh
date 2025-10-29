@@ -9,17 +9,6 @@ This profile is adapted from the MPD work."""
 
 * insert SetFmmandStatusRule (1, draft)
 
-// Only R4 rules
-
-* ingredient
-  * itemCodeableConcept from $eHDSISubstance (example)
-  * itemReference only Reference (MedicationEuCore)
-  * strength ^short = "Amount of substance in product (presentation or concentration strength)"
-  * strength ^definition = """Definitional resources should be used for specifying the different types of strengths: presentation; concentration."""
-  * strength  // item.ingredient.strengthInfo (does not map exactly)  
-    * extension contains $ihe-ext-medication-strengthsubstance named strengthSubstance 0..1 
-    * extension[strengthSubstance] ^short = "Substance for which the strength is provided (this could be different from the precise active ingredient)." 
-
 
 // Common R4 R5
 * extension contains $ihe-ext-medication-productname named productName 0..1 // productName
@@ -31,24 +20,63 @@ This profile is adapted from the MPD work."""
 * extension contains $ihe-ext-medication-sizeofitem named sizeOfItem 0..1 // item.containedQuantity
 * extension[sizeOfItem] ^short = "Size of one item (for example, in a pack of 5 vials, this would represent the size of 1 vial)"
 
-* extension contains $ihe-ext-medication-device named device 0..* // device
-* extension[device] ^short = "Device, typically an administration device, included in the product."
-
 * extension contains $ihe-ext-medication-characteristic named characteristic 0..* // characteristic
 * extension[characteristic] ^short = "Specifies other descriptive properties of the medication."
 
 * extension contains $ihe-ext-medication-unitofpresentation named unitOfPresentation 0..1 // item.unitOfPresentation
 * extension[unitOfPresentation] ^short = "Unit of presentation of the product (e.g. tablet, vial, ampoule, etc)"
 
+* extension contains MedicationPackageType named packageType 0..1
+* extension[packageType] ^short = "Type of container. This information is more relevant in cases when the packaging has an impact on administration of the product (e.g. pre-filled syringe)"
 
-* identifier
-  * ^short = "Identifier for the medicinal product, its generic representation, or packaged product." //identifier
-* code 
-  * ^short = "A terminology-based code for the product" // productCode
-* ingredient 
-  * ^short = "Ingredient or a part product. For combination packs, each ingredient can be a separate manufactured item with its own ingredients, dose form, and strength" // item
-  * isActive ^short = "Active ingredient flag" // item.ingredient.role
-* form ^short = "Dose Form"
-* form from $eHDSIDoseForm (example)
+
+[r5-init]
+* extension contains $ihe-ext-medication-device named device 0..* // device
+* extension[device] ^short = "Device, typically an administration device, included in the product."
+* extension[device].extension[device].valueCodeableConcept from $eHDSIPackage (example)
+* totalVolume // MS // item.amount; packSize
+  * ^short = "Total volume or number of package items inside a package. This element should not contain overall prescribed amount, but describe the product itself. In case of complex packages, this element could be left empty, and number of different items could be indicated in the nested Medications." //packSize (almost)
+* ingredient
+  * item only CodeableReference (Substance or MedicationEuCore)
+    * ^short = "Substance (Substance resource or concept from terminology) or a medicinal product (Medication resource or concept from terminology). Medicinal product can be an ingredient in case of extemporal medications or combination packs (e.g Creme + 6 tablets)" 
+  * item from $medicine-active-substances-uv-ips (example)
+    * ^binding.additional.purpose = #candidate
+    * ^binding.additional.valueSet = $eHDSISubstance
+    * ^binding.additional.documentation = """MyHealth@EU crossborder value set for substances. Based on EMA SPOR SMS.""" 
+  * strength[x] ^short = "Amount of substance in product (presentation or concentration strength)"
+  * strength[x] ^definition = """Definitional resources should be used for specifying the different types of strengths: presentation; concentration."""
+  * strength[x] // MS // item.ingredient.strengthInfo (does not map exactly)
+    * extension contains $ihe-ext-medication-strengthsubstance named basisOfStrengthSubstance 0..1 
+    * extension[basisOfStrengthSubstance] ^short = "Basis of strength substance - substance for which the strength is provided (this could be different from the precise active ingredient)."
+* doseForm // MS // doseForm; item.doseForm
   * ^short = "Dose form. For a branded product, this would most likely be authorised dose form, but it could also be administrable dose form. For package items, it could be item's individual dose form." // doseForm
+  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.valueSet = $eHDSIDoseForm
+  * ^binding.additional.documentation = """MyHealth@EU crossborder value set for dose forms. Based on EDQM Standard Terms.""" 
+* marketingAuthorizationHolder // MS
+[r5-end]
+
+[r4-init]
+* extension contains $ihe-ext-medication-device named device 0..* // device
+* extension[device] ^short = "Device, typically an administration device, included in the product."
+* extension[device].extension[device].valueCodeableConcept from $eHDSIPackage (example)
+
+
+// Only R4 rules
+
+* ingredient
+  * itemReference only Reference (MedicationEuCore)
+  * itemCodeableConcept from $medicine-active-substances-uv-ips (example)
+    * ^binding.additional.purpose = #candidate
+    * ^binding.additional.valueSet = $eHDSISubstance
+    * ^binding.additional.documentation = """MyHealth@EU crossborder value set for substances. Based on EMA SPOR SMS.""" 
+  * strength ^short = "Amount of substance in product (presentation or concentration strength)"
+  * strength ^definition = """Definitional resources should be used for specifying the different types of strengths: presentation; concentration."""
+  * strength // MS // item.ingredient.strengthInfo (does not map exactly)
+    * extension contains $ihe-ext-medication-strengthsubstance named basisOfStrengthSubstance 0..1 
+    * extension[basisOfStrengthSubstance] ^short = "Substance for which the strength is provided (this could be different from the precise active ingredient)."
+* form from $eHDSIDoseForm (example) 
+[r4-end]
+
+
 
