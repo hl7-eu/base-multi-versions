@@ -72,3 +72,4 @@ Description: """This profile sets minimum expectations for the AllergyIntoleranc
 * reaction.manifestation ^binding.description = "Type of allergy or intolerance reaction expected to be used in MyHealth@EU"
 
 * reaction.severity ^short = "Reaction severity"
+* reaction.onset ^short = "Reaction onset"
