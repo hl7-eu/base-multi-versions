@@ -8,7 +8,7 @@
 
   <body>
     <blockquote class="dragon">
-      <p>The content of this page is automatically generated and doesn't document the actual mapping.</p>
+      <p>The content of this page is <strong>work in progress.</strong></p>
       <p>Please don't use this material for implementation purposes !</p>
     </blockquote>
 
@@ -117,7 +117,7 @@
           <tr>
             <td>header.language</td>
             <td>Language of the resource (IETF tag).</td>
-            <td>equivalent →</td>
+            <td>equivalent</td>
             <td>language</td>
             <td>Language used in the flag text.</td>
             <td></td>
