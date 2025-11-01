@@ -10,6 +10,13 @@ Description: "This profile represents the constraints applied to the Procedure r
 * extension contains $procedure-targetBodyStructure named bodySite 0..1
 * extension[bodySite].valueReference only Reference(BodyStructureEuCore)
 
+[r4-init]
+* extension contains $procedure-recorded-r5 named recorded 0..1
+* extension[recorded] ^short = "Date when the procedure was recorded"
+[r4-end]
+
+* identifier ^short = "Identifier for the procedure"
+
 * text ^short = "Textual representation of the procedur"
  // textual representation of the procedure should be provided according to the EHN data set
 * status
@@ -19,16 +26,10 @@ Description: "This profile represents the constraints applied to the Procedure r
   * ^definition = "Identification of the procedure or recording of \"absence of relevant procedures\" or of \"procedures unknown\"."
 * code from $procedures-uv-ips (preferred) 
 
-// ProceduresSnomedAbsentUnknownHdrVS 
-/* * code ^binding.extension[0].extension[0].url = "purpose"
-* code ^binding.extension[=].extension[=].valueCode = #candidate
-* code ^binding.extension[=].extension[+].url = "valueSet"
-* code ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/procedures-uv-ips"
-* code ^binding.extension[=].extension[+].url = "documentation"
-* code ^binding.extension[=].extension[=].valueMarkdown = "Codes for procedures in IPS"
-* code ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding" */
 * subject only Reference(PatientEuCore)
-* subject.reference 1..
+* subject 1..1
+// * subject.reference 1..1 Only for IPS ?
+
 [r4-init]
 * performed[x] 1..1
 [r4-end]
@@ -59,6 +60,16 @@ Description: "This profile represents the constraints applied to the Procedure r
 [r5-init]
 * complication only CodeableReference(ConditionEuCore)
 [r5-end]
+
+[r4-init]
+* usedCode ^short = "Device used to perform the procedure (code)"
+* usedReference only Reference( Device or MedicationEuCore or Substance) // Specialize if needed
+[r4-end]
+[r5-init]
+* used ^short = "Device used to perform the procedure"
+* used only CodeableReference( Device or MedicationEuCore or Substance or BiologicallyDerivedProduct) // Specialize if needed
+[r5-end]
+
 * focalDevice ^short = "Device implanted, removed or otherwise manipulated"
 * focalDevice.manipulated only Reference ( Device ) // DeviceEuCore
 * bodySite only $CodeableConcept-uv-ips
@@ -66,3 +77,4 @@ Description: "This profile represents the constraints applied to the Procedure r
 * bodySite
   * ^definition = "Anatomical location which is the focus of the problem."
   //* extension contains LateralityQualifier named laterality 0..1
+* note ^short = "Additional information about the procedure."
