@@ -17,7 +17,7 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * extension[basedOn].valueReference only Reference ( ImmunizationRecommendation )
 
 
-/ check preadoption of R5 element
+// check preadoption of R5 element
 // Check if the R5 now works...
 // extension only for the R5 version
 
@@ -33,8 +33,6 @@ Description: """This profile sets minimum expectations for the Immunization reso
 [r5-init]
 * basedOn
 [r5-end]
-
-/
 
 /* FIX THE ISSUE WITH CODEABLE REFERENCE
 * extension contains $immunization-administeredProduct-r5 named administeredProduct 0..1
