@@ -3,7 +3,7 @@
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Profile:  PractitionerEu
-Parent:   Practitioner // http://hl7.org/fhir/uv/ips/StructureDefinition/Practitioner-uv-ips
+Parent:   Practitioner
 Id:       practitioner-eu
 Title:    "Practitioner (EU base)"
 Description: """This profile specifies how the HL7 FHIR Practitioner resource should be used for conveying commonly used concepts in the European context."""
@@ -18,7 +18,7 @@ Description: """This profile specifies how the HL7 FHIR Practitioner resource sh
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Profile:  PractitionerRoleEu
-Parent:   PractitionerRole // http://hl7.org/fhir/uv/ips/StructureDefinition/PractitionerRole-uv-ips
+Parent:   PractitionerRole
 Id:       practitionerRole-eu
 Title:    "PractitionerRole (EU base)"
 Description: """This profile specifies how the HL7 FHIR PractitionerRole resource should be used for conveying commonly used concepts in the European context."""
