@@ -30,12 +30,13 @@
           <tr>
             <th colspan="2" class="src-head">EHDSHealthProfessional (Logical Model)</th>
             <th class="relhead">Relationship</th>
-            <th colspan="3" class="tgt-head">PractitionerEuCore</th>
+            <th colspan="4" class="tgt-head">PractitionerEuCore</th>
           </tr>
           <tr>
             <th class="src-sub">Element</th>
             <th class="src-sub">Description</th>
             <th class="relsub">Relation</th>
+            <th class="tgt-sub">Resource</th>
             <th class="tgt-sub">Element</th>
             <th class="tgt-sub">Description</th>
             <th class="tgt-sub">Notes</th>
@@ -46,7 +47,7 @@
             <td>identifier</td>
             <td>Identifier of the health professional (e.g. national professional ID).</td>
             <td>narrower</td>
-            <td>identifier</td>
+            <td>Practitioner</td><td>identifier</td>
             <td>Practitioner identifier.</td>
             <td>Mapping depends on identifier type.</td>
           </tr>
@@ -54,7 +55,7 @@
             <td>name</td>
             <td>Name of the health professional.</td>
             <td>equivalent</td>
-            <td>name</td>
+            <td>Practitioner</td><td>name</td>
             <td>Practitioner name.</td>
             <td></td>
           </tr>
@@ -62,7 +63,7 @@
             <td>address</td>
             <td>Addresses of the practitioner that are not role specific (often home).</td>
             <td>narrower</td>
-            <td>address</td>
+            <td>Practitioner</td><td>address</td>
             <td>Address(es) of the practitioner that are not role-specific.</td>
             <td>Depends on address type.</td>
           </tr>
@@ -70,7 +71,7 @@
             <td>telecom</td>
             <td>Telecom details that apply to the practitioner (not role-specific).</td>
             <td>narrower</td>
-            <td>telecom</td>
+            <td>Practitioner</td><td>telecom</td>
             <td>Contact detail for the practitioner (applies to all roles).</td>
             <td>Depends on telecom type.</td>
           </tr>
@@ -78,7 +79,7 @@
             <td>professionalRole</td>
             <td>Role(s) in a given organisation.</td>
             <td>unmatched</td>
-            <td></td>
+            <td>Practitioner</td><td></td>
             <td></td>
             <td>Represented in PractitionerRole, not Practitioner directly.</td>
           </tr>
@@ -86,7 +87,7 @@
             <td>professionalRole.role</td>
             <td>Health professional role.</td>
             <td>unmatched</td>
-            <td></td>
+            <td>Practitioner</td><td></td>
             <td></td>
             <td></td>
           </tr>
@@ -94,7 +95,7 @@
             <td>professionalRole.organisation</td>
             <td>Organisation where the role is available.</td>
             <td>unmatched</td>
-            <td></td>
+            <td>Practitioner</td><td></td>
             <td></td>
             <td></td>
           </tr>
@@ -102,7 +103,7 @@
             <td>professionalRole.specialty</td>
             <td>Specialty practiced in that organisation.</td>
             <td>unmatched</td>
-            <td></td>
+            <td>Practitioner</td><td></td>
             <td></td>
             <td></td>
           </tr>
@@ -115,3 +116,8 @@
     </p>
   </body>
 </html>
+
+
+
+
+
