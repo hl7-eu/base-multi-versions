@@ -74,6 +74,7 @@
             <td>recorder</td>
             <td>Who recorded the condition.</td>
             <td>Condition has no generic "author"; use <code>recorder</code></td>
+            <td class="highlight-yellow">Condition has no generic "author"; use<code>recorder</code><strong>This element is 1.. in the model 0.. in the profile</strong></td>
           </tr>
           <tr>
             <td>header.authorship.author[x]</td>
@@ -81,7 +82,7 @@
             <td>equivalent</td>
             <td>recorder</td>
             <td>Who recorded the condition.</td>
-            <td>Can reference Practitioner, PractitionerRole, Patient, RelatedPerson (per profile).</td>
+            <td class="highlight-yellow">Can reference Practitioner, PractitionerRole, Patient, RelatedPerson (per profile).<strong>This element is 1.. in the model 0.. in the profile</strong></td>
           </tr>
           <tr>
             <td>header.authorship.datetime</td>
@@ -89,7 +90,7 @@
             <td>equivalent</td>
             <td>recordedDate</td>
             <td>When the condition was recorded.</td>
-            <td></td>
+            <td class="highlight-yellow"><strong>This element is 1.. in the model 0.. in the profile</strong></td>
           </tr>
           <tr class="highlight-yellow">
             <td>header.lastUpdate</td>
@@ -198,18 +199,25 @@
           <tr>
             <td>anatomicLocation</td>
             <td>The anatomical location including laterality where this condition manifests itself.</td>
-            <td>equivalent</td>
+            <td>source-is-broader-than-target</td>
             <td>bodySite</td>
             <td>Anatomical location(s) affected by the condition.</td>
             <td>EHDS uses EHDSBodyStructure; map to one or more <code>Condition.bodySite</code>. Use referenced BodyStructure if profiling for more detail.</td>
           </tr>
-
+          <tr>
+            <td>anatomicLocation</td>
+            <td>The anatomical location including laterality where this condition manifests itself.</td>
+            <td>equivalent</td>
+            <td>extension:bodySite</td>
+            <td>Anatomical location(s) affected by the condition.</td>
+            <td>EHDS uses EHDSBodyStructure; map to one or more <code>Condition.bodySite</code>. Use referenced BodyStructure if profiling for more detail.</td>
+          </tr>
           <!-- stage -->
           <tr>
             <td>stage</td>
             <td>Stage/grade usually assessed formally using a specific staging/grading system. Multiple assessment systems could be used.</td>
-            <td>source-is-broader-than-target</td>
-            <td>stage.summary</td>
+            <td>equivalent</td>
+            <td>stage</td>
             <td>Simple summary of condition stage.</td>
             <td>FHIR also has <code>stage.assessment</code> (Reference). For multiple staging systems, create multiple <code>Condition.stage</code> repetitions.</td>
           </tr>
