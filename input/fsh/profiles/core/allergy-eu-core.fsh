@@ -1,7 +1,7 @@
 Profile: AllergyIntoleranceEuCore
 Parent: AllergyIntolerance
 Id: allergyIntolerance-eu-core
-Title:    "Allergy Intolerance (EU core) [WIP]"
+Title:    "Allergy Intolerance (EU core)"
 Description: """This profile sets minimum expectations for the AllergyIntolerance resource common to most of the use cases."""
 
 * ^purpose = "This profile constrains the AllergyIntolerance resource for the purpose of project."

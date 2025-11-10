@@ -256,20 +256,20 @@
           <tr class="highlight-yellow">
             <td>specialistContact</td>
             <td>Health Professional specifically related to the problem, as a preferred contact.</td>
-            <td>XXXXXXXXX</td>
-            <td>XXXXXXXXX</td>
-            <td>XXXXXXXXX</td>
-            <td>FHIR R4 Condition has no native participant element; model via an IG-defined extension or via CareTeam.</td>
+            <td>source-is-narrower-than-target</td>
+            <td>CareTeam.participant.member</td>
+            <td>Who is involved</td>
+            <td>FHIR R4 Condition has no native participant element; CareTeam can be used for this purpose. In this case CareTeam.reason should point to this Condition.</td>
           </tr>
 
           <!-- externalResource -->
           <tr class="highlight-yellow">
             <td>externalResource</td>
             <td>External resource related to the problem (e.g. guidelines for a rare disease).</td>
-            <td>XXXXXXXXX</td>
-            <td>XXXXXXXXX</td>
-            <td>XXXXXXXXX</td>
-            <td>Condition.evidence.detail could be used if the IG permits URIs there; otherwise use an extension or evaluate other alternatives</td>
+            <td>source-is-narrower-than-target</td>
+            <td>extension:relatedArtifact</td>
+            <td>Related artifacts such as additional documentation, justification, dependencies, bibliographic references, and predecessor and successor artifacts.</td>
+            <td></td>
           </tr>
 
         </tbody>
