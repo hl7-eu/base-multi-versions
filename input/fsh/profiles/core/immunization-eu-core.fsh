@@ -27,11 +27,6 @@ Description: """This profile sets minimum expectations for the Immunization reso
 
 [r4-end]
 
-/* * extension contains ImmunizationAdministeredProduct named administeredProduct 0..1
-* extension[administeredProduct].extension[concept]
-* extension[administeredProduct].extension[reference].valueReference only Reference ( MedicationEuCore ) */
-
-
 [r5-init]
 * basedOn
 [r5-end]
