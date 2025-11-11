@@ -76,7 +76,7 @@
             <td>relatedto</td>
             <td>Procedure</td><td>recorder</td>
             <td>Who recorded the procedure.</td>
-            <td>Procedure has <code>recorder</code> and <code>asserter</code>, not a generic "author".</td>
+            <td class="highlight-yellow">Procedure has <code>recorder</code> and <code>asserter</code>, not a generic "author".<strong>1.. in the model 0.. in the profile</strong></td>
           </tr>
           <tr>
             <td>header.authorship.author[x]</td>
@@ -84,16 +84,26 @@
             <td>equivalent</td>
             <td>Procedure</td><td>recorder</td>
             <td>Who recorded the procedure.</td>
-            <td>Reference to Practitioner / PractitionerRole / Patient / RelatedPerson per profile.</td>
+            <td class="highlight-yellow"><strong>1.. in the model 0.. in the profile</strong></td>
           </tr>
           <tr>
             <td>header.authorship.datetime</td>
             <td>Date/time the resource was issued.</td>
             <td>equivalent</td>
-            <td>Procedure</td><td>recorded or extension:recorded</td>
+            <td>Procedure</td><td>extension:recorded <span style="color:#2e7d32;font-weight:600;">〔R4〕</span></td>
             <td>Date when the procedure was recorded</td>
-            <td>FHIR R5 Procedure supports <code>recorded</code>; pre-adopted this element in R4.</td>
+            <td class="highlight-yellow">FHIR R5 Procedure supports <code>recorded</code>; pre-adopted this element in R4.<strong>1.. in the model 0.. in the profile</strong>.</td>
           </tr>
+          
+       <tr>
+          <td>header.authorship.datetime</td>
+          <td>Date/time the resource was issued.</td>
+          <td>equivalent</td>
+          <td>Procedure</td>
+          <td>recorded <span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
+          <td>Date when the procedure was recorded</td>
+          <td class="highlight-yellow">FHIR R5 Procedure supports <code>recorded</code>; pre-adopted this element in R4.<strong>1.. in the model 0.. in the profile</strong>TO BE CHECKED</td>
+        </tr>   
           <tr class="highlight-yellow">
             <td>header.lastUpdate</td>
             <td>Last technical correction/update.</td>
