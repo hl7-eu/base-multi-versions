@@ -61,29 +61,31 @@
             <td>Identifiers for this statement.</td>
             <td>Copy over all identifiers if multiple.</td>
           </tr>
-          <tr>
+          <tr class="highlight-yellow">
             <td>header.authorship</td>
             <td>Resource authoring details.</td>
-            <td>relatedto</td>
-            <td>MedicationStatement</td><td>informationSource / dateAsserted</td>
-            <td>Who provided the information and when.</td>
-            <td>See child mappings for author and datetime.</td>
+            <td>no map</td>
+            <td>MedicationStatement</td><td></td>
+            <td></td>
+            <td>Waiting for Xt-EHR feedback</td>
           </tr>
-          <tr>
+          <tr class="highlight-yellow">
             <td>header.authorship.author[x]</td>
             <td>Author(s) of the statement.</td>
-            <td>equivalent</td>
-            <td>MedicationStatement</td><td>informationSource</td>
-            <td>Individual/organization/device providing the information.</td>
-            <td>Reference to Practitioner/PractitionerRole/Patient/RelatedPerson/Organization/Device as allowed by the profile.</td>
+            <td>no map</td>
+            <td>MedicationStatement</td>
+            <td></td>
+            <td></td>
+            <td>Waiting for Xt-EHR feedback</td>
           </tr>
-          <tr>
+          <tr class="highlight-yellow">
             <td>header.authorship.datetime</td>
             <td>Date/time of authoring/issuing.</td>
-            <td>equivalent</td>
-            <td>MedicationStatement</td><td>dateAsserted</td>
-            <td>When the statement was asserted.</td>
+            <td>no map</td>
+            <td>MedicationStatement</td>
             <td></td>
+            <td></td>
+            <td>Waiting for Xt-EHR feedback</td>
           </tr>
           <tr class="highlight-yellow">
             <td>header.lastUpdate</td>
@@ -99,15 +101,25 @@
             <td>relatedto</td>
             <td>MedicationStatement</td><td>status</td>
             <td>Position in the medication use lifecycle.</td>
-            <td>Use if aligned with FHIR status; otherwise consider extension to avoid collision with medicationTreatmentStatus.</td>
+            <td>What is the difference with medicationTreatmentStatus</td>
           </tr>
-          <tr>
+          <tr class="highlight-yellow">
             <td>header.statusReason[x]</td>
             <td>Reason for the current status.</td>
-            <td>equivalent</td>
-            <td>MedicationStatement</td><td>statusReason</td>
-            <td>Captures why the status is as stated.</td>
-            <td>Supports coded and textual reasons.</td>
+            <td>source-wider-than-target</td>
+            <td>MedicationStatement</td>
+            <td>extension:statusReason <span>[R5]</span>
+            </td>
+            <td>Reason for current status</td>
+            <td>Not in R4, preadopt R5 element. The model allows for CodeableConcept and string. The target only CodeableConcept.</td>
+          </tr>
+          <tr class="highlight-yellow">
+            <td>header.statusReason[x]</td>
+            <td>Reason for the current status.</td>
+            <td>source-wider-than-target</td>
+            <td>MedicationStatement</td><td>statusReason <span>[R5]</span></td>
+            <td>Reason for current status</td>
+            <td>The model allows for CodeableConcept and string. The target only CodeableConcept.</td>
           </tr>
           <tr>
             <td>header.language</td>
@@ -119,27 +131,46 @@
           </tr>
 
           <!-- MEDICATION STATEMENT ELEMENTS -->
-          <tr>
+          <tr class="highlight-yellow">
             <td>medicationTreatmentStatus</td>
             <td>The current status of the taking of medicine.</td>
             <td>equivalent</td>
             <td>MedicationStatement</td><td>status</td>
             <td>Active/completed/intended/not-taken, etc.</td>
-            <td>Use <code>statusReason</code> for further detail when applicable.</td>
+            <td>clarify the difference with header.status</td>
           </tr>
-          <tr>
+          <tr class="highlight-yellow">
+            <td>medication</td>
+            <td>Describes the medicinal product.</td>
+            <td>source-narrower-than-target</td>
+            <td>MedicationStatement</td><td>medication[x] <span>[R4]</span></td>
+            <td>Medication expressed as a reference.</td>
+            <td>In the model only  the Reference to <code>Medication</code>.</td>
+          </tr>
+          <tr class="highlight-yellow">
             <td>medication</td>
             <td>Describes the medicinal product.</td>
             <td>equivalent</td>
-            <td>MedicationStatement</td><td>medication[x]</td>
+            <td>MedicationStatement</td>
+            <td>medication <span>[R5]</span></td>
             <td>Medication expressed as a reference.</td>
-            <td>Reference to <code>Medication</code> (EHDSMedication).</td>
+            <td>In the model only  the Reference to <code>Medication</code>.
+            </td>
           </tr>
           <tr>
             <td>medicationReason</td>
             <td>Coded reason for use (diagnosis/procedure).</td>
             <td>equivalent</td>
-            <td>MedicationStatement</td><td>reasonCode</td>
+            <td>MedicationStatement</td><td>reasonCode <span>[R4]</span></td>
+            <td>Reason for why the medication is/was taken.</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>medicationReason</td>
+            <td>Coded reason for use (diagnosis/procedure).</td>
+            <td>source-narrower-than-target</td>
+            <td>MedicationStatement</td>
+            <td>reason <span>[R5]</span></td>
             <td>Reason for why the medication is/was taken.</td>
             <td></td>
           </tr>
@@ -147,14 +178,24 @@
             <td>medicationReasonText</td>
             <td>Free-text reason for use.</td>
             <td>relatedto</td>
-            <td>MedicationStatement</td><td>reasonCode.text</td>
+            <td>MedicationStatement</td><td>reasonCode.text <span>[R4]</span></td>
             <td>Textual reason for medication use.</td>
             <td>Alternatively convey as <code>note</code> if preferred.</td>
+          </tr>
+          <tr>
+            <td>medicationReasonText</td>
+            <td>Free-text reason for use.</td>
+            <td>relatedto</td>
+            <td>MedicationStatement</td>
+            <td>reason.concept.text<span>[R5]</span>
+            </td>
+            <td>Textual reason for medication use.</td>
+            <td></td>
           </tr>
           <tr class="highlight-yellow">
             <td>intendedUseType</td>
             <td>Type of intended use (prophylactic, therapeutic, etc.).</td>
-            <td>relatedto</td>
+            <td>source-narrower-than-target</td>
             <td>MedicationStatement</td><td>category</td>
             <td>Classification of statement.</td>
             <td>FHIR category often reflects care setting; consider an extension or note if semantics differ.</td>
