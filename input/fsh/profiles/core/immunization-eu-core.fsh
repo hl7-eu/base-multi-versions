@@ -12,42 +12,26 @@ Description: """This profile sets minimum expectations for the Immunization reso
 
 // * insert ImposeProfile($Immunization-uv-ips, 0)
 
+* status ^short = "Immunization status."
+* statusReason ^short = "Reason for not performing."
+
 [r4-init]
 * extension contains $immunization-basedOn-r5 named basedOn 0..1
 * extension[basedOn].valueReference only Reference ( ImmunizationRecommendation )
-
-
-// check preadoption of R5 element
-// Check if the R5 now works...
-// extension only for the R5 version
 
 * extension contains $immunization-administeredProduct-r5 named administeredProduct 0..1
 * extension[administeredProduct].extension[concept]
 * extension[administeredProduct].extension[reference].valueReference only Reference ( MedicationEuCore ) 
 
+* reasonCode ^short = "Reasons for the administration."
+
 [r4-end]
 
 [r5-init]
 * basedOn
+* reason.concept ^short = "Reasons for the administration."
 [r5-end]
 
-/* FIX THE ISSUE WITH CODEABLE REFERENCE
-* extension contains $immunization-administeredProduct-r5 named administeredProduct 0..1
-* extension[administeredProduct].extension[concept]
-* extension[administeredProduct].extension[reference]  */
-// .valueReference only Reference ( MedicationEuCore )
-// * extension[administeredProduct].valueReference only Reference ( MedicationEuCore )
-
-/* * vaccineCode.coding ^slicing.discriminator[0].type = #pattern
-* vaccineCode.coding ^slicing.discriminator[0].path = "$this"
-* vaccineCode.coding ^slicing.ordered = false
-* vaccineCode.coding ^slicing.rules = #open
-* vaccineCode.coding ^short = "Type of vaccine"
-* vaccineCode.coding ^definition = "Vaccine code: it might be a code describing the kind of vaccine (e.g. ATC, ICD 11); it might be one of the IDMP identifiers; it might be a jurisdictional product code"
-* vaccineCode.coding contains   atcVaccines 0..1 and sctVaccines 0..1 // and icd11Vaccines 0..1
-* vaccineCode.coding[atcVaccines] from AtcCovid19Vaccines
-* vaccineCode.coding[sctVaccines] from SctCovid19Vaccines */
-//* vaccineCode.coding[icd11Vaccines] from Icd11Covid19Vaccines  icd11 has not been selected by SGS
 
 * vaccineCode from http://hl7.org/fhir/uv/ips/ValueSet/vaccines-uv-ips (preferred)
 // * vaccineCode.text ^short = "Name of the vaccine" // brandName
@@ -83,21 +67,13 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * performer[administeringCentreOrHp].actor only Reference( OrganizationEuCore or PractitionerRoleEuCore or PractitionerEuCore )
 
 
-// * protocolApplied.targetDisease 
-// * protocolApplied.targetDisease 
-/*
-* protocolApplied.targetDisease.coding ^slicing.discriminator[0].type = #pattern
-* protocolApplied.targetDisease.coding ^slicing.discriminator[0].path = "$this"
-* protocolApplied.targetDisease.coding ^slicing.ordered = false
-* protocolApplied.targetDisease.coding ^slicing.rules = #open
-* protocolApplied.targetDisease.coding contains sctCovid19Diseases 1..1
-* protocolApplied.targetDisease.coding[sctCovid19Diseases] 
-* protocolApplied.targetDisease.coding[sctCovid19Diseases] from Covid19Diseases
- */
 * protocolApplied.targetDisease from $eHDSIIllnessandDisorder (preferred) // Check Value Set
 [r4-init]
-* protocolApplied.doseNumberPositiveInt ^short = "Dose Number"
-* protocolApplied.seriesDosesPositiveInt ^short = "Number of doses"
+* protocolApplied
+  * doseNumberPositiveInt ^short = "Deprecated"
+  * doseNumberString ^short = "Dose Number"
+  * seriesDosesPositiveInt ^short = "Deprecated"
+  * seriesDosesPositiveString ^short = "Number of doses"
 [r4-end]
 [r5-init]
 * protocolApplied.doseNumber ^short = "Dose Number"
