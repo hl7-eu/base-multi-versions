@@ -7,8 +7,6 @@ Description: """This profile sets minimum expectations for the Condition resourc
 // * insert ImposeProfile ( $Condition-uv-ips, 0 )  // Check if this is appropriate (see MS support)
 
 // follow the same apporach of lab for collection or add laterality to the bodySite ?
-* extension contains $bodySite-reference named bodySite 0..1
-* extension[bodySite].valueReference only Reference(BodyStructureEuCore)
 
 * extension contains $condition-assertedDate named assertedDate 0..1
 * extension[assertedDate].valueDateTime ^short = "Date and time of the diagnosis assertion"
@@ -39,6 +37,8 @@ Description: """This profile sets minimum expectations for the Condition resourc
 
 
 * bodySite from SNOMEDCTBodyStructures (preferred)
+  * extension contains $bodySite-reference named bodySite 0..1
+  * extension[bodySite].valueReference only Reference(BodyStructureEuCore)  
 
 * identifier ^definition = "Globally unique identifier of this problem which remain constant as the resource is updated and propagates from server to server."
 * text ^definition = "Human readable specification of the problem. This is a general notes/comments entry for description of the problem, its diagnosis and prognosis."
