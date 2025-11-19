@@ -101,7 +101,7 @@
             <td>relatedto</td>
             <td>MedicationStatement</td><td>status</td>
             <td>Position in the medication use lifecycle.</td>
-            <td>What is the difference with medicationTreatmentStatus</td>
+            <td>What is the difference with medicationTreatmentStatus ?</td>
           </tr>
           <tr class="highlight-yellow">
             <td>header.statusReason[x]</td>
@@ -168,7 +168,7 @@
           <tr>
             <td>medicationReason</td>
             <td>Coded reason for use (diagnosis/procedure).</td>
-            <td>source-narrower-than-target</td>
+            <td>equivalent</td>
             <td>MedicationStatement</td>
             <td>reason.concept<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             <td>Reason for why the medication is/was taken.</td>
@@ -198,7 +198,7 @@
             <td>source-narrower-than-target</td>
             <td>MedicationStatement</td><td>category</td>
             <td>Classification of statement.</td>
-            <td>FHIR category often reflects care setting; consider an extension or note if semantics differ.</td>
+            <td></td>
           </tr>
           <tr>
             <td>dosageInstructions</td>

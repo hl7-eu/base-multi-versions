@@ -33,7 +33,7 @@ Description: """This profile sets minimum expectations for the Immunization reso
 [r5-end]
 
 
-* vaccineCode from http://hl7.org/fhir/uv/ips/ValueSet/vaccines-uv-ips (preferred)
+* vaccineCode from $vaccines-uv-ips (preferred)
 // * vaccineCode.text ^short = "Name of the vaccine" // brandName
 
 * vaccineCode ^binding.extension[+].extension[0].url = "purpose"
@@ -67,13 +67,25 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * performer[administeringCentreOrHp].actor only Reference( OrganizationEuCore or PractitionerRoleEuCore or PractitionerEuCore )
 
 
-* protocolApplied.targetDisease from $eHDSIIllnessandDisorder (preferred) // Check Value Set
+* protocolApplied.targetDisease from $target-diseases-uv-ips (preferred) // Check Value Set
+* protocolApplied.targetDisease
+  * ^binding.extension[+].extension[0].url = "purpose"
+  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[+].url = "valueSet"
+  * ^binding.extension[=].extension[=].valueCanonical = "http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder"
+  * ^binding.extension[=].extension[+].url = "documentation"
+  * ^binding.extension[=].extension[=].valueMarkdown = "Additional conformance binding to a vaccines value set from the WHO ATC code system for use in specific jurisdictional or other contexts where use of the ATC terminology is preferred."
+  * ^binding.extension[=].extension[+].url = "shortDoco"
+  * ^binding.extension[=].extension[=].valueString = "For when WHO ATC code system is preferred"
+  * ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+  * ^binding.description = "The type of vaccine for particular disease or diseases against which the patient has been immunised, or a code for absent/unknown immunization."
+
 [r4-init]
 * protocolApplied
   * doseNumberPositiveInt ^short = "Deprecated"
   * doseNumberString ^short = "Dose Number"
   * seriesDosesPositiveInt ^short = "Deprecated"
-  * seriesDosesPositiveString ^short = "Number of doses"
+  * seriesDosesString ^short = "Number of doses"
 [r4-end]
 [r5-init]
 * protocolApplied.doseNumber ^short = "Dose Number"

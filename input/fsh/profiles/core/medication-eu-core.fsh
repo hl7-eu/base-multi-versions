@@ -29,8 +29,8 @@ This profile is adapted from the MPD work."""
 * extension contains MedicationPackageType named packageType 0..1
 * extension[packageType] ^short = "Type of container. This information is more relevant in cases when the packaging has an impact on administration of the product (e.g. pre-filled syringe)"
 * batch
-    * lotNumber ^short = "Lot Number"
-    * expirationDate ^short = "Expiration Date"
+  * lotNumber ^short = "Lot Number"
+  * expirationDate ^short = "Expiration Date"
 
 [r5-init]
 * extension contains $ihe-ext-medication-device named device 0..* // device
@@ -63,7 +63,6 @@ This profile is adapted from the MPD work."""
 * extension contains $ihe-ext-medication-device named device 0..* // device
 * extension[device] ^short = "Device, typically an administration device, included in the product."
 * extension[device].extension[device].valueCodeableConcept from $eHDSIPackage (example)
-
 
 // Only R4 rules
 

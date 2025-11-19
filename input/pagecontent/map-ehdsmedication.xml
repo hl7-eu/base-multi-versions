@@ -245,7 +245,7 @@
             <td></td>
             <td>It refers to the Medication not to a single item in the medication.</td>       
           </tr>
-          <tr class="highlight-yellow">
+          <tr>
             <td>characteristic</td>
             <td>Other features of the product.</td>
             <td>equivalent</td>
@@ -253,7 +253,7 @@
             <td>Characteristics of the medication.</td>
             <td></td>
           </tr>
-          <tr class="highlight-yellow">
+          <tr>
             <td>characteristic.type</td>
             <td>Type of characteristic.</td>
             <td>equivalent</td>
@@ -261,7 +261,7 @@
             <td>Type of characteristic.</td>
             <td></td>
           </tr>
-          <tr class="highlight-yellow">
+          <tr>
             <td>characteristic.value[x]</td>
             <td>Value of the characteristic.</td>
             <td>equivalent</td>
