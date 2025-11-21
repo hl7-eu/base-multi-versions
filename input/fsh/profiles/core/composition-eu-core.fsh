@@ -66,10 +66,6 @@ Description: """This profile sets minimum expectations for the Composition resou
 * attester[resultValidator].time 1..1
 * attester[resultValidator].party only Reference(PractitionerRoleEuCore or PractitionerEuCore)
 
-* event 0..*
-* event.code 0..*
-* event.period 0..1
-* event.detail 0..*
 
 * category ^short = "Document Category"
 

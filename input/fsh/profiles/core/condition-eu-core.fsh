@@ -60,8 +60,12 @@ Description: """This profile sets minimum expectations for the Condition resourc
 
 * abatement[x] only dateTime or Age or Period or Range or string
 * abatementDateTime ^definition = "The date or estimated date that the condition resolved or went into remission. A ‘vague’ date, such as only the year or the month and the year, is permitted"
-
+[r4-init]
 * recorder only Reference (PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson)
+[r4-end]
+[r5-init]
+* praticipant.actor only Reference (PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson or Device or OrganizationEuCore or CareTeam)
+[r5-end]
 * recordedDate ^short = "Date when the condition record was created"
 * stage ^short = "Stage/grade"
 * stage.summary  ^short = "Most recent Stage Group"
