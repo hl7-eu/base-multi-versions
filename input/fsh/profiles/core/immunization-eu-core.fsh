@@ -82,10 +82,8 @@ Description: """This profile sets minimum expectations for the Immunization reso
 
 [r4-init]
 * protocolApplied
-  * doseNumberPositiveInt ^short = "Deprecated"
-  * doseNumberString ^short = "Dose Number"
-  * seriesDosesPositiveInt ^short = "Deprecated"
-  * seriesDosesString ^short = "Number of doses"
+  * doseNumber[x] ^short = "Dose Number"
+  * seriesDoses[x] ^short = "Number of doses"
 [r4-end]
 [r5-init]
 * protocolApplied.doseNumber ^short = "Dose Number"
