@@ -64,7 +64,7 @@ Description: """This profile sets minimum expectations for the Condition resourc
 * recorder only Reference (PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson)
 [r4-end]
 [r5-init]
-* praticipant.actor only Reference (PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson or Device or OrganizationEuCore or CareTeam)
+* participant.actor only Reference (PractitionerRoleEu or PractitionerEu or PatientEuCore or RelatedPerson or Device or OrganizationEuCore or CareTeam)
 [r5-end]
 * recordedDate ^short = "Date when the condition record was created"
 * stage ^short = "Stage/grade"
