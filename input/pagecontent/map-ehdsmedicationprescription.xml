@@ -53,7 +53,7 @@
           <tr>
             <td>header</td>
             <td>Common header for the prescription dataset.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>.</td>
             <td>General metadata.</td>
@@ -89,7 +89,7 @@
           <tr class="highlight-yellow">
             <td>header.authorship</td>
             <td>Details about the prescriber (author).</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>requester</td>
             <td>Who is requesting/prescribing the medication.</td>
@@ -134,7 +134,7 @@
           <tr class="highlight-yellow">
             <td>header.statusReason[x]</td>
             <td>Reason for the current prescription status.</td>
-            <td>source-wider-than-target</td>
+            <td>source-is-broader-than-target</td>
             <td>MedicationRequest</td>
             <td>statusReason</td>
             <td>Explains the status.</td>
@@ -161,7 +161,7 @@
           <tr class="highlight-yellow">
             <td>header.recordingDate</td>
             <td>Time of authoring the prescription/draft in the system.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>eventhistory.recorded</td>
             <td>Date recorded in the system.</td>
@@ -290,7 +290,7 @@
           <tr class="highlight-yellow">
             <td>prescriptionItem.indicationText</td>
             <td>Free-text reason for the prescription.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>reasonCode.text</td>
             <td>Textual reason.</td>
@@ -308,7 +308,7 @@
           <tr>
             <td>prescriptionItem.periodOfUse</td>
             <td>Overall period over which the medication is to be taken.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>extension:effectiveDosePeriod<span style="color:#2e7d32;font-weight:600;">〔R4〕</span></td>
             <td>Period over which the medication should be taken.</td>
@@ -317,7 +317,7 @@
           <tr>
             <td>prescriptionItem.periodOfUse</td>
             <td>Overall period over which the medication is to be taken.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>effectiveDosePeriod<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             <td>Period over which the medication should be taken.</td>
@@ -344,7 +344,7 @@
           <tr class="highlight-yellow">
             <td>prescriptionItem.preparationInstructions</td>
             <td>Additional instructions about preparation or dispense.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>dispenseRequest.extension:dispenserInstruction<span style="color:#2e7d32;font-weight:600;">〔R4〕</span></td>
             <td>Additional information for the dispenser</td>
@@ -353,7 +353,7 @@
           <tr class="highlight-yellow">
             <td>prescriptionItem.preparationInstructions</td>
             <td>Additional instructions about preparation or dispense.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>dispenseRequest.dispenserInstruction<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             <td>Additional information for the dispenser</td>
@@ -425,7 +425,7 @@
           <tr class="highlight-yellow">
             <td>prescriptionItem.offLabel.isOffLabelUse</td>
             <td>Indicates off-label use.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>extension:offLabelUse</td>
             <td>Flag for off-label prescription.</td>
@@ -434,7 +434,7 @@
           <tr class="highlight-yellow">
             <td>prescriptionItem.offLabel.reason[x]</td>
             <td>Reason for off-label use.</td>
-            <td>relatedto</td>
+            <td>related-to</td>
             <td>MedicationRequest</td>
             <td>extension:offLabelUse.reason</td>
             <td>Explanation of off-label decision.</td>
