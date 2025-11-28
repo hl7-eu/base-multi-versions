@@ -13,9 +13,8 @@
     <p>
       This page describes the element-by-element mapping from the
       <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSMedication.html" target="_blank"><strong>EHDSMedication</strong></a>
-      logical model to the FHIR <a href="StructureDefinition-medication-eu-core.html"><code>MedicationEuCore</code></a> profile used in this Implementation Guide.
-      The model supports prescribed/dispensed medication and can represent both generic (virtual) products and branded (real) products.
-    </p>
+      logical model to the FHIR <a href="StructureDefinition-medication-eu-core.html"><code>MedicationEuCore</code></a> and <a href="StructureDefinition-organization-eu-core.html"><code>OrganizationEuCore</code></a> profiles used in this Implementation Guide.</p>
+    <p>The model supports prescribed/dispensed medication and can represent both generic (virtual) products and branded (real) products.</p>
 
     <div class="table-wrap">
       <table summary="EHDSMedication → Medication">
