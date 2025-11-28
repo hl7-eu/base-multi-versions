@@ -182,7 +182,7 @@
           <tr>
             <td>item.ingredient.strengthInfo.basisOfStrengthSubstance</td>
             <td>Substance the strength refers to (if different).</td>
-            <td>no map</td>
+            <td>equivalent</td>
             <td>Medication</td>
             <td>ingredient.strength[x].extension:basisOfStrengthSubstance</td>
             <td>Substance the strength refers to (if different).</td>
@@ -192,7 +192,7 @@
           <tr>
             <td>item.unitOfPresentation</td>
             <td>Unit of presentation for the manufactured item.</td>
-            <td>no map</td>
+            <td>equivalent</td>
             <td>Medication</td>
             <td>extension:unitOfPresentation</td>
             <td>Unit of presentation</td>
