@@ -18,13 +18,10 @@ Description: """This profile sets minimum expectations for the Immunization reso
 [r4-init]
 /* * extension contains $immunization-basedOn-r5 named basedOn 0..1
 * extension[basedOn].valueReference only Reference ( ImmunizationRecommendation ) */
-
 * extension contains $immunization-administeredProduct-r5 named administeredProduct 0..1
 * extension[administeredProduct].extension[concept]
 * extension[administeredProduct].extension[reference].valueReference only Reference ( MedicationEuCore ) 
-
 * reasonCode ^short = "Reasons for the administration."
-
 [r4-end]
 
 [r5-init]
@@ -66,6 +63,12 @@ Description: """This profile sets minimum expectations for the Immunization reso
 
 * patient only Reference(PatientEuCore)
 * occurrence[x] ^short = "Date of vaccination"
+
+// TO BE ACTIVATED WHEN EXTENSIONS WILL BE PUBLISHED
+// * occurrenceDateTime
+//  * extension contains PeriodsOfLife named periodOfLife 0..1
+//  * extension[periodOfLife].valueCodeableConcept from PeriodsOfLifeEuVs (preferred)
+
 * location only Reference(LocationEuCore)
 * manufacturer ^short = "Vaccine manufacturer/MAH"
 * lotNumber ^short = "Batch/lot number"

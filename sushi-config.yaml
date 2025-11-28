@@ -38,11 +38,11 @@ dependencies:
   hl7.fhir.uv.ips: current
   hl7.fhir.extensions.r5: 4.0.1
   hl7.fhir.uv.xver-r5.r4: 0.0.1-snapshot-2
-  hl7.fhir.eu.extensions.r4: current
+  hl7.fhir.eu.extensions.r4: 0.1.1
   ihe.pharm.mpd.r4: 1.0.0-comment-2
   [r4-end]
   [r5-init]
-  hl7.fhir.eu.extensions.r5: current
+  hl7.fhir.eu.extensions.r5: 0.1.1
   ihe.pharm.mpd: 1.0.0-comment-2
   hl7.fhir.extensions.r5: 5.0.0
   [r5-end]
