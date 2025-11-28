@@ -16,8 +16,8 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * statusReason ^short = "Reason for not performing."
 
 [r4-init]
-* extension contains $immunization-basedOn-r5 named basedOn 0..1
-* extension[basedOn].valueReference only Reference ( ImmunizationRecommendation )
+/* * extension contains $immunization-basedOn-r5 named basedOn 0..1
+* extension[basedOn].valueReference only Reference ( ImmunizationRecommendation ) */
 
 * extension contains $immunization-administeredProduct-r5 named administeredProduct 0..1
 * extension[administeredProduct].extension[concept]
@@ -28,7 +28,7 @@ Description: """This profile sets minimum expectations for the Immunization reso
 [r4-end]
 
 [r5-init]
-* basedOn
+// * basedOn
 * reason.concept ^short = "Reasons for the administration."
 [r5-end]
 
