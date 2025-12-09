@@ -4,6 +4,7 @@
 
 
 Alias: $allergyintolerance-abatement = http://hl7.org/fhir/StructureDefinition/allergyintolerance-abatement
+Alias: $annotation-type = http://hl7.org/fhir/StructureDefinition/annotationType
 Alias: $artifact-relatedArtifact = http://hl7.org/fhir/StructureDefinition/artifact-relatedArtifact
 Alias: $condition-assertedDate = http://hl7.org/fhir/StructureDefinition/condition-assertedDate
 Alias: $bodySite-reference = http://hl7.org/fhir/StructureDefinition/bodySite

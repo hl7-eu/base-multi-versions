@@ -17,16 +17,10 @@ Description: """This profile sets minimum expectations for the Composition resou
 [r4-end]
 
 * extension contains
-    $composition-basedOn-order-or-requisition named basedOnOrder 0..* and
     $information-recipient named informationRecipient 0..* and
-    $composition-diagnosticReportReference named diagnosticReport 0..1 and
-    $event-basedOn named basedOn 0..*
+    $composition-diagnosticReportReference named diagnosticReport 0..1
 
-// keep or remove them ?
-
-* extension[basedOnOrder].value[x] only Identifier or Reference(ServiceRequest)
-* extension[basedOnOrder].valueReference only Reference(ServiceRequest)
-* extension[basedOn]
+// to be changed when the information-recipient extension is migrated to UV extension package
 * extension[informationRecipient].value[x] only Reference(PractitionerEuCore or PractitionerRoleEuCore or OrganizationEuCore or Device or PatientEuCore or RelatedPerson)
 * extension[diagnosticReport].value[x] only Reference(DiagnosticReport)
 
@@ -45,6 +39,10 @@ Description: """This profile sets minimum expectations for the Composition resou
 * type 1..1
 * type ^short = "Type of document/report (e.g. imaging report LOINC)"
 * category ^short = "Document Category"
+  * insert SliceElement( #value, $this )
+* category contains ehds-category 0..*
+* category[ehds-category] ^short = "EHDS Priority Category"
+* category[ehds-category] from EhdsCategoriesEuVs
 * subject 1..1
 * subject only Reference(PatientEuCore or Group or LocationEuCore or Device)
 * encounter 0..1
