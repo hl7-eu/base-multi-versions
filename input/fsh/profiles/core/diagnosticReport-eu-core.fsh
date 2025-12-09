@@ -77,9 +77,13 @@ Description: """This profile sets minimum expectations for the DiagnosticReport 
   * ^short = "Specimens this report is based on."
 * result only Reference (Observation)
   * ^short = "results"
-* imagingStudy 0..0
-* imagingStudy ^short = "Study subject to this report"
-* imagingStudy ^definition = "Study subject to this report. Note: Any associated study (e.g. comparison studies) used during reporting should be tracked in the associatedStudy extension."
+[r4-init]
+* imagingStudy
+[r4-end]
+[r5-init]
+* study
+[r5-end]
+  * ^short = "Study subject to this report"
 * presentedForm ^short = "Entire report as issued (pdf recommended)"
 * media
   * ^short = "Additional data (like images, diagrams or documents) associated with this report"
