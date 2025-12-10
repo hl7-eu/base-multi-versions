@@ -1,14 +1,21 @@
 ### EHDS Logical Data Models
 
+
 Logical data models (or information models) for the **European Health Data Space (EHDS)** are **currently being developed** by the [**Xt-EHR Joint Action**](https://www.xt-ehr.eu/). These models will form the **basis of the Joint Action’s proposal** for the future EHDS Implementing Act.
 
 They represent **evolving, refined interpretations** of the data sets described in the [**eHealth Network (eHN) Guidelines**](https://health.ec.europa.eu/ehealth-digital-health-and-care/digital-health-and-care/eu-cooperation/ehealth-network_en#ehealth-network-guidelines), and are expected to be further updated during the Joint Action process.
 
 This Implementation Guide (IG) aims to **align with the emerging EHDS logical models** and to **provide HL7 FHIR profiles** that **realise the requirements identified in these models*
 
-> **Note:**
-> The Xt-EHR logical models are **under active revision and continuous refinement**.
-> Updates and improvements made by the Xt-EHR project will be **progressively incorporated** into this Implementation Guide to maintain alignment with the evolving EHDS specifications.
+    <div class="callout-wrapper">
+        <div class="callout-box">
+            <strong>Ongoing alignment:</strong>
+            The Xt-EHR logical models are under active revision and continuous refinement.
+            Updates from Xt-EHR will be progressively incorporated into this Implementation
+            Guide to maintain alignment with the evolving EHDS specifications.
+        </div>
+    </div>
+
 
 The EHDS logical models currently supported in this version of the guide are listed below.
 For the most recent and in-progress versions, please refer to the [**Xt-EHR EHDS Logical Information Models**](https://build.fhir.org/ig/Xt-EHR/xt-ehr-common) Implementation Guide.
@@ -66,9 +73,3 @@ For the most recent and in-progress versions, please refer to the [**Xt-EHR EHDS
 | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [EHDSMedication](https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSMedication.html)                   | Logical model for prescribed/dispensed medication. Shared by statements, requests, dispensations, and treatment lines. Supports both generic (virtual) and branded (real) products. |
 | [EHDSMedicationStatement](https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSMedicationStatement.html) | Statement about a single medication as part of a medication summary                                                                                                                 |
-
----
-
-**Future updates:**
-Additional EHDS logical models will be added as they become available through the [Xt-EHR project](https://www.xt-ehr.eu/).
-
