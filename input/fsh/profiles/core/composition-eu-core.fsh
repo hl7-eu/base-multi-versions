@@ -2,11 +2,12 @@
 Profile:  CompositionEuCore
 Parent:   Composition
 Id:       composition-eu-core
-Title:    "Composition (EU core) [WIP]"
+Title:    "Composition (EU core)"
 Description: """This profile sets minimum expectations for the Composition resource for commonly used EHDS documents."""
 
 //-------------------------------------------------------------------------------------------
 
+* insert SetFmmandStatusRule (1, draft)
 * ^experimental = false
 * ^purpose = "This profile constrains the Composition resource for the purpose of this guide."
 

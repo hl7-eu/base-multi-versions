@@ -11,7 +11,7 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * ^purpose = "This profile constrains the Immunization resource for the purpose of this guide."
 
 // * insert ImposeProfile($Immunization-uv-ips, 0)
-
+* insert SetFmmandStatusRule (1, draft)
 * status ^short = "Immunization status."
 * statusReason ^short = "Reason for not performing."
 

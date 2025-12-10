@@ -8,6 +8,8 @@ Description: """This profile sets minimum expectations for the Condition resourc
 
 // follow the same apporach of lab for collection or add laterality to the bodySite ?
 
+* insert SetFmmandStatusRule (1, draft)
+
 * extension contains $condition-assertedDate named assertedDate 0..1
 * extension[assertedDate].valueDateTime ^short = "Date and time of the diagnosis assertion"
 

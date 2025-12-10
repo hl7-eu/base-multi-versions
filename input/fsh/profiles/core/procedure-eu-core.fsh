@@ -7,6 +7,7 @@ Description: "This profile represents the constraints applied to the Procedure r
 
 // * insert ImposeProfile ( $Procedure-uv-ips, 0 )  // Check if this is appropriate (see  support)
 
+* insert SetFmmandStatusRule (1, draft)
 * extension contains $procedure-targetBodyStructure named bodySite 0..1
 * extension[bodySite].valueReference only Reference(BodyStructureEuCore)
 

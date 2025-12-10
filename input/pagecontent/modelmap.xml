@@ -3,12 +3,21 @@
 
     <head>
         <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-        <title>EHDS Logical Models to FHIR Profiles Mapping</title>    
-    <link rel="stylesheet" type="text/css" href="map-pages.css" />
+        <title>EHDS Logical Models to FHIR Profiles Mapping</title>   
 </head>
     
     <!-- <td>✅ Ready for review</td> -->
     
+<div class="model-map-block">
+    <div class="callout-wrapper">
+        <div class="callout-box">
+            <strong>Ongoing alignment:</strong>
+              The Xt-EHR logical models are under active revision and continuous refinement.
+              Updates from Xt-EHR will be progressively incorporated into this Implementation
+              Guide to maintain alignment with the evolving EHDS specifications.
+        </div>
+    </div>
+</div>
     
     <h3>EHDS Logical Models → FHIR Profiles</h3>
     <a>  </a>
@@ -19,14 +28,7 @@
       that realise those models.
     </p>
 
-    <div class="callout-wrapper">
-        <div class="callout-box">
-            <strong>Ongoing alignment:</strong>
-            The Xt-EHR logical models are under active revision and continuous refinement.
-            Updates from Xt-EHR will be progressively incorporated into this Implementation
-            Guide to maintain alignment with the evolving EHDS specifications.
-        </div>
-    </div>
+
 
     <p>
       The sections below group the EHDS logical models into categories.
@@ -115,7 +117,7 @@
                     <th>EHDS Logical Model</th>
                     <th>FHIR Profile / Type in this IG</th>
                     <th>Mapping Details</th>
-                    <th>Status</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -194,7 +196,7 @@
                     <th>EHDS Logical Model</th>
                     <th>FHIR Profile / Type in this IG</th>
                     <th>Mapping Details</th>
-                    <th>Status</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -274,7 +276,7 @@
                     <th>EHDS Logical Model</th>
                     <th>FHIR Profile / Type in this IG</th>
                     <th>Mapping Details</th>
-                    <th>Status</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -318,7 +320,7 @@
                     <th>EHDS Logical Model</th>
                     <th>FHIR Profile / Type in this IG</th>
                     <th>Mapping Details</th>
-                    <th>Status</th>
+
                 </tr>
             </thead>
             <tbody>
