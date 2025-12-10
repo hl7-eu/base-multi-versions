@@ -36,9 +36,8 @@ Description: """This profile sets minimum expectations for the DiagnosticReport 
 * extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept ^short = "Type of note"
 
 
-* category 1..*
-  * insert SliceElement( #value, $this )
-* category contains diagnostic-service 1..1 
+* category insert SliceElement( #value, $this )
+* category contains diagnostic-service 0..1 
 // to be checked with the EU Core working group
 * category[diagnostic-service] from $diagnostic-service-sections (required)
 
