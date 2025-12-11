@@ -38,7 +38,7 @@ This profile is adapted from the MPD work."""
 * category[intendedUse] from medicationIntendedUseEuVs
 */
 [r5-end]
-* dosage ^short = "	Details of how medication is/was taken or should be taken."
+* dosage ^short = "Details of how medication is/was taken or should be taken."
   * route //copy the additional bindign from the ips
 * effectivePeriod ^short = "Period when the medication is/was or should be used."
 [r4-init]

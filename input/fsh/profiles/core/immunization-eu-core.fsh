@@ -31,8 +31,7 @@ Description: """This profile sets minimum expectations for the Immunization reso
 
 
 * vaccineCode from $vaccines-uv-ips (preferred)
-// * vaccineCode.text ^short = "Name of the vaccine" // brandName
-
+[r4-init]
   * ^binding.extension[+].extension[0].url = "purpose"
   * ^binding.extension[=].extension[=].valueCode = #candidate
   * ^binding.extension[=].extension[+].url = "valueSet"
@@ -54,9 +53,17 @@ Description: """This profile sets minimum expectations for the Immunization reso
   * ^binding.extension[=].extension[=].valueString = "For EU cross-border use"
   * ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
   * ^binding.description = "The type of vaccine for particular disease or diseases against which the patient has been immunised, or a code for absent/unknown immunization."
+[r4-end]
 
+[r5-init]
+  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.valueSet = "http://hl7.org/fhir/uv/ips/ValueSet/vaccines-whoatc-uv-ips"
+  * ^binding.additional.documentation = "Additional conformance binding to a vaccines value set from the WHO ATC code system for use in specific jurisdictional or other contexts where use of the ATC terminology is preferred."
 
-
+  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.valueSet = "http://terminology.ehdsi.eu/ValueSet/eHDSIVaccine"
+  * ^binding.additional.documentation = "Additional conformance binding to the cross-border vaccines value set."
+[r5-end]
 
 
 
@@ -74,8 +81,6 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * lotNumber ^short = "Batch/lot number"
 
 * performer 
-/*   * ^slicing.discriminator[+].type = #profile
-  * ^slicing.discriminator[=].path = "$this.actor.resolve()" */
   * ^slicing.discriminator[+].type = #value
   * ^slicing.discriminator[=].path = "$this.function"
   * ^slicing.ordered = false
@@ -89,25 +94,28 @@ Description: """This profile sets minimum expectations for the Immunization reso
 
 * protocolApplied.targetDisease from $target-diseases-uv-ips (preferred) // Check Value Set
 * protocolApplied.targetDisease
+[r4-init]
   * ^binding.extension[+].extension[0].url = "purpose"
   * ^binding.extension[=].extension[=].valueCode = #candidate
   * ^binding.extension[=].extension[+].url = "valueSet"
   * ^binding.extension[=].extension[=].valueCanonical = "http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder"
   * ^binding.extension[=].extension[+].url = "documentation"
-  * ^binding.extension[=].extension[=].valueMarkdown = "Additional conformance binding to a vaccines value set from the WHO ATC code system for use in specific jurisdictional or other contexts where use of the ATC terminology is preferred."
+  * ^binding.extension[=].extension[=].valueMarkdown = "Additional conformance binding to a diseases value set for use in specific jurisdictional or for cross-border settings."
   * ^binding.extension[=].extension[+].url = "shortDoco"
   * ^binding.extension[=].extension[=].valueString = "For when WHO ATC code system is preferred"
   * ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
-  * ^binding.description = "The type of vaccine for particular disease or diseases against which the patient has been immunised, or a code for absent/unknown immunization."
-
-[r4-init]
+  * ^binding.description = "The diseases against which the patient has been immunised"
 * protocolApplied
   * doseNumber[x] ^short = "Dose Number"
   * seriesDoses[x] ^short = "Number of doses"
 [r4-end]
 [r5-init]
+  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.valueSet = "http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder"
+  * ^binding.additional.documentation = "Additional conformance binding to a diseases value set for use in specific jurisdictional or for cross-border settings."
 * protocolApplied.doseNumber ^short = "Dose Number"
 * protocolApplied.seriesDoses ^short = "Number of doses"
+
 [r5-end]
 
 /* 

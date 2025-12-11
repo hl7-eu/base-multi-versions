@@ -17,30 +17,38 @@ Description: """This profile sets minimum expectations for the AllergyIntoleranc
 * type ^short = "Type of propensity"
 * code 1..1
 * code from $allergy-intolerance-uv-ips (preferred)
-/* * code from EHDSIAllergyCode (preferred) */
+[r4-init]
+  * ^binding.extension[+].extension[+].url = "purpose"
+  * ^binding.extension[=].extension[=].valueCode = #candidate
+//   * ^binding.extension[+].extension[+].url = "key"
+//   * ^binding.extension[=].extension[=].valueId = "96948958-8a49-472e-91ee-967b8545d27c"
+  * ^binding.extension[=].extension[+].url = "valueSet"
+  * ^binding.extension[=].extension[=].valueCanonical = $eHDSIAllergenNoDrug // Canonical(AllergensHdrVS)
+  * ^binding.extension[=].extension[+].url = "documentation"
+  * ^binding.extension[=].extension[=].valueMarkdown = "Type of the substance/product for MyHealth@EU"
+  * ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+  * ^binding.description = "Type of the substance/product expected to be used in MyHealth@EU"
 
-* code ^binding.extension[+].extension[+].url = "purpose"
-* code ^binding.extension[=].extension[=].valueCode = #candidate
-// * code ^binding.extension[+].extension[+].url = "key"
-// * code ^binding.extension[=].extension[=].valueId = "96948958-8a49-472e-91ee-967b8545d27c"
-* code ^binding.extension[=].extension[+].url = "valueSet"
-* code ^binding.extension[=].extension[=].valueCanonical = $eHDSIAllergenNoDrug // Canonical(AllergensHdrVS)
-* code ^binding.extension[=].extension[+].url = "documentation"
-* code ^binding.extension[=].extension[=].valueMarkdown = "Type of the substance/product for MyHealth@EU"
-* code ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
-* code ^binding.description = "Type of the substance/product expected to be used in MyHealth@EU"
+  * ^binding.extension[+].extension[+].url = "purpose"
+  * ^binding.extension[=].extension[=].valueCode = #candidate
+//   * ^binding.extension[+].extension[+].url = "key"
+//   * ^binding.extension[=].extension[=].valueId = "7dea14b1-5620-41b8-bb24-536541cdee0b"
+  * ^binding.extension[=].extension[+].url = "valueSet"
+  * ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/whoatc-uv-ips"
+  * ^binding.extension[=].extension[+].url = "documentation"
+  * ^binding.extension[=].extension[=].valueMarkdown = "Type of the substance/product, allergy or intolerance condition."
+  * ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+  * ^binding.description = "Type of the substance/product, allergy or intolerance condition or a code for absent/unknown allergy."
+[r4-end]
+[r5-init]
+  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.valueSet = $eHDSIAllergenNoDrug
+  * ^binding.additional.documentation = "Type of the substance/product for MyHealth@EU"
 
-
-* code ^binding.extension[+].extension[+].url = "purpose"
-* code ^binding.extension[=].extension[=].valueCode = #candidate
-// * code ^binding.extension[+].extension[+].url = "key"
-// * code ^binding.extension[=].extension[=].valueId = "7dea14b1-5620-41b8-bb24-536541cdee0b"
-* code ^binding.extension[=].extension[+].url = "valueSet"
-* code ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/whoatc-uv-ips"
-* code ^binding.extension[=].extension[+].url = "documentation"
-* code ^binding.extension[=].extension[=].valueMarkdown = "Type of the substance/product, allergy or intolerance condition."
-* code ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
-* code ^binding.description = "Type of the substance/product, allergy or intolerance condition or a code for absent/unknown allergy."
+  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.valueSet = "http://hl7.org/fhir/uv/ips/ValueSet/whoatc-uv-ips"
+  * ^binding.additional.documentation = "Type of the substance/product, allergy or intolerance condition."
+[r5-end]
 
 * criticality ^short = "Criticality"
 
@@ -49,22 +57,27 @@ Description: """This profile sets minimum expectations for the AllergyIntoleranc
 
 * onsetDateTime ^short = "Onset date"
 
-* reaction.substance // from AllergensHdrVS  (preferred) ADD VALUE SET BINDING
-
-/* * reaction.manifestation from EHDSIReactionAllergy (preferred) */
+* reaction.substance from $eHDSIAllergenNoDrug (example)
 
 * reaction.manifestation from $allergy-reaction-uv-ips (preferred)
 
-* reaction.manifestation ^binding.extension[+].extension[+].url = "purpose"
-* reaction.manifestation ^binding.extension[=].extension[=].valueCode = #candidate
-// * reaction.manifestation ^binding.extension[+].extension[+].url = "key"
-// * reaction.manifestation ^binding.extension[=].extension[=].valueId = "b32b88b4-89d9-4744-b356-dff033c16f82"
-* reaction.manifestation ^binding.extension[=].extension[+].url = "valueSet"
-* reaction.manifestation ^binding.extension[=].extension[=].valueCanonical = $eHDSIReactionAllergy
-* reaction.manifestation ^binding.extension[=].extension[+].url = "documentation"
-* reaction.manifestation ^binding.extension[=].extension[=].valueMarkdown = "Type of reaction (MyHealth@EU)"
-* reaction.manifestation ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
-* reaction.manifestation ^binding.description = "Type of allergy or intolerance reaction expected to be used in MyHealth@EU"
+[r4-init]
+  * ^binding.extension[+].extension[+].url = "purpose"
+  * ^binding.extension[=].extension[=].valueCode = #candidate
+//   * ^binding.extension[+].extension[+].url = "key"
+//   * ^binding.extension[=].extension[=].valueId = "b32b88b4-89d9-4744-b356-dff033c16f82"
+  * ^binding.extension[=].extension[+].url = "valueSet"
+  * ^binding.extension[=].extension[=].valueCanonical = $eHDSIReactionAllergy
+  * ^binding.extension[=].extension[+].url = "documentation"
+  * ^binding.extension[=].extension[=].valueMarkdown = "Type of reaction (MyHealth@EU)"
+  * ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
+  * ^binding.description = "Type of allergy or intolerance reaction expected to be used in MyHealth@EU"
+[r4-end]
+[r5-init]
+  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.valueSet = $eHDSIReactionAllergy
+  * ^binding.additional.documentation = "Type of reaction (MyHealth@EU)"
+[r5-end]
 
 * reaction.severity ^short = "Reaction severity"
 * reaction.onset ^short = "Reaction onset"

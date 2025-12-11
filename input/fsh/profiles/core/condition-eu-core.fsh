@@ -22,7 +22,8 @@ Description: """This profile sets minimum expectations for the Condition resourc
 
 
 * code 1..1 
-* code from $problems-uv-ips (preferred) // CHANGE value set 
+* code from $problems-uv-ips (preferred) 
+[r4-init]
   * ^definition = "The problem code specifies the problem. Depending on the setting, different code systems can be used. The ProblemCodelist provides an overview of the possible code systems."
   * ^binding.description = "Valueset to describe the actual problem experienced by the patient"
 
@@ -36,7 +37,12 @@ Description: """This profile sets minimum expectations for the Condition resourc
   * ^binding.extension[=].extension[=].valueString = "For cross border data exchange"
   * ^binding.extension[=].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
   * ^binding.description = "Valueset to describe the actual problem experienced by the patient"
-
+[r4-end]
+[r5-init]
+  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.valueSet = "http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder"
+  * ^binding.additional.documentation = "Additional conformance binding to a problem code when ICD-10 or Orphanet codes are used."
+[r5-end]
 
 * bodySite from SNOMEDCTBodyStructures (preferred)
   * extension contains $bodySite-reference named bodySite 0..1

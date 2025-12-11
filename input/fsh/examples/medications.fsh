@@ -73,16 +73,18 @@ Title: "MedicationStatement: Enalapril"
 Description: "A sample MedicationStatement for a patient taking Enalapril, used in the context of the European Hospital Discharge Report."
 
 
-* status = #active
+
 * subject = Reference(PatientExample)
 * subject.display = "John Doe"
 [r4-init]
 * medicationCodeableConcept = $atc#C09AA02 "Enalapril"
 * medicationCodeableConcept.text = "Enalapril 20mg tablets"
+* status = #active
 [r4-end]
 [r5-init]
 * medication.concept = $atc#C09AA02 "Enalapril"
 * medication.concept.text = "Enalapril 20mg tablets"
+* status = #recorded 
 [r5-end]
 
 

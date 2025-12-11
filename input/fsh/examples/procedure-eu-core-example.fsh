@@ -14,7 +14,6 @@ Description: "Example of a Procedure resource conforming to the Procedure (EU Co
 * occurrenceDateTime = "2023-04-15"
 [r5-end]
 * performer.actor = Reference(PractitionerRoleEuCoreExample)
-* performer.onBehalfOf = Reference(OrganizationExample)
 * bodySite = $sct#66754008 "Appendix structure"
 * note.text = "Laparoscopic procedure with no complications."
 
