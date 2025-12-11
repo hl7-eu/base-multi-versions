@@ -20,7 +20,6 @@ Description: "Example of a Laboratory Report Composition conforming to the Compo
 * date = "2022-03-30T11:24:26+01:00"
 * author[+] = Reference(PractitionerRoleEuCoreExample)
 * title = "Laboratorní zpráva"
-* confidentiality = #N
 * attester[+].mode = #legal
 * attester[=].time = "2022-03-25T11:00:00+01:00"
 * attester[=].party = Reference(PractitionerRoleEuCoreExample)
@@ -76,7 +75,13 @@ Description: "Laboratory Report ServiceRequest resource used by the DiagnosticRe
 * category = $sct#108252007 "Laboratory procedure"
 * priority = #asap
 * code = $loinc#14957-5 "Microalbumin [Mass/volume] in Urine"
+[r4-init]
 * code.text = "Microalbumin Massa/Volume in Urine"
+[r4-end]
+[r5-init]
+* code.concept.text = "Microalbumin Massa/Volume in Urine"
+[r5-end]
+
 * subject = Reference(PatientExample)
 
 Instance: ObservationLabResultExample

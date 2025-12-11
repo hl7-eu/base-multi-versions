@@ -11,9 +11,16 @@ Description: "400C. A prescription/request with one medication and changing dosa
 * intent = #order
 * authoredOn = "2024-12-06"
 * requester.display = "The Best Doctor"
+[r4-init]
 * medicationReference = Reference(01A-Cefuroxime1500GenericExplicit)
-* subject = Reference(PatientExample)
 * reasonCode = $sct#10625071000119104 "Bronchopneumonia caused by bacteria (disorder)"
+[r4-end]
+[r5-init]
+* medication.reference = Reference(01A-Cefuroxime1500GenericExplicit)
+* reason.concept = $sct#10625071000119104 "Bronchopneumonia caused by bacteria (disorder)"
+[r5-end]
+* subject = Reference(PatientExample)
+
 * dosageInstruction[0]
   * sequence = 1
   * doseAndRate.doseQuantity = 1500 $ucum#mg "milligram(s)"
@@ -41,12 +48,22 @@ Usage: #example
 Title: "Medication: 01A-Cefuroxime1500GenericExplicit"
 Description: "1A. Cefuroxime 1500mg (1.5g) powder for solution in a vial. Generic product, defined by attributes."
 
+[r4-init]
 * form = $edqm#50053000 "Powder for solution for injection or infusion"
-* extension[classification].valueCodeableConcept = $atc#J01DC02 "cefuroxime"
 * ingredient.itemCodeableConcept = $sct#372833007 "Cefuroxime"
-* ingredient.isActive = true
 * ingredient.strength.numerator = 1500 $ucum#mg "milligram"
 * ingredient.strength.denominator = 1 $edqm#15060000 "Vial"
+[r4-end]
+[r5-init]
+* doseForm = $edqm#50053000 "Powder for solution for injection or infusion"
+* ingredient.item.concept = $sct#372833007 "Cefuroxime"
+* ingredient.strengthRatio.numerator = 1500 $ucum#mg "milligram"
+* ingredient.strengthRatio.denominator = 1 $edqm#15060000 "Vial"
+[r5-end]
+* extension[classification].valueCodeableConcept = $atc#J01DC02 "cefuroxime"
+* ingredient.isActive = true
+
+
 
 
 
@@ -57,12 +74,17 @@ Description: "A sample MedicationStatement for a patient taking Enalapril, used 
 
 
 * status = #active
-
 * subject = Reference(PatientExample)
-* subject.display = "Fiona XXX_Swart"
-
+* subject.display = "John Doe"
+[r4-init]
 * medicationCodeableConcept = $atc#C09AA02 "Enalapril"
 * medicationCodeableConcept.text = "Enalapril 20mg tablets"
+[r4-end]
+[r5-init]
+* medication.concept = $atc#C09AA02 "Enalapril"
+* medication.concept.text = "Enalapril 20mg tablets"
+[r5-end]
+
 
 * effectiveDateTime = "2024-12-01"
 * dateAsserted = "2024-12-01"
