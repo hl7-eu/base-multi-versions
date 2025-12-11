@@ -12,7 +12,7 @@ This profile is adapted from the MPD work."""
 * identifier 
   * ^short = "Medication Statement Identifier"
 // * status ^short = "Current state of the dispensation"
-* subject only Reference( PatientEuCore )
+* subject only Reference( PatientEuCore or Group)
 * status ^short = "State of the medication"
 [r4-init]
 // should be removed ?
@@ -54,6 +54,9 @@ This profile is adapted from the MPD work."""
 * reason.concept ^short = "Coded reason for use"
 * adherence.code ^short = "Type of adherence."
 [r5-end]
+
+* informationSource only Reference( PatientEuCore or PractitionerEuCore or PractitionerRoleEuCore or OrganizationEuCore or RelatedPerson )
+  
  
 
 
