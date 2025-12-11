@@ -2,8 +2,9 @@
 Instance: 400C-prescription-cefuroxime-singleline
 InstanceOf: MedicationRequestEuCore
 Usage: #example
-Title: "MedicationRequest: 400C-prescription-cefuroxime-singleline"
-Description: "400C. A prescription/request with one medication and changing dosaging. Uses 'actionable' tag. Cefuroxime sodium."
+Title: "MedicationRequest Example"
+Description: """Example of a MedicationRequest conforming to the MedicationRequest (EU Core) profile. 
+It is a prescription/request with one medication and changing dosaging. Uses 'actionable' tag. Cefuroxime sodium."""
 
 * meta.tag = $common-tags#actionable
 * identifier.value = "10-123EP"  // prescription line identifier if exists
@@ -45,8 +46,8 @@ Description: "400C. A prescription/request with one medication and changing dosa
 Instance: 01A-Cefuroxime1500GenericExplicit
 InstanceOf: MedicationEuCore
 Usage: #example
-Title: "Medication: 01A-Cefuroxime1500GenericExplicit"
-Description: "1A. Cefuroxime 1500mg (1.5g) powder for solution in a vial. Generic product, defined by attributes."
+Title: "Medication Example"
+Description: """Example of a Medication conforming to the Medication (EU Core) profile. It represents  Cefuroxime 1500mg (1.5g) powder for solution in a vial."""
 
 [r4-init]
 * form = $edqm#50053000 "Powder for solution for injection or infusion"
@@ -69,9 +70,8 @@ Description: "1A. Cefuroxime 1500mg (1.5g) powder for solution in a vial. Generi
 
 Instance: example-medicationstatement-eucore
 InstanceOf: MedicationStatementEuCore
-Title: "MedicationStatement: Enalapril"
-Description: "A sample MedicationStatement for a patient taking Enalapril, used in the context of the European Hospital Discharge Report."
-
+Title: "MedicationStatement Example"
+Description: """Example of a MedicationStatement conforming to the MedicationStatement (EU Core) profile. It describes a patient taking Enalapril."""
 
 
 * subject = Reference(PatientExample)
@@ -86,7 +86,6 @@ Description: "A sample MedicationStatement for a patient taking Enalapril, used 
 * medication.concept.text = "Enalapril 20mg tablets"
 * status = #recorded 
 [r5-end]
-
 
 * effectiveDateTime = "2024-12-01"
 * dateAsserted = "2024-12-01"
