@@ -12,9 +12,10 @@ This page summarizes the main changes applied to this version of the guide.
 * Changed dependency to the xver-r5 package for the for the cross-versions extensions 
 * Extended logical models and map: grouped/reorganized model map landing pages, refactored HTML/XML layout of the mapping pages, merged tables in the HCP model with resource column (FHIR-53197 + others).
 * Added examples for the profiles (FHIR-53197 + others).
-* Updated known issues and change log pages
 * bodySite extension moved to Condition.bodySite and Procedure.bodySite (FHIR-53124)
-* General maintenance: aligned the versioning with the new HL7 EU guidelines (version bumped to `2.0.0`)
+* General maintenance:
+  * aligned the versioning with the new HL7 EU guidelines (version bumped to `2.0.0`) (FHIR-53618)
+  * Updated known issues and change log pages
 
 
 ### 0.1.0-ballot to 0.1.0
