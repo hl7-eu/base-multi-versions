@@ -10,8 +10,8 @@ Description:   """Animal species types for non-human subjects"""
 
 * $sct#125097000 "Domestic goat"
 * $sct#125099002 "Sheep"
-* $sct#34618005 "Cow"
-* $sct#425134008 "Turkey"
+* $sct#34618005 "Bos taurus" // Cow
+* $sct#425134008 "Subfamily Meleagridinae" // Turkey
 * $sct#47290002 "Chicken"
 * $sct#15778005 "Anser"
 * $sct#396620009 "Duck"

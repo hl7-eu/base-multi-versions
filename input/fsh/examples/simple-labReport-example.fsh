@@ -8,10 +8,8 @@ Description: "Example of a Laboratory Report Composition conforming to the Compo
     * display = "Nuovo Ospedale S.Agostino (MO)"
 * extension[diagnosticReport].valueReference = Reference(DiagnosticReportLabExample)
 * id = "26032a57-083a-4ddf-b019-e566ae02f740"
-* language = #cs-CZ
-* identifier.system = "urn:oid:2.16.840.1.113883.2.9.2.120.4.4"
+* identifier.system = "http://example.org/composition-ids"
 * identifier.value = "c030702.TSTSMN63A01F205H.20220325112426.TSS1Tkju"
-* identifier.assigner.display = "Regione Lazio"
 * status = #final
 * category = $loinc#18719-5 "Chemistry studies (set)"
 * type = http://loinc.org#11502-2 "Laboratory report"
@@ -47,9 +45,8 @@ Title: "DiagnosticReport Example"
 Description: "Example of a Laboratory Report DiagnosticReport conforming to the DiagnosticReport (EU Core) profile."
 
 * id = "5679723c-4fae-4ba7-9f09-5438a827bfda"
-* identifier.system = "urn:oid:2.16.840.1.113883.2.9.2.120.4.4"
+* identifier.system = "http://example.org/composition-ids"
 * identifier.value = "c030702.TSTSMN63A01F205H.20220325112426.TSS1Tkju"
-* identifier.assigner.display = "Regione Lazio"
 * extension[DiagnosticReportCompositionR5].valueReference = Reference(CompositionLabExample)
 * status = #registered
 * basedOn = Reference(ServiceRequestExample)
@@ -65,10 +62,9 @@ InstanceOf: ServiceRequest
 Title: "ServiceRequest Example"
 Description: "Laboratory Report ServiceRequest resource used by the DiagnosticReport example."
 * id = "1d4cbcd1-e0d3-49b6-92d8-1893da8d08e1"
-* identifier.system = "http://hospital.org/lis-order"
+* identifier.system = "http://example.org/lis-order"
 * identifier.value = "123456"
-* requisition.assigner.display = "Ministero delle Finanze"
-* requisition.system = "urn:oid:2.16.840.1.113883.2.9.4.3.9"
+* requisition.system = "http://example.org/gp-order"
 * requisition.value = "0901001234567234"
 * status = #active
 * intent = #order
