@@ -87,7 +87,6 @@ Description: "Example of a Laboratory Result Observation conforming to the Medic
 * id = "763f7902-8103-4d10-8bd1-546a726d43ee"
 * status = #final
 * code.coding[+] = http://loinc.org#22700-9 "Urea [Moles/volume] in Urine"
-* code.coding[+] = urn:oid:1.2.203.24341.11.2.2#03088 "Urea (U; látková konc. [mmol/l] Absorpční spektrofotometrie)"
 * code.text = "Urea (U) [Moles/Vol]"
 * method = $sct#70621000052105 "Spectrophotometric technique"
 * subject = Reference(PatientExample)

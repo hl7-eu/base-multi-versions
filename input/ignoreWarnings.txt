@@ -92,8 +92,11 @@ The definition for the element 'BodyStructure.includedStructure.bodyLandmarkOrie
 The definition for the element 'PractitionerRole.specialty' binds to the value set 'http://hl7.org/fhir/ValueSet/c80-practice-codes|5.0.0' which is experimental, but this structure is not labeled as experimental
 
 # Additional Bindings with no key
-Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained. (extension.where(url='key').exists())
+%Constraint failed: ext-ab-1: 'Additional Bindings SHOULD have a key to allow a binding to be constrained.%
 
-
-
+# No matching slices
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base/StructureDefinition/composition-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base/StructureDefinition/diagnosticReport-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base/StructureDefinition/medicationRequest-eu-core%
+%This element does not match any known slice defined in the profile http://hl7.eu/fhir/base/StructureDefinition/medicationStatement-eu-core%
 
