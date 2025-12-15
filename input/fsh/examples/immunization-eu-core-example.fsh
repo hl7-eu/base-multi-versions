@@ -9,7 +9,15 @@ Description: "Example of an Immunization resource conforming to the Immunization
 * patient = Reference(PatientExample)
 * occurrenceDateTime = "2024-10-05"
 * lotNumber = "CVD2024B04"
-* manufacturer.display = "Example Vaccine Manufacturer"
+[r4-init]
+* manufacturer
+[r4-end]
+[r5-init]
+* manufacturer.reference
+[r5-end]
+  * display = "Example Vaccine Manufacturer"
+
+
 * site = $sct#368208006 "Left upper arm structure"
 * route = $sct#78421000 "Intramuscular route"
 * location = Reference(LocationExample)
@@ -28,6 +36,6 @@ Description: "Example of an Immunization resource conforming to the Immunization
 * protocolApplied[0].seriesDosesPositiveInt = 2
 [r4-end]
 [r5-init]
-* protocolApplied[0].doseNumber = 2
-* protocolApplied[0].seriesDoses = 2
+* protocolApplied[0].doseNumber = "2"
+* protocolApplied[0].seriesDoses = "2"
 [r5-end]
