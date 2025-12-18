@@ -81,13 +81,14 @@ Description: "Laboratory Report ServiceRequest resource used by the DiagnosticRe
 * subject = Reference(PatientExample)
 
 Instance: ObservationLabResultExample
-InstanceOf: Observation
+InstanceOf: MedicalTestResultEuCore
 Title: "Observation Example"
 Description: "Example of a Laboratory Result Observation conforming to the Medical Test Result (EU Core) profile."
 * id = "763f7902-8103-4d10-8bd1-546a726d43ee"
 * status = #final
 * code.coding[+] = http://loinc.org#22700-9 "Urea [Moles/volume] in Urine"
 * code.text = "Urea (U) [Moles/Vol]"
+* category = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 * method = $sct#70621000052105 "Spectrophotometric technique"
 * subject = Reference(PatientExample)
 * effectiveDateTime = "2023-03-27T11:24:26+01:00"

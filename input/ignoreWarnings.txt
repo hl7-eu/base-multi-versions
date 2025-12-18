@@ -120,3 +120,6 @@ The definition for the element 'PractitionerRole.specialty' binds to the value s
 
 # Errors caused by missing terminology on tx.fhir.org
 %A definition for CodeSystem 'http://npu-terminology.org' could not be found, so the value set cannot be expanded%
+
+# This ballot version includes a mix of draft and trial-use resources
+The resource status 'active' and the standards status 'draft' are not consistent
