@@ -18,7 +18,7 @@ Description: "Example of a Laboratory Report Composition conforming to the Compo
 * date = "2022-03-30T11:24:26+01:00"
 * author[+] = Reference(PractitionerRoleEuCoreExample)
 * title = "Laboratorní zpráva"
-* attester[+].mode = #legal
+* attester[+].mode = $composition-attestation-mode#legal
 * attester[=].time = "2022-03-25T11:00:00+01:00"
 * attester[=].party = Reference(PractitionerRoleEuCoreExample)
 * custodian.display = "Example Health Organization"
