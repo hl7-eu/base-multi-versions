@@ -6,11 +6,6 @@ Title: "MedicalTestResult (EU core)"
 Description: """This profile sets minimum expectations for the Observation resource for Medical Test Results common to most of the use cases."""
 //-------------------------------------------------------------------------------------------
 * insert SetFmmandStatusRule (1, draft)
-* extension contains 
-    $iso21090-uncertainty named uncertainty 0..1
-// TODO: is uncertainty a modifierExtension?
-* extension[uncertainty]
-  * ^requirements = "EHDSObservation.result.uncertainty"
 [r4-init]
 * extension contains 
     $observation-bodyStructure-r5 named bodyStructure 0..1 and
@@ -54,9 +49,17 @@ Description: """This profile sets minimum expectations for the Observation resou
   * ^requirements = "EHDSObservation.header.authorship.datetime"
 * performer only Reference(PractitionerEuCore or PractitionerRoleEuCore or OrganizationEuCore)
   * ^requirements = "EHDSObservation.header.performer"
+
 //TODO: Cardinality in Model is 1..1, datatypes in xt-ehr model only valueString, valueQuantity, valueRange, valueCodeableConcept
 * value[x]
   * ^requirements = "EHDSObservation.result.value[x]"
+// TODO: is uncertainty a modifierExtension? Also relevant for Ratio, Range, integer 
+* valueQuantity
+  * extension contains 
+    $iso21090-uncertainty named uncertainty 0..1
+  * extension[uncertainty]
+    * ^requirements = "EHDSObservation.result.uncertainty"
+
 * dataAbsentReason
   * ^requirements = "EHDSObservation.dataAbsentReason"
 * interpretation
@@ -82,15 +85,16 @@ Description: """This profile sets minimum expectations for the Observation resou
   * ^requirements = "EHDSObservation.derivedFrom[x]"
 * component
   * ^requirements = "EHDSObservation.component"
-  * extension contains 
-      $iso21090-uncertainty named uncertainty 0..1
-  * extension[uncertainty]
-    * ^requirements = "EHDSObservation.component.result.uncertainty"
   * code from LaboratoryResultStandardEuVs (preferred)
     * ^requirements = "EHDSObservation.component.code"
 //TODO: Cardinality in Model is 1..1, datatypes in xt-ehr model only valueString, valueQuantity, valueRange, valueCodeableConcept
   * value[x]
     * ^requirements = "EHDSObservation.component.result.value[x]"
+  * valueQuantity
+    * extension contains 
+      $iso21090-uncertainty named uncertainty 0..1
+    * extension[uncertainty]
+      * ^requirements = "EHDSObservation.component.result.uncertainty"
   * dataAbsentReason
     * ^requirements = "EHDSObservation.component.dataAbsentReason"
   * referenceRange
