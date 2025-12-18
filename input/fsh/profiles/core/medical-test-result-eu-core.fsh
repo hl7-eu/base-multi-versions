@@ -50,12 +50,17 @@ Description: """This profile sets minimum expectations for the Observation resou
   * ^requirements = "EHDSObservation.header.authorship.datetime"
 * performer only Reference(PractitionerEuCore or PractitionerRoleEuCore or OrganizationEuCore)
   * ^requirements = "EHDSObservation.header.performer"
+
 //TODO: Cardinality in Model is 1..1, datatypes in xt-ehr model only valueString, valueQuantity, valueRange, valueCodeableConcept
 * value[x]
   * ^requirements = "EHDSObservation.result.value[x]"
-  * extension contains $iso21090-uncertainty named uncertainty 0..1
+// TODO: is uncertainty a modifierExtension? Also relevant for Ratio, Range, integer 
+* valueQuantity
+  * extension contains 
+    $iso21090-uncertainty named uncertainty 0..1
   * extension[uncertainty]
     * ^requirements = "EHDSObservation.result.uncertainty"
+
 * dataAbsentReason
   * ^requirements = "EHDSObservation.dataAbsentReason"
 * interpretation
@@ -86,8 +91,10 @@ Description: """This profile sets minimum expectations for the Observation resou
 //TODO: Cardinality in Model is 1..1, datatypes in xt-ehr model only valueString, valueQuantity, valueRange, valueCodeableConcept
   * value[x]
     * ^requirements = "EHDSObservation.component.result.value[x]"
-    * extension contains $iso21090-uncertainty named uncertainty 0..1
-    * extension[uncertainty]      
+  * valueQuantity
+    * extension contains 
+      $iso21090-uncertainty named uncertainty 0..1
+    * extension[uncertainty]
       * ^requirements = "EHDSObservation.component.result.uncertainty"
   * dataAbsentReason
     * ^requirements = "EHDSObservation.component.dataAbsentReason"
