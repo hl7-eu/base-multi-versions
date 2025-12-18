@@ -23,7 +23,7 @@ Description: """This profile sets minimum expectations for the Observation resou
 * identifier
   * ^requirements = "EHDSObservation.header.identifier"
 [r5-init]  
-* triggeredBy only Reference(MedicalTestResultEuCore)
+* triggeredBy.observation only Reference(MedicalTestResultEuCore)
   * ^requirements = "EHDSObservation.triggeredBy[x]"
 [r5-end]
 * basedOn
@@ -32,7 +32,7 @@ Description: """This profile sets minimum expectations for the Observation resou
   * ^requirements = "EHDSObservation.header.status"
 
 * category 1..
-  * insert SliceElement( #pattern, $this )
+  * insert SliceElement( #value, $this )
   * ^requirements = "EHDSObservation has no requirement"
 * category contains 
     laboratory 0..1 and
