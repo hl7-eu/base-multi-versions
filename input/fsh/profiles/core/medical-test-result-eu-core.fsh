@@ -1,7 +1,7 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Profile: MedicalTestResultEuCore
 Parent: Observation
-Id: medical-test-result-eu-core
+Id: medicalTestResult-eu-core
 Title: "MedicalTestResult (EU core)"
 Description: """This profile sets minimum expectations for the Observation resource for Medical Test Results common to most of the use cases."""
 //-------------------------------------------------------------------------------------------
