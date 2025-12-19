@@ -71,10 +71,9 @@ Description: """This profile sets minimum expectations for the Immunization reso
 * patient only Reference(PatientEuCore)
 * occurrence[x] ^short = "Date of vaccination"
 
-// TO BE ACTIVATED WHEN EXTENSIONS WILL BE PUBLISHED
-// * occurrenceDateTime
-//  * extension contains PeriodsOfLife named periodOfLife 0..1
-//  * extension[periodOfLife].valueCodeableConcept from PeriodsOfLifeEuVs (preferred)
+* occurrenceDateTime
+  * extension contains PeriodsOfLife named periodOfLife 0..1
+  * extension[periodOfLife].valueCodeableConcept from PeriodsOfLifeEuVs (preferred)
 
 * location only Reference(LocationEuCore)
 * manufacturer ^short = "Vaccine manufacturer/MAH"
