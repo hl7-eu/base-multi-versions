@@ -28,7 +28,7 @@
 
 This Implementation Guide (IG) brings together **base** and **core** HL7® FHIR® artifacts designed specifically for the European context.
 
-It provides a foundation for interoperability, ensuring reusability across national projects, European initiatives, and derived HL7 Europe guides.
+It provides a foundation for interoperability and reusability across national projects, European initiatives, and derived HL7 Europe guides.
 
 The guide supports:
 
@@ -65,11 +65,11 @@ This guide is published for two HL7 FHIR versions:
 
 [r4-init]
 * **HL7 FHIR R4 Base IG** (hl7.fhir.eu.base). This Guide.
-* **HL7 FHIR R5 Base IG** (hl7.fhir.eu.base-r5). Published at [this link](https://hl7.eu/fhir/base-r5).
+* **HL7 FHIR R5 Base IG** (hl7.fhir.eu.base-r5). Published at the [HL7 Europe Base R5 page](https://hl7.eu/fhir/base-r5).
 [r4-end]
 
 [r5-init]
-* **HL7 FHIR R4 Base IG** (hl7.fhir.eu.base). Published at [this link](https://hl7.eu/fhir/base).
+* **HL7 FHIR R4 Base IG** (hl7.fhir.eu.base). Published at the [HL7 Europe Base R4 page](https://hl7.eu/fhir/base).
 * **HL7 FHIR R5 Base IG** (hl7.fhir.eu.base-r5). This Guide.
 [r5-end]
 
