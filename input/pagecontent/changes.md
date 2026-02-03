@@ -1,5 +1,13 @@
 This page summarizes the main changes applied to this version of the guide.
 
+### From 2.0.0-ballot to 2.0.0
+* FHIR-55554: removed DiagnosticReportComposition extension from the R5 profile
+* FHIR-55553: typos fixing (partial)
+* FHIR-55461: Editorial changes (many pages)
+* FHIR-53895: Fixed Location mapping page header
+* FHIR-53894 : Fixed the EHDSOrganisation page header
+
+
 ### From 0.1.0 to 2.0.0-ballot
 
 

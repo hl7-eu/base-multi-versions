@@ -3,7 +3,7 @@ Profile:  FlagEuCore
 Parent:   Flag
 Id:       flag-eu-core
 Title:    "Flag (EU core)"
-Description: """This profile defines the core constraints and extensions for a Flag resource when used in European systems for communicating warnings, alerts, or reminders about important health information."""
+Description: """This profile introduce essential constraints and extensions for the Flag resource that apply across multiple use cases."""
 //-------------------------------------------------------------------------------------------
 
 // * insert SetFmmandStatusRule (1, draft)

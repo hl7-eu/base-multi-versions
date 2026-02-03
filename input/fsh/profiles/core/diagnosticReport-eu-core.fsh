@@ -2,7 +2,7 @@ Profile: DiagnosticReportEuCore
 Parent: DiagnosticReport
 Id: diagnosticReport-eu-core
 Title:    "DiagnosticReport (EU core)"
-Description: """This profile sets minimum expectations for the DiagnosticReport resource for commonly used EHDS documents."""
+Description: """This profile introduce essential constraints and extensions for the DiagnosticReport resource that apply across multiple use cases."""
 
 * insert SetFmmandStatusRule (1, draft)
 * . ^short = "Diagnostic Report EU core"
