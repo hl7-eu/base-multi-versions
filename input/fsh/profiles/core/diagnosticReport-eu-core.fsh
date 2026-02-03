@@ -8,15 +8,15 @@ Description: """This profile sets minimum expectations for the DiagnosticReport 
 * . ^short = "Diagnostic Report EU core"
 * . ^definition = "Diagnostic Report EU core"
 
+[r4-init]
 * extension contains $diagnostic-report-composition-r5 named DiagnosticReportCompositionR5 0..1
-
 // is 1.. in Lab and Imaging report
-
 * extension[DiagnosticReportCompositionR5]
   * ^short = "Associated  Composition"
   * ^definition = "This extension implements the R5 composition element. It allow to link this DiagnosticReport with the Composition documenting this Diagnostic Report."
   *  valueReference 1..1
   *  valueReference only Reference(CompositionEuCore)
+[r4-end]
 
 * basedOn only Reference ( ServiceRequest)
 

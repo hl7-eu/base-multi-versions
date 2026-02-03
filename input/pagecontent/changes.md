@@ -19,7 +19,7 @@ This page summarizes the main changes applied to this version of the guide.
   * Updated Known Issues and Change Log pages
 
 
-### 0.1.0-ballot to 0.1.0
+### From 0.1.0-ballot to 0.1.0
 
 
 * Updated IPS dependency to version `2.0.0` (FHIR-51370).
