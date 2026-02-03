@@ -1,9 +1,10 @@
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Profile:  FlagEuCore
+Profile:  FlagPatientEuCore
 Parent:   Flag
-Id:       flag-eu-core
-Title:    "Flag (EU core)"
-Description: """This profile introduce essential constraints and extensions for the Flag resource that apply across multiple use cases."""
+Id:       flag-patient-eu-core
+Title:    "Flag:Patient  (EU core)"
+Description: """This profile introduce essential constraints and extensions for the Flag resource - for patient related alerts - that apply across multiple use cases.
+Other specialized flag profiles may be specified in the future for other kind of subjtects (e.g. related to practitioners, devices, etc.)."""
 //-------------------------------------------------------------------------------------------
 
 // * insert SetFmmandStatusRule (1, draft)
