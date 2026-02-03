@@ -18,7 +18,7 @@ Description: """This profile introduce essential constraints and extensions for 
   *  valueReference only Reference(CompositionEuCore)
 [r4-end]
 
-* basedOn only Reference ( ServiceRequest)
+* basedOn ^short = "What was requested"
 
 * status ^short = "Status of the Report"
   
