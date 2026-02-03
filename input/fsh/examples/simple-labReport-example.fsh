@@ -6,7 +6,12 @@ Description: "Example of a Laboratory Report Composition conforming to the Compo
 * extension[information-recipient]
   * valueReference = Reference(OrganizationExample)
     * display = "Nuovo Ospedale S.Agostino (MO)"
+[r4-init]
 * extension[diagnosticReport].valueReference = Reference(DiagnosticReportLabExample)
+[r4-end]
+[r5-init]
+* composition = Reference(DiagnosticReportLabExample)
+[r5-end]
 * id = "26032a57-083a-4ddf-b019-e566ae02f740"
 * identifier.system = "http://example.org/composition-ids"
 * identifier.value = "c030702.TSTSMN63A01F205H.20220325112426.TSS1Tkju"
