@@ -8,8 +8,9 @@ Description: """This profile introduce essential constraints and extensions for 
 // * insert ImposeProfile ( $Procedure-uv-ips, 0 )  // Check if this is appropriate (see  support)
 
 * insert SetFmmandStatusRule (1, draft)
-* extension contains $procedure-targetBodyStructure named bodySite 0..1
-* extension[bodySite].valueReference only Reference(BodyStructureEuCore)
+
+/* * extension contains $procedure-targetBodyStructure named bodySite 0..1
+* extension[bodySite].valueReference only Reference(BodyStructureEuCore) */
 
 [r4-init]
 * extension contains $procedure-recorded-r5 named recorded 0..1
