@@ -51,7 +51,6 @@ Description: """This profile introduce essential constraints and extensions for 
 
 * criticality ^short = "Criticality"
 
-* patient.reference 1..
 * patient only Reference(PatientEuCore)
 
 * onsetDateTime ^short = "Onset date"

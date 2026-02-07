@@ -5,7 +5,11 @@ This page summarizes the main changes applied to this version of the guide.
 * FHIR-55553: typos fixing (partial)
 * FHIR-55461: Editorial changes (many pages)
 * FHIR-53895: Fixed Location mapping page header
-* FHIR-53894 : Fixed the EHDSOrganisation page header
+* FHIR-53894: Fixed the EHDSOrganisation page header
+* FHIR-55522: Relax constraint in DiagnosticReportEuCore to align with IPS
+* FHIR-55387: FlagEuCore renamed FlagPatientEuCore
+* FHIR-55548: Removed the procedure-targetBodyStructure extension
+* FHIR-55533: Update descriptions in core profiles
 
 
 ### From 0.1.0 to 2.0.0-ballot
