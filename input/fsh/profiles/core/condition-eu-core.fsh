@@ -61,7 +61,7 @@ Description: """This profile introduce essential constraints and extensions for 
 
 
 * subject only Reference(PatientEuCore)
-* subject.reference 1..
+
 
 * onset[x] only dateTime or Age or Period or Range or string
 * onsetDateTime ^definition = "Onset of the symptom, complaint, functional limitation, complication or date of diagnosis. A ‘vague’ date, such as only the year or the month and the year, is permitted."
