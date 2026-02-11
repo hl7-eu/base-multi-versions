@@ -135,18 +135,6 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSPatientAnimal.html" target="_blank">EHDSPatientAnimal</a>
-                    </td>
-                    <td>
-                        <a href="StructureDefinition-patient-animal-eu-core.html"><code>PatientAnimalEuCore</code></a>
-                    </td>
-                    <td>
-                        <a class="pill" href="map-ehdspatientanimal.html">EHDSPatientAnimal Mapping</a>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td>
                         <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSHealthProfessional.html" target="_blank">EHDSHealthProfessional</a>
                     </td>
                     <td>
@@ -350,13 +338,13 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSMedicationStatement.html" target="_blank">EHDSMedicationStatement</a>
+                        <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSMedicationUse.html" target="_blank">EHDSMedicationUse</a>
                     </td>
                     <td>
                         <a href="StructureDefinition-medicationStatement-eu-core.html"><code>MedicationStatementEuCore</code></a>
                     </td>
                     <td>
-                        <a class="pill" href="map-ehdsmedicationstatement.html">EHDSMedicationStatement Mapping</a>
+                        <a class="pill" href="map-ehdsmedicationstatement.html">EHDSMedicationUse Mapping</a>
                     </td>
                     
                 </tr>
