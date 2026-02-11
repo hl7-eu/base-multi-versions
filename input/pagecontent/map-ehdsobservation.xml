@@ -45,7 +45,7 @@
       <ul>
         <li>
           <strong>Source logical model:</strong>
-          <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSObservation.html"
+          <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSObservation.html"
             target="_blank">
             EHDSObservation
           </a>
@@ -571,4 +571,3 @@
     </p>
   </body>
 </div>
-

@@ -44,7 +44,7 @@
       <ul>
         <li>
           <strong>Source logical model:</strong>
-          <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSDocument.html" target="_blank">
+          <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSDocument.html" target="_blank">
         EHDSDocument
           </a>
         </li>
@@ -293,5 +293,3 @@
     </p>
   </body>
 </div>
-
-

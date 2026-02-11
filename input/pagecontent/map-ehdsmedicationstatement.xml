@@ -33,7 +33,7 @@
       <ul>
         <li>
           <strong>Source logical model:</strong>
-          <a href="https://www.xt-ehr.eu/fhir/models/StructureDefinition-EHDSMedicationUse.html" target="_blank">
+          <a href="https://www.xt-ehr.eu/fhir/models/0.3.0/StructureDefinition-EHDSMedicationUse.html" target="_blank">
         EHDSMedicationUse
           </a>
         </li>
@@ -268,6 +268,3 @@
     </p>
   </body>
 </div>
-
-
-
