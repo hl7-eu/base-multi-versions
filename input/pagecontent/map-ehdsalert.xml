@@ -112,7 +112,7 @@
             <td>equivalent</td>
             <td>Flag</td><td>author</td>
             <td>Creator of the flag.</td>
-            <td class="highlight-yellow">Model allows EHDSHealthProfessional, EHDSOrganisation, or EHDSDevice; profile cardinality and reference constraints may differ.</td>
+            <td></td>
           </tr>
 
           <tr class="highlight-yellow">
@@ -147,7 +147,6 @@
             <td>Language used in the flag text.</td>
             <td></td>
           </tr>
-
           <!-- ROOT EHDSAlert elements -->
           <tr>
             <td>description</td>
@@ -155,7 +154,15 @@
             <td>source-is-broader-than-target</td>
             <td>Flag</td><td>extensions:note.text</td>
             <td>Additional notes that apply to this resource or element.</td>
-            <td class="highlight-yellow">The mapping applies if the description represents additional information collected about the alert. <code>code.text</code> can also be used for textual rendering of coded content.</td>
+            <td class="highlight-yellow">The mapping applies if the description represents additional information collected about the alert.</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td>Narrative representation of the alert.</td>
+            <td>source-is-broader-than-target</td>
+            <td>Flag</td><td>code.text</td>
+            <td>Additional notes that apply to this resource or element.</td>
+            <td class="highlight-yellow"><code>code.text</code> can also be used for textual rendering of coded content, or textual description of the alert.</td>
           </tr>
           <tr>
             <td>priority</td>
@@ -183,13 +190,13 @@
             <td>Map start/end 1:1.</td>
           </tr>
           
-          <tr class="highlight-yellow">
+          <tr>
             <td>sourceReference</td>
             <td>A reference to the resource the alert is about.</td>
-            <td>no map</td>
+            <td>equivalent</td>
             <td>Flag</td><td></td>
+            <td>extension:flagDetailExt</td>
             <td></td>
-            <td>No direct native Flag element in this profile mapping; consider extension when required.</td>
           </tr>
         </tbody>
       </table>
@@ -202,4 +209,3 @@
   </body>
 
 </div>
-
