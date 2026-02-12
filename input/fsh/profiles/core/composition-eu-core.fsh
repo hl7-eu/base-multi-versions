@@ -12,8 +12,16 @@ Description: """This profile introduces essential constraints and extensions for
 * ^purpose = "This profile constrains the Composition resource for the purpose of this guide."
 
 
-* event.code ^short = "Event code"
-* event.period ^short = "Event period"
+* event
+  [r4-init]
+  * code ^short = "Event code"
+  [r4-end]
+  [r5-init]
+  * detail.concept ^short = "Event code"
+  [r5-end]
+  
+  * period ^short = "Event period"
+
 * language ^short = "Language of the composition content"
 
 [r4-init]

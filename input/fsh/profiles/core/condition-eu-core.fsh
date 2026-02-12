@@ -20,7 +20,13 @@ Description: """This profile introduces essential constraints and extensions for
 
 * severity from $condition-severity (preferred)
 
+[r4-init]
 * asserter ^short = "Who asserted the condition"
+[r4-end]
+[r5-init]
+* participant.actor ^short = "Who or what participated in the activities related to the allergy (e.g. asserter, reporter)"
+[r5-end]
+
 * language ^short = "Language of the condition content"
 
 * code 1..1 

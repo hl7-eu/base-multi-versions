@@ -8,8 +8,12 @@ Description: """This profile introduces essential constraints and extensions for
 // * insert ImposeProfile ( $Procedure-uv-ips, 0 )  // Check if this is appropriate (see  support)
 
 * insert SetFmmandStatusRule (1, draft)
-
+[r4-init]
 * asserter ^short = "The person or organization who asserts the procedure"
+[r4-end]
+[r5-init]
+* reportedReference ^short = "Reported rather than primary record."
+[r5-end]
 * language ^short = "Language of the procedure"
 * recorder ^short = "The person or organization who recorded the procedure"
 

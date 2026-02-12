@@ -11,15 +11,24 @@ Description: """This profile introduces essential constraints and extensions for
 * extension contains $allergyintolerance-abatement named abatement 0..1
 * extension[abatement].valueDateTime ^short = "End date"
 
-* asserter ^short = "Who recorded the allergy or intolerance"
+
+
+
 * identifier ^short = "Business identifier for the allergy or intolerance"
 * language ^short = "Language of the allergy or intolerance content"
 * note.text ^short = "Additional information about the allergy or intolerance"
 * onset[x] ^short = "Date of onset of the allergy or intolerance"
 * recordedDate ^short = "Date when the allergy or intolerance was recorded"
-* recorder ^short = "Who recorded the allergy or intolerance"
 * patient ^short = "Who the allergy or intolerance concerns"
 
+
+[r4-init]
+* asserter ^short = "Who asserts the allergy or intolerance"
+* recorder ^short = "Who recorded the allergy or intolerance"
+[r4-end]
+[r5-init]
+* participant.actor ^short = "Who or what participated in the activities related to the allergy (e.g. asserter, reporter)"
+[r5-end]
 
 * verificationStatus ^short = "Certainty"
 * clinicalStatus ^short = "Current allergy or Intolerance status"
