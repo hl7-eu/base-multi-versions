@@ -8,6 +8,13 @@ Description: """This profile introduces essential constraints and extensions for
 
 * insert SetFmmandStatusRule (1, draft)
 
+* text ^short = "Human readable summary of the medication, for example, the name and form of the medication."
+
+
+
+* code ^short = "Code of the medication"
+* identifier ^short = "Identifier of the medication"
+
 
 // Common R4 R5
 * extension contains $ihe-ext-medication-productname named productName 0..1 // productName
@@ -64,6 +71,7 @@ Description: """This profile introduces essential constraints and extensions for
 * extension[device].extension[device].valueCodeableConcept from $eHDSIPackage (example)
 
 // Only R4 rules
+* amount ^short = "Amount of the medication (for example, in a package or a vial)"
 
 * ingredient
   * itemReference only Reference (MedicationEuCore)

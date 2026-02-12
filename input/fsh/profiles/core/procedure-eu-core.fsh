@@ -9,6 +9,12 @@ Description: """This profile introduces essential constraints and extensions for
 
 * insert SetFmmandStatusRule (1, draft)
 
+* asserter ^short = "The person or organization who asserts the procedure"
+* language ^short = "Language of the procedure"
+* recorder ^short = "The person or organization who recorded the procedure"
+
+
+
 /* * extension contains $procedure-targetBodyStructure named bodySite 0..1
 * extension[bodySite].valueReference only Reference(BodyStructureEuCore) */
 
@@ -16,6 +22,9 @@ Description: """This profile introduces essential constraints and extensions for
 * extension contains $procedure-recorded-r5 named recorded 0..1
 * extension[recorded] ^short = "Date when the procedure was recorded"
 [r4-end]
+[r5-init]
+* recorded ^short = "Date when the procedure was recorded"
+[r5-end]
 
 * identifier ^short = "Identifier for the procedure"
 

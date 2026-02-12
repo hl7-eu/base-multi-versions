@@ -20,6 +20,8 @@ Description: """This profile introduces essential constraints and extensions for
 
 * severity from $condition-severity (preferred)
 
+* asserter ^short = "Who asserted the condition"
+* language ^short = "Language of the condition content"
 
 * code 1..1 
 * code from $problems-uv-ips (preferred) 

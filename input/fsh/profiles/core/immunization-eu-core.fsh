@@ -14,6 +14,10 @@ Description: """This profile introduces essential constraints and extensions for
 * status ^short = "Immunization status."
 * statusReason ^short = "Reason for not performing."
 
+* identifier ^short = "Identifier of the immunization"
+* language ^short = "Language of the immunization content"
+* note.text ^short = "Additional notes about the immunization"
+
 [r4-init]
 * extension contains $immunization-administeredProduct-r5 named administeredProduct 0..1
 * extension[administeredProduct].extension[concept]
@@ -26,6 +30,7 @@ Description: """This profile introduces essential constraints and extensions for
 [r4-end]
 
 [r5-init]
+* administeredProduct ^short = "The product that was administered or was to be administered."
 * reason.concept ^short = "Reasons for the administration."
 * informationSource only CodeableReference ( PatientEuCore or PractitionerEuCore or PractitionerRoleEuCore or RelatedPerson or OrganizationEuCore )
 [r5-end]
