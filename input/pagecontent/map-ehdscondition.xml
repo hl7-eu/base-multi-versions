@@ -115,7 +115,7 @@
             <td>Condition</td>
             <td>recorder<span style="color:#2e7d32;font-weight:600;">〔R4〕</span></td>
             <td>Who recorded the condition.</td>
-            <td class="highlight-yellow">Condition has no generic "author"; use <code>recorder</code> in R4. This element is 1.. in the model and 0.. in the profile.</td>
+            <td>Condition has no generic "author"; use <code>recorder</code> in R4.</td>
           </tr>
           <tr>
             <td>header.author[x]</td>
@@ -124,12 +124,8 @@
             <td>Condition</td>
             <td>participant.actor<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             <td>Who recorded the condition.</td>
-            <td class="highlight-yellow">Condition has no generic "author"; use <code>participant.actor</code> in R5. This element is 1.. in the model and 0.. in the profile.</td>
+            <td>Condition has no generic "author"; use <code>participant.actor</code> in R5.</td>
           </tr>
-
-
-
-
 <tr>
             <td>header.date</td>
             <td>Date and optionally time of authoring/issuing.</td>
@@ -137,7 +133,7 @@
             <td>Condition</td>
             <td>recordedDate</td>
             <td>When the condition was recorded.</td>
-            <td class="highlight-yellow"><strong>This element is 1.. in the model 0.. in the profile</strong></td>
+            <td></td>
           </tr>
 <tr>
             <td>header.status</td>
@@ -148,14 +144,14 @@
             <td>Current clinical status of the condition.</td>
             <td>FHIR has a required value set for clinicalStatus; EHDS references HL7 Condition Clinical Status Codes.</td>
           </tr>
-          <tr class="highlight-yellow">
+          <tr>
             <td>header.source</td>
             <td>Source of the information (e.g. patient, proxy).</td>
-            <td>no map</td>
+            <td>equivalent</td>
             <td>Condition</td>
-            <td>-</td>
-            <td>-</td>
-            <td>No direct native Condition element; consider extension if needed.</td>
+            <td>asserter</td>
+            <td>Source of the information about the condition.</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.language</td>
@@ -211,7 +207,7 @@
             <td>0..* in both models; EHDS may use additional national/organisational codes.</td>
           </tr>
 <!-- resolutionCircumstances -->
-          <tr class="highlight-yellow">
+          <tr>
             <td>resolutionCircumstances</td>
             <td>Reason for which the status changed from current to inactive (free text if not represented elsewhere).</td>
             <td>source-is-broader-than-target</td>
@@ -285,7 +281,7 @@
           </tr>
 
           <!-- externalResource -->
-          <tr class="highlight-yellow">
+          <tr>
             <td>externalResource</td>
             <td>External resource related to the problem (e.g. guidelines for a rare disease).</td>
             <td>source-is-narrower-than-target</td>

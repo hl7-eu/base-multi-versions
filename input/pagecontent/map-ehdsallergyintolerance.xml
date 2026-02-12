@@ -110,8 +110,7 @@
             <td>equivalent</td>
             <td>AllergyIntolerance</td><td>recorder</td>
             <td>Who recorded the sensitivity.</td>
-            <td class="highlight-yellow">Can reference Device, Organization, Patient, Practitioner, or PractitionerRole.1.. in the model 0.. in the profile
-            </td>
+            <td> </td>
       
           </tr>
 
@@ -121,7 +120,7 @@
             <td>equivalent</td>
             <td>AllergyIntolerance</td><td>recordedDate</td>
             <td>When the allergy/intolerance was recorded.</td>
-            <td class="highlight-yellow">1.. in the model 0.. in the profile</td>
+            <td> </td>
           </tr>
 <tr>
             <td>header.status</td>
@@ -131,13 +130,13 @@
             <td>Clinical status of the allergy/intolerance.</td>
             <td>Map using the EHDS to HL7 allergy intolerance status value set alignment.</td>
           </tr>
-          <tr class="highlight-yellow">
+          <tr>
             <td>header.source</td>
             <td>Source of the information (e.g. patient, proxy).</td>
-            <td>no map</td>
-            <td>AllergyIntolerance</td><td></td>
+            <td>equivalent</td>
+            <td>AllergyIntolerance</td><td>asserter</td>
+            <td>Source of the information about the allergy</td>
             <td></td>
-            <td>No direct native AllergyIntolerance element; consider extension if needed.</td>
           </tr>
           <tr>
             <td>header.language</td>
@@ -164,7 +163,7 @@
             <td>source-is-broader-than-target</td>
             <td>AllergyIntolerance</td><td>note.text</td>
             <td>Additional narrative about the allergy/intolerance.</td>
-            <td class="highlight-yellow">Map EHDS note to <code>AllergyIntolerance.note.text</code>. Could also populate <code>text.div</code> if it refers to a textual description of the whole resource.</td>
+            <td></td>
           </tr>
 
           <!-- criticality -->
@@ -246,13 +245,13 @@
           </tr>
 
           <!-- reaction.onset (EHDS subelement) -->
-          <tr class="highlight-yellow">
+          <tr>
             <td>reaction.onset</td>
             <td>Date of the observation of the reaction.</td>
             <td>equivalent</td>
             <td>AllergyIntolerance</td><td>reaction.onset</td>
             <td>When the reaction occurred.</td>
-            <td>EHDS distinguishes "date of observation"; FHIR has one <code>reaction.onset</code> use that.</td>
+            <td></td>
           </tr>
 
         </tbody>
