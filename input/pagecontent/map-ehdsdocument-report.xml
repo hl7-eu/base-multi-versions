@@ -119,7 +119,7 @@
           <tr class="highlight-yellow">
             <td>header.author[x]</td>
             <td>Author(s) who authored the resource.</td>
-            <td>releated-to</td>
+            <td>related-to</td>
             <td>DiagnosticReport</td>
             <td>performer</td>
             <td>The diagnostic service that is responsible for issuing the report.</td>
@@ -250,7 +250,7 @@
           <tr class="highlight-yellow">
             <td>header.eventType</td>
             <td>Categorisation of the event covered by the document.</td>
-            <td>relatedTo</td>
+            <td>related-to</td>
             <td>DiagnosticReport</td>
             <td>category</td>
             <td>Service category</td>
@@ -293,3 +293,4 @@
     </p>
   </body>
 </div>
+

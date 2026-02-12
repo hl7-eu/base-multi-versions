@@ -135,7 +135,7 @@
           <tr>
             <td>header.status</td>
             <td>Technical/administrative dataset status.</td>
-            <td>no map</td>
+            <td>no-map</td>
             <td>Procedure</td><td>status</td>
             <td>Procedure status</td>
             <td></td>
@@ -143,7 +143,7 @@
           <tr>
             <td>header.source</td>
             <td>Source of the information (e.g. patient, proxy).</td>
-            <td>no map</td>
+            <td>no-map</td>
             <td>Procedure</td><td>asserter<span style="color:#2e7d32;font-weight:600;">〔R4〕</span></td>
             <td>Reported rather than primary record.</td>
             <td></td>
@@ -152,7 +152,7 @@
          <tr>
             <td>header.source</td>
             <td>Source of the information (e.g. patient, proxy).</td>
-            <td>no map</td>
+            <td>no-map</td>
             <td>Procedure</td><td>reportedReference<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             <td>Reference to the source of the information (e.g. patient, proxy).</td>
             <td></td>
@@ -324,3 +324,4 @@
     </p>
   </body>
 </div>
+
