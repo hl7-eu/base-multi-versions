@@ -14,15 +14,20 @@ Description: """This profile introduces essential constraints and extensions for
 [r4-init]
 * extension contains 
     $observation-bodyStructure-r5 named bodyStructure 0..1 and
-    $observation-triggeredBy-r5 named triggeredBy 0..* and
-    $observation-value-r5 named value-r5 0..1
+    $observation-triggeredBy-r5 named triggeredBy 0..* 
+    // and $observation-value-r5 named value-r5 0..1
+
 * extension[bodyStructure]
   * ^requirements = "EHDSObservation.anatomicLocation"
 * extension[triggeredBy].extension[observation].valueReference only Reference(MedicalTestResultEuCore)
   * ^requirements = "EHDSObservation.triggeredBy[x]"
+/* temporarly removed to fix extensions validation errors 
 * extension[value-r5]
   * value[x] only Attachment
   * ^short = "only for result of type Attachment"
+*/
+
+
 [r4-end]
 * identifier
   * ^requirements = "EHDSObservation.header.identifier"
