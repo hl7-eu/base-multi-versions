@@ -21,6 +21,8 @@ Alias: $vaccines-uv-ips = http://hl7.org/fhir/uv/ips/ValueSet/vaccines-uv-ips
 Alias: $target-diseases-uv-ips = http://hl7.org/fhir/uv/ips/ValueSet/target-diseases-uv-ips
 Alias: $problems-uv-ips = http://hl7.org/fhir/uv/ips/ValueSet/problems-uv-ips
 Alias: $medication-uv-ips = http://hl7.org/fhir/uv/ips/ValueSet/medication-uv-ips
+Alias: $substance-codes = http://hl7.org/fhir/ValueSet/substance-codes // Used in R5
+
 // ---- MyHealth#EU MVC
 
 Alias: $eHDSIBodySite = http://terminology.ehdsi.eu/ValueSet/eHDSIBodySite

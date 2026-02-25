@@ -57,7 +57,7 @@ Description: """This profile introduces essential constraints and extensions for
   * item only CodeableReference (Substance or MedicationEuCore)
     * ^short = "Substance (Substance resource or concept from terminology) or a medicinal product (Medication resource or concept from terminology). Medicinal product can be an ingredient in case of extemporal medications or combination packs (e.g Creme + 6 tablets)" 
 
-  * item from $substanceSCT (example)
+  * item from $substance-codes (example)
     * ^binding.additional.purpose = #candidate
     * ^binding.additional.valueSet = $eHDSISubstance
     * ^binding.additional.documentation = """MyHealth@EU crossborder value set for substances. Based on EMA SPOR SMS.""" 
