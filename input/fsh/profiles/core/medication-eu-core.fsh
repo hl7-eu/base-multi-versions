@@ -85,7 +85,7 @@ Description: """This profile introduces essential constraints and extensions for
 
 * ingredient
   * itemReference only Reference (MedicationEuMpd)
-  * itemCodeableConcept from $substanceIPS (example)
+  * itemCodeableConcept from $medicine-active-substances-uv-ip (example)
     * ^binding.extension[0].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
     * ^binding.extension[=].extension[0].url = "purpose"
     * ^binding.extension[=].extension[=].valueCode = #candidate
