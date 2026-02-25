@@ -8,8 +8,6 @@ Description: """This profile introduces essential constraints and extensions for
 
 * insert SetFmmandStatusRule (1, draft)
 
-* text ^short = "Human readable summary of the medication, for example, the name and form of the medication."
-
 * batch
   * lotNumber ^short = "Lot Number"
   * expirationDate ^short = "Expiration Date"
