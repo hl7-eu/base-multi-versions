@@ -54,7 +54,7 @@ Description: """This profile introduces essential constraints and extensions for
 * totalVolume
   * ^short = "Total volume or number of package items inside a package. This element should not contain overall prescribed amount, but describe the product itself. In case of complex packages, this element could be left empty, and number of different items could be indicated in the nested Medications." //packSize (almost)
 * ingredient
-  * item only CodeableReference (Substance or MedicationEuMpd)
+  * item only CodeableReference (Substance or MedicationEuCore)
     * ^short = "Substance (Substance resource or concept from terminology) or a medicinal product (Medication resource or concept from terminology). Medicinal product can be an ingredient in case of extemporal medications or combination packs (e.g Creme + 6 tablets)" 
 
   * item from $substanceSCT (example)
@@ -84,8 +84,8 @@ Description: """This profile introduces essential constraints and extensions for
 * amount ^short = "Amount of the medication (for example, in a package or a vial)"
 
 * ingredient
-  * itemReference only Reference (MedicationEuMpd)
-  * itemCodeableConcept from $medicine-active-substances-uv-ip (example)
+  * itemReference only Reference (MedicationEuCore)
+  * itemCodeableConcept from $medicine-active-substances-uv-ips (example)
     * ^binding.extension[0].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
     * ^binding.extension[=].extension[0].url = "purpose"
     * ^binding.extension[=].extension[=].valueCode = #candidate
