@@ -40,7 +40,7 @@ Description: """This profile introduces essential constraints and extensions for
 * code from $allergy-intolerance-uv-ips (preferred)
 [r4-init]
   * ^binding.extension[+].extension[+].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[=].valueCode = #preferred
 //   * ^binding.extension[+].extension[+].url = "key"
 //   * ^binding.extension[=].extension[=].valueId = "96948958-8a49-472e-91ee-967b8545d27c"
   * ^binding.extension[=].extension[+].url = "valueSet"
@@ -51,7 +51,7 @@ Description: """This profile introduces essential constraints and extensions for
   * ^binding.description = "Type of the substance/product expected to be used in MyHealth@EU"
 
   * ^binding.extension[+].extension[+].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[=].valueCode = #preferred
 //   * ^binding.extension[+].extension[+].url = "key"
 //   * ^binding.extension[=].extension[=].valueId = "7dea14b1-5620-41b8-bb24-536541cdee0b"
   * ^binding.extension[=].extension[+].url = "valueSet"
@@ -62,11 +62,11 @@ Description: """This profile introduces essential constraints and extensions for
   * ^binding.description = "Type of the substance/product, allergy or intolerance condition or a code for absent/unknown allergy."
 [r4-end]
 [r5-init]
-  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.purpose = #preferred
   * ^binding.additional.valueSet = $eHDSIAllergenNoDrug
   * ^binding.additional.documentation = "Type of the substance/product for MyHealth@EU"
 
-  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.purpose = #preferred
   * ^binding.additional.valueSet = "http://hl7.org/fhir/uv/ips/ValueSet/whoatc-uv-ips"
   * ^binding.additional.documentation = "Type of the substance/product, allergy or intolerance condition."
 [r5-end]
@@ -83,7 +83,7 @@ Description: """This profile introduces essential constraints and extensions for
 
 [r4-init]
   * ^binding.extension[+].extension[+].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[=].valueCode = #preferred
 //   * ^binding.extension[+].extension[+].url = "key"
 //   * ^binding.extension[=].extension[=].valueId = "b32b88b4-89d9-4744-b356-dff033c16f82"
   * ^binding.extension[=].extension[+].url = "valueSet"
@@ -94,7 +94,7 @@ Description: """This profile introduces essential constraints and extensions for
   * ^binding.description = "Type of allergy or intolerance reaction expected to be used in MyHealth@EU"
 [r4-end]
 [r5-init]
-  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.purpose = #preferred
   * ^binding.additional.valueSet = $eHDSIReactionAllergy
   * ^binding.additional.documentation = "Type of reaction (MyHealth@EU)"
 [r5-end]

@@ -36,7 +36,7 @@ Description: """This profile introduces essential constraints and extensions for
   * ^binding.description = "Valueset to describe the actual problem experienced by the patient"
 
   * ^binding.extension[+].extension[0].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[=].valueCode = #preferred
   * ^binding.extension[=].extension[+].url = "valueSet"
   * ^binding.extension[=].extension[=].valueCanonical = "http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder"
   * ^binding.extension[=].extension[+].url = "documentation"
@@ -47,7 +47,7 @@ Description: """This profile introduces essential constraints and extensions for
   * ^binding.description = "Valueset to describe the actual problem experienced by the patient"
 [r4-end]
 [r5-init]
-  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.purpose = #preferred
   * ^binding.additional.valueSet = "http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder"
   * ^binding.additional.documentation = "Additional conformance binding to a problem code when ICD-10 or Orphanet codes are used."
 [r5-end]

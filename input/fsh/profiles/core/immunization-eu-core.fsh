@@ -39,7 +39,7 @@ Description: """This profile introduces essential constraints and extensions for
 * vaccineCode from $vaccines-uv-ips (preferred)
 [r4-init]
   * ^binding.extension[+].extension[0].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[=].valueCode = #preferred
   * ^binding.extension[=].extension[+].url = "valueSet"
   * ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/vaccines-whoatc-uv-ips"
   * ^binding.extension[=].extension[+].url = "documentation"
@@ -50,7 +50,7 @@ Description: """This profile introduces essential constraints and extensions for
   * ^binding.description = "The type of vaccine for particular disease or diseases against which the patient has been immunised, or a code for absent/unknown immunization."
 
   * ^binding.extension[+].extension[0].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[=].valueCode = #preferred
   * ^binding.extension[=].extension[+].url = "valueSet"
   * ^binding.extension[=].extension[=].valueCanonical = "http://terminology.ehdsi.eu/ValueSet/eHDSIVaccine"
   * ^binding.extension[=].extension[+].url = "documentation"
@@ -62,11 +62,11 @@ Description: """This profile introduces essential constraints and extensions for
 [r4-end]
 
 [r5-init]
-  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.purpose = #preferred
   * ^binding.additional.valueSet = "http://hl7.org/fhir/uv/ips/ValueSet/vaccines-whoatc-uv-ips"
   * ^binding.additional.documentation = "Additional conformance binding to a vaccines value set from the WHO ATC code system for use in specific jurisdictional or other contexts where use of the ATC terminology is preferred."
 
-  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.purpose = #preferred
   * ^binding.additional.valueSet = "http://terminology.ehdsi.eu/ValueSet/eHDSIVaccine"
   * ^binding.additional.documentation = "Additional conformance binding to the cross-border vaccines value set."
 [r5-end]
@@ -101,7 +101,7 @@ Description: """This profile introduces essential constraints and extensions for
 * protocolApplied.targetDisease
 [r4-init]
   * ^binding.extension[+].extension[0].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[=].valueCode = #preferred
   * ^binding.extension[=].extension[+].url = "valueSet"
   * ^binding.extension[=].extension[=].valueCanonical = "http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder"
   * ^binding.extension[=].extension[+].url = "documentation"
@@ -115,7 +115,7 @@ Description: """This profile introduces essential constraints and extensions for
   * seriesDoses[x] ^short = "Number of doses"
 [r4-end]
 [r5-init]
-  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.purpose = #preferred
   * ^binding.additional.valueSet = "http://terminology.ehdsi.eu/ValueSet/eHDSIIllnessandDisorder"
   * ^binding.additional.documentation = "Additional conformance binding to a diseases value set for use in specific jurisdictional or for cross-border settings."
 * protocolApplied.doseNumber ^short = "Dose Number"
@@ -137,7 +137,7 @@ Description: """This profile defines how to represent Immunization Recommandatio
 * recommendation
   * vaccineCode from http://hl7.org/fhir/uv/ips/ValueSet/vaccines-uv-ips (preferred)
   * vaccineCode ^binding.extension[+].extension[0].url = "purpose"
-  * vaccineCode ^binding.extension[=].extension[=].valueCode = #candidate
+  * vaccineCode ^binding.extension[=].extension[=].valueCode = #preferred
   * vaccineCode ^binding.extension[=].extension[+].url = "valueSet"
   * vaccineCode ^binding.extension[=].extension[=].valueCanonical = "http://hl7.org/fhir/uv/ips/ValueSet/vaccines-whoatc-uv-ips"
   * vaccineCode ^binding.extension[=].extension[+].url = "documentation"

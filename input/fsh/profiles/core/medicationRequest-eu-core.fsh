@@ -49,7 +49,7 @@ Description: """This profile introduces essential constraints and extensions for
 * reasonCode ^short = "Reason or indication for this prescription"
   * ^binding.extension[0].url = "http://hl7.org/fhir/tools/StructureDefinition/additional-binding"
   * ^binding.extension[0].extension[0].url = "purpose"
-  * ^binding.extension[=].extension[=].valueCode = #candidate
+  * ^binding.extension[=].extension[=].valueCode = #preferred
   * ^binding.extension[=].extension[+].url = "valueSet"
   * ^binding.extension[=].extension[=].valueCanonical = $eHDSIIllnessandDisorder
   * ^binding.extension[=].extension[+].url = "documentation"
@@ -70,7 +70,7 @@ Description: """This profile introduces essential constraints and extensions for
 * medication only CodeableReference(MedicationEuCore)
 * effectiveDosePeriod ^short = "Period over which the medication should be taken."
 * reason ^short = "Reason or indication for this prescription"
-  * ^binding.additional.purpose = #candidate
+  * ^binding.additional.purpose = #preferred
   * ^binding.additional.valueSet = $eHDSIIllnessandDisorder
   * ^binding.additional.documentation = """MyHealth@EU crossborder value set for diagnoses. Based on WHO ICD 10.""" 
 [r5-end]
