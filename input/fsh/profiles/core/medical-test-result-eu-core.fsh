@@ -51,7 +51,7 @@ Description: """This profile introduces essential constraints and extensions for
 * category[laboratory] = http://terminology.hl7.org/CodeSystem/observation-category#laboratory
 * category[vital-signs] = http://terminology.hl7.org/CodeSystem/observation-category#vital-signs */
 
-* code from LaboratoryResultStandardEuVs (preferred)
+* code from MedicalTestResultCodeEuVs (example)
   * ^requirements = "EHDSObservation.code"
 * subject 1.. 
 * subject only Reference(PatientEuCore)
@@ -106,7 +106,7 @@ Description: """This profile introduces essential constraints and extensions for
   * ^requirements = "EHDSObservation.derivedFrom[x]"
 * component
   * ^requirements = "EHDSObservation.component"
-  * code from LaboratoryResultStandardEuVs (preferred)
+  * code from MedicalTestResultCodeEuVs (example)
     * ^requirements = "EHDSObservation.component.code"
 //TODO: datatypes in xt-ehr model only valueString, valueQuantity, valueRange, valueCodeableConcept
   * value[x]
