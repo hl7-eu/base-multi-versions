@@ -25,7 +25,8 @@ Description: """This profile introduces essential constraints and extensions for
 * extension[value-r5]
   * value[x] only Attachment
   * ^short = "only for Diagrams or Pictures"
-  * ^description = "When the result is a Diagram or Picture (Microbiology), then the Attachment data type should be used. In FHIR R4 this can be done by preadopting the R5 Observation.value[x] element using the cross-version extension."
+  * ^definition = "When the result is a Diagram or Picture (Microbiology), then the Attachment data type should be used. In FHIR R4 this can be done by preadopting the R5 Observation.value[x] element using the cross-version extension."
+
 
 
 
@@ -107,11 +108,13 @@ Description: """This profile introduces essential constraints and extensions for
   * ^requirements = "EHDSObservation.derivedFrom[x]"
 * component
   * ^requirements = "EHDSObservation.component"
+  [r4-init]
   * extension contains $observation-value-r5 named value-r5 0..1
   * extension[value-r5]
     * value[x] only Attachment
     * ^short = "only for Diagrams or Pictures"
-    * ^description = "When the result is a Diagram or Picture (Microbiology), then the Attachment data type should be used. In FHIR R4 this can be done by preadopting the R5 Observation.value[x] element using the cross-version extension."
+    * ^definition = "When the result is a Diagram or Picture (Microbiology), then the Attachment data type should be used. In FHIR R4 this can be done by preadopting the R5 Observation.value[x] element using the cross-version extension."
+  [r4-end]
   * code from MedicalTestResultCodeEuVs (example)
     * ^requirements = "EHDSObservation.component.code"
 //TODO: datatypes in xt-ehr model only valueString, valueQuantity, valueRange, valueCodeableConcept
