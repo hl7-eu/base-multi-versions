@@ -15,17 +15,18 @@ Description: """This profile introduces essential constraints and extensions for
 * extension contains 
     $observation-bodyStructure-r5 named bodyStructure 0..1 and
     $observation-triggeredBy-r5 named triggeredBy 0..* 
-    // and $observation-value-r5 named value-r5 0..1
+    and $observation-value-r5 named value-r5 0..1
 
 * extension[bodyStructure]
   * ^requirements = "EHDSObservation.anatomicLocation"
 * extension[triggeredBy].extension[observation].valueReference only Reference(MedicalTestResultEuCore)
   * ^requirements = "EHDSObservation.triggeredBy[x]"
-/* temporarly removed to fix extensions validation errors 
+
 * extension[value-r5]
   * value[x] only Attachment
-  * ^short = "only for result of type Attachment"
-*/
+  * ^short = "only for Diagrams or Pictures"
+  * ^description = "When the result is a Diagram or Picture (Microbiology), then the Attachment data type should be used. In FHIR R4 this can be done by preadopting the R5 Observation.value[x] element using the cross-version extension."
+
 
 
 [r4-end]
@@ -106,6 +107,11 @@ Description: """This profile introduces essential constraints and extensions for
   * ^requirements = "EHDSObservation.derivedFrom[x]"
 * component
   * ^requirements = "EHDSObservation.component"
+  * extension contains $observation-value-r5 named value-r5 0..1
+  * extension[value-r5]
+    * value[x] only Attachment
+    * ^short = "only for Diagrams or Pictures"
+    * ^description = "When the result is a Diagram or Picture (Microbiology), then the Attachment data type should be used. In FHIR R4 this can be done by preadopting the R5 Observation.value[x] element using the cross-version extension."
   * code from MedicalTestResultCodeEuVs (example)
     * ^requirements = "EHDSObservation.component.code"
 //TODO: datatypes in xt-ehr model only valueString, valueQuantity, valueRange, valueCodeableConcept
