@@ -42,7 +42,7 @@ Description: """This profile introduces essential constraints and extensions for
 */
 [r5-end]
 * dosage ^short = "Details of how medication is/was taken or should be taken."
-  * route //copy the additional bindign from the ips
+  * route //copy the additional binding from the ips
 * effectivePeriod ^short = "Period when the medication is/was or should be used."
 [r4-init]
 * medication[x] only CodeableConcept or Reference(MedicationEuCore)

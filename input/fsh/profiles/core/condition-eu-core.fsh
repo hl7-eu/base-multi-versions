@@ -6,7 +6,7 @@ Description: """This profile introduces essential constraints and extensions for
 
 // * insert ImposeProfile ( $Condition-uv-ips, 0 )  // Check if this is appropriate (see MS support)
 
-// follow the same apporach of lab for collection or add laterality to the bodySite ?
+// follow the same approach of lab for collection or add laterality to the bodySite ?
 
 * insert SetFmmandStatusRule (1, draft)
 
@@ -14,7 +14,7 @@ Description: """This profile introduces essential constraints and extensions for
 * extension[assertedDate].valueDateTime ^short = "Date and time of the diagnosis assertion"
 
 * extension contains $artifact-relatedArtifact named relatedArtifact 0..*
-* extension[relatedArtifact] // reference to an external documet (e.g. a guideline for this condition)
+* extension[relatedArtifact] // reference to an external document (e.g. a guideline for this condition)
 
 * category ^short = "Category" // to be updated
 
