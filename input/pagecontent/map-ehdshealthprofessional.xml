@@ -130,13 +130,6 @@
             <td>telecom <span style="color:#2e7d32;font-weight:600;">〔R4〕</span><br></br>contact.telecom <span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             <td>If they are Contact details that are specific to the role/location/service.</td>
           </tr>
-<!--           <tr>
-            <td>telecom</td>
-            <td>source-is-broader-than-target</td>
-            <td>PractitionerRole</td>
-            <td>contact.telecom <span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
-            <td>R4 commonly telecom; R5 may surface contact.telecom.</td>
-          </tr> -->
           <tr>
             <td>telecom</td>
             <td>source-is-broader-than-target</td>
