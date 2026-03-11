@@ -52,10 +52,10 @@
           <strong>Target FHIR profiles:</strong>
           <a href="StructureDefinition-medication-eu-core.html">
         MedicationEuCore
-          </a>,
+          </a><!-- ,
           <a href="StructureDefinition-organization-eu-core.html">
         OrganizationEuCore
-          </a>
+          </a> -->
         </li>
       </ul>
     </div>
