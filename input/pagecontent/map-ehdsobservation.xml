@@ -61,8 +61,8 @@
     <p></p>
 
     <div class="table-wrap">
-      <table summary="EHDSObservation → Observation">
-        <caption>EHDSObservation → Observation</caption>
+      <table summary="EHDSObservation → MedicalTestResultEuCore">
+        <caption>EHDSObservation → MedicalTestResultEuCore</caption>
         <thead>
           <tr>
             <th colspan="1" class="src-head">EHDSObservation (Logical Model)</th>

@@ -2,7 +2,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>EHDSHealthProfessional → PractitionerRole</title>
+    <title>EHDSHealthProfessional → PractitionerRoleEuCore</title>
 
   </head>
 
@@ -28,7 +28,7 @@
       </div>
     </div>
     
-    <h3>EHDSHealthProfessional → PractitionerRole</h3><a>  </a>
+    <h3>EHDSHealthProfessional → PractitionerRoleEuCore</h3><a>  </a>
 
     <p></p>
     <p>
@@ -68,7 +68,7 @@
           <tr>
             <th colspan="1" class="src-head">EHDSHealthProfessional (Logical Model)</th>
             <th class="relhead">Relationship</th>
-            <th colspan="3" class="tgt-head">PractitionerRole, Practitioner</th>
+            <th colspan="3" class="tgt-head">PractitionerRoleEuCore</th>
           </tr>
           <tr>
             <th class="src-sub">Element</th>

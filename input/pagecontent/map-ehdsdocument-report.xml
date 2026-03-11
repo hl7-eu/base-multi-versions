@@ -2,7 +2,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>EHDSDocument ↔ DiagnosticReport</title>
+    <title>EHDSDocument ↔ DiagnosticReportEuCore</title>
 
   </head>
 
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <h3>EHDSDocument ↔ DiagnosticReport</h3>
+    <h3>EHDSDocument ↔ DiagnosticReportEuCore</h3>
     <a> </a>
 
     <p></p>
@@ -60,13 +60,13 @@
     <p></p>
 
     <div class="table-wrap">
-      <table summary="EHDSDocument ↔ DiagnosticReport">
-        <caption>EHDSDocument ↔ DiagnosticReport</caption>
+      <table summary="EHDSDocument ↔ DiagnosticReportEuCore">
+        <caption>EHDSDocument ↔ DiagnosticReportEuCore</caption>
         <thead>
           <tr>
             <th colspan="1" class="src-head">EHDSDocument (Logical Model)</th>
             <th class="relhead">Relationship</th>
-            <th colspan="3" class="tgt-head">DiagnosticReport</th>
+            <th colspan="3" class="tgt-head">DiagnosticReportEuCore</th>
           </tr>
           <tr>
             <th class="src-sub">Element</th>

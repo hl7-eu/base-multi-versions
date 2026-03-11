@@ -2,7 +2,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>EHDSImmunisation → Immunization</title>
+    <title>EHDSImmunisation → ImmunizationEuCore</title>
 
   </head>
 
@@ -28,7 +28,7 @@
       </div>
     </div>
 
-    <h3>EHDSImmunisation → Immunization</h3>
+    <h3>EHDSImmunisation → ImmunizationEuCore</h3>
     <a> </a>
 
     <p></p>
@@ -60,13 +60,13 @@
     <p></p>
 
     <div class="table-wrap">
-      <table summary="EHDSImmunisation → Immunization">
-        <caption>EHDSImmunisation → Immunization</caption>
+      <table summary="EHDSImmunisation → ImmunizationEuCore">
+        <caption>EHDSImmunisation → ImmunizationEuCore</caption>
         <thead>
           <tr>
             <th colspan="1" class="src-head">EHDSImmunisation (Logical Model)</th>
             <th class="relhead">Relationship</th>
-            <th colspan="3" class="tgt-head">Immunization</th>
+            <th colspan="3" class="tgt-head">ImmunizationEuCore</th>
           </tr>
           <tr>
             <th class="src-sub">Element</th>

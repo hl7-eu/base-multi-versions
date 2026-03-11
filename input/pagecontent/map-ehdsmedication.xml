@@ -2,7 +2,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>EHDSMedication → Medication</title>
+    <title>EHDSMedication → MedicationEuCore</title>
 
   </head>
 
@@ -28,7 +28,7 @@
       </div>
     </div>
     
-    <h3>EHDSMedication → Medication</h3>
+    <h3>EHDSMedication → MedicationEuCore</h3>
     <a> </a>
 
     <p></p>
@@ -64,13 +64,13 @@
     <p>The model supports prescribed/dispensed medication and can represent both generic (virtual) products and branded (real) products.</p>
 
     <div class="table-wrap">
-      <table summary="EHDSMedication → Medication">
-        <caption>EHDSMedication → Medication</caption>
+      <table summary="EHDSMedication → MedicationEuCore">
+        <caption>EHDSMedication → MedicationEuCore</caption>
         <thead>
           <tr>
             <th colspan="1" class="src-head">EHDSMedication (Logical Model)</th>
             <th class="relhead">Relationship</th>
-            <th colspan="3" class="tgt-head">Medication</th>
+            <th colspan="3" class="tgt-head">MedicationEuCore</th>
           </tr>
           <tr>
             <th class="src-sub">Element</th>

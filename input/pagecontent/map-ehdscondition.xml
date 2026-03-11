@@ -2,7 +2,7 @@
 <div xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
-    <title>EHDSCondition → Condition</title>
+    <title>EHDSCondition → ConditionEuCore</title>
 
   </head>
 
@@ -28,7 +28,7 @@
     </div>
 
 
-    <h3>EHDSCondition → Condition</h3>
+    <h3>EHDSCondition → ConditionEuCore</h3>
     <a> </a>
 
     <p></p>
@@ -60,13 +60,13 @@
     <p></p>
 
     <div class="table-wrap">
-      <table summary="EHDSCondition → Condition">
-        <caption>EHDSCondition → Condition</caption>
+      <table summary="EHDSCondition → ConditionEuCore">
+        <caption>EHDSCondition → ConditionEuCore</caption>
         <thead>
           <tr>
             <th colspan="1" class="src-head">EHDSCondition (Logical Model)</th>
             <th class="relhead">Relationship</th>
-            <th colspan="3" class="tgt-head">Condition</th>
+            <th colspan="3" class="tgt-head">ConditionEuCore</th>
           </tr>
           <tr>
             <th class="src-sub">Element</th>
