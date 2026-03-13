@@ -96,7 +96,7 @@
             <td>Condition</td>
             <td>subject</td>
             
-            <td>Reference to Patient (or other subject).</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.identifier</td>
@@ -115,7 +115,7 @@
             <td>Condition</td>
             <td>recorder<span style="color:#2e7d32;font-weight:600;">〔R4〕</span><br></br>participant.actor<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             
-            <td>Condition has no generic "author"; use <code>recorder</code> in R4.<br></br>Condition has no generic "author"; use <code>participant.actor</code> in R5.</td>
+            <td>Condition has no generic "author".</td>
           </tr>
           
           <tr>
@@ -134,8 +134,7 @@
             <td>Condition</td>
             <td>clinicalStatus</td>
             
-            <td>FHIR has a required value set for clinicalStatus; EHDS references HL7 Condition
-              Clinical Status Codes.</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.source</td>
@@ -168,7 +167,7 @@
             <td>Condition</td>
             <td>code</td>
             
-            <td>CodeableConcept. EHDS binds to ICD-10, SNOMED CT, ICD-O, Orphacode.</td>
+            <td></td>
           </tr>
 
           <!-- onsetDate -->
@@ -202,7 +201,7 @@
             <td>Condition</td>
             <td>category</td>
             
-            <td>0..* in both models; EHDS may use additional national/organisational codes.</td>
+            <td></td>
           </tr>
           <!-- resolutionCircumstances -->
           <tr>
@@ -223,7 +222,7 @@
             <td>Condition</td>
             <td>severity</td>
             
-            <td>CodeableConcept; HL7 / SNOMED CT value sets.</td>
+            <td></td>
           </tr>
 
           <!-- bodySite -->
@@ -267,7 +266,7 @@
             <td>Condition</td>
             <td>verificationStatus</td>
             
-            <td>Both EHDS and FHIR refer to HL7 Condition Verification Status.</td>
+            <td></td>
           </tr>
 
           <!-- specialistContact -->

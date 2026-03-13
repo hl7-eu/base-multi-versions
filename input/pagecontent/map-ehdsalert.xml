@@ -96,7 +96,7 @@
             <td>equivalent</td>
             <td>Flag</td><td>subject</td>
             
-            <td>Reference to Patient (or other subject).</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.identifier</td>
@@ -129,7 +129,7 @@
             <td>equivalent</td>
             <td>Flag</td><td>status</td>
             
-            <td>Map using the EHDS to HL7 Flag-status value set alignment.</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.source</td>
@@ -179,7 +179,7 @@
             <td>equivalent</td>
             <td>Flag</td><td>code</td>
             
-            <td>Often SNOMED CT or local code. Should have display.</td>
+            <td></td>
           </tr>
           <tr>
             <td>period</td>
@@ -187,7 +187,7 @@
             <td>equivalent</td>
             <td>Flag</td><td>period</td>
             
-            <td>Map start/end 1:1.</td>
+            <td></td>
           </tr>
           
           <tr>

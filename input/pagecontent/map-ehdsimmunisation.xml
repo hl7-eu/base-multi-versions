@@ -96,7 +96,7 @@
             <td>Immunization</td>
             <td>patient</td>
             
-            <td>Reference to Patient.</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.identifier</td>
@@ -125,7 +125,7 @@
             <td>Immunization</td>
             <td></td>
             
-            <td>No direct native Flag element for authoring timestamp.</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.status</td>
@@ -174,7 +174,7 @@
             <td>Immunization</td>
             <td>vaccineCode</td>
             
-            <td>CodeableConcept bound to the relevant vaccine type value set.</td>
+            <td></td>
           </tr>
           <tr>
             <td>administeredProduct</td>
@@ -183,7 +183,7 @@
             <td>Immunization</td>
             <td>extension:administeredProduct <span style="color:#2e7d32;font-weight:600;">〔R4〕</span><br></br>administeredProduct <span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             
-            <td>Use the standard extension in R4.<br></br>Reference to <code>Medication</code>.</td>
+            <td></td>
           </tr>
           
           <tr>
@@ -203,7 +203,7 @@
             <td>Immunization</td>
             <td>performer:administeringCentreOrHp.actor</td>
             
-            <td>actor of type PractitionerRole or Practitioner.</td>
+            <td></td>
           </tr>
           <tr>
             <td>administeringCentre</td>
@@ -212,7 +212,7 @@
             <td>Immunization</td>
             <td>performer:administeringCentreOrHp.actor</td>
             
-            <td>actor of type PractitionerRole or Practitioner.</td>
+            <td></td>
           </tr>
           <tr>
             <td>note</td>

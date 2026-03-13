@@ -96,7 +96,7 @@
             <td>Composition</td>
             <td>subject</td>
             
-            <td>Reference to Patient.</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.identifier</td>
@@ -123,7 +123,7 @@
             <td>Composition</td>
             <td>author</td>
             
-            <td>Reference to Practitioner / PractitionerRole / Organization / Device.</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.date</td>
@@ -195,7 +195,7 @@
             <td>Composition</td>
             <td>extension:version<span style="color:#2e7d32;font-weight:600;">〔R4〕</span><br></br>version<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
             
-            <td>Use Composition.version extension (pre-adopt R5 extension).</td>
+            <td></td>
           </tr>
           
           <tr>
@@ -301,4 +301,3 @@
     </p>
   </body>
 </div>
-

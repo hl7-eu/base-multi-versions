@@ -134,8 +134,7 @@
             <td>Observation</td>
             <td>status</td>
             
-            <td>EHDS uses CodeableConcept; Observation.status is a required code. Align to HL7
-              ObservationStatus.</td>
+            <td></td>
           </tr>
           <tr>
             <td>header.source</td>
@@ -228,7 +227,7 @@
             <td>Observation</td>
             <td>performer</td>
             
-            <td>Supports Practitioner, PractitionerRole, Patient, RelatedPerson.</td>
+            <td></td>
           </tr>
           <tr>
             <td>bodySite</td>
