@@ -5,9 +5,9 @@ Description: "Example of a BodyStructure resource conforming to the BodyStructur
 * id = "example-body-structure-eu"
 
 [r4-init]
-* extension[laterality].valueCodeableConcept = $sct#7771000	"Left"
-* location = $sct#8205005 "Wrist"
-* locationQualifier = $sct#351726001 "Below"
+* extension[includedStructure].extension[structure].valueCodeableConcept = $sct#8205005 "Wrist"
+* extension[includedStructure].extension[laterality].valueCodeableConcept = $sct#7771000 "Left"
+* extension[includedStructure].extension[qualifier].valueCodeableConcept = $sct#351726001 "Below"
 [r4-end]
 [r5-init]
 * includedStructure
