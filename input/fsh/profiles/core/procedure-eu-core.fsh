@@ -93,4 +93,5 @@ Description: """This profile introduces essential constraints and extensions for
   * extension[bodySite].valueReference only Reference(BodyStructureEuCore)  
 
   //* extension contains LateralityQualifier named laterality 0..1
+* bodySite obeys eu-bodysite-1
 * note ^short = "Additional information about the procedure."
