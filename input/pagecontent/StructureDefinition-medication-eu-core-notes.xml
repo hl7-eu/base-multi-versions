@@ -4,7 +4,7 @@
 
 	<div xmlns="http://www.w3.org/1999/xhtml">
 
-		<h3>Characteristics Extension</h3>
+		<h3>Characteristics Extension</h3><a>   </a>
 
 		<p> The <b>characteristic extension</b> is a loosely defined key–value pair that allows
 			implementations to add any other information about the medicinal product. Such
@@ -19,7 +19,7 @@
 			dictionaries to communicate this type of data when necessary. Other elements in detailed
 			product descriptions may also be conveyed using this extension. </p>
 
-		<h3>Strength Representation with <code>basisOfStrengthSubstance</code> Extension</h3>
+		<h3>Strength Representation with <code>basisOfStrengthSubstance</code> Extension</h3><a>   </a>
 
 		<p> The <code>basisOfStrengthSubstance</code> extension is used when the substance listed as
 			the ingredient differs from the substance on which the strength is expressed. </p>
@@ -106,7 +106,7 @@
 			be derived from the ISO IDMP representation.
 		</p>
 
-		<h3>Medicinal Product Name</h3>
+		<h3>Medicinal Product Name</h3><a>   </a>
 
 		<p> The <code>Medication</code> resource does not include an explicit element for the
 			medicinal product name. In countries where medication information is distributed as a
@@ -124,7 +124,7 @@
 			medicinal product name. National implementations are not required to use this extension
 			when their functional requirements are covered by the <code>.code</code> element. </p>
 
-		<h3>Identifier vs Code</h3>
+		<h3>Identifier vs Code</h3><a>   </a>
 
 		<p> In case of medications, the line between <code>.identifier</code> and <code>.code</code>
 			is not always clear, and the practice of using these elements differs between countries. </p>
@@ -136,7 +136,7 @@
 			system of the identifier or the producer of the data to populate additional descriptive
 			elements describing the product. </p>
 
-		<h3>Code vs Classification (e.g. ATC)</h3>
+		<h3>Code vs Classification (e.g. ATC)</h3><a>   </a>
 
 		<p> The <code>Medication.classification</code> extension was introduced after reviewing how
 			different countries implement medication classifications. Some implementations include
@@ -162,7 +162,7 @@
 			ATC is not recommended for ingredient representation, as the code system lacks the
 			required granularity. </p>
 
-		<h3>Additional Information and Examples</h3>
+		<h3>Additional Information and Examples</h3><a>   </a>
 
 		<p>
 			Additional information and example instances can be found in the
