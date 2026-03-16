@@ -8,12 +8,10 @@ Description: """This profile introduces essential constraints and extensions for
 * identifier ^short = "Body structure identifier"
 * text ^short = "Textual description of the body structure"
 [r4-init]
-* extension contains $bodyStructure-includedStructure-r5 named includedStructure 0..*
-* extension[includedStructure].extension[laterality].valueCodeableConcept from SiteLateralityEuVs (preferred)
-* extension[includedStructure].extension[structure].valueCodeableConcept from http://hl7.org/fhir/ValueSet/body-site (preferred)
-* extension[includedStructure].extension[qualifier].valueCodeableConcept from SiteQualifierEuVs (preferred)
-* location 0..0
-* locationQualifier 0..0
+* extension contains $bodyStructure-laterality-r5 named laterality 0..1
+* extension[laterality].valueCodeableConcept from SiteLateralityEuVs (preferred)
+* location from http://hl7.org/fhir/ValueSet/body-site (preferred)
+* locationQualifier from SiteQualifierEuVs (preferred)
 [r4-end]
 [r5-init]
 * includedStructure
