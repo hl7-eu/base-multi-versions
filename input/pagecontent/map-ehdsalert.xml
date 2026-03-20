@@ -190,7 +190,7 @@
             <td></td>
           </tr>
           
-          <tr>
+          <tr class="highlight-yellow">
             <td>sourceReference</td>
             
             <td>equivalent</td>
