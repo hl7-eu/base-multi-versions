@@ -152,16 +152,16 @@ The models are expected to continue evolving, with updates incorporated into thi
             <td>source-is-broader-than-target</td>
             <td>Flag</td><td>extensions:note.valueAnnotation.text</td>
             
-            <td class="highlight-yellow">The mapping applies if the description represents additional information collected about the alert.</td>
+            <td>The mapping applies if the description represents additional information collected about the alert.<br></br><code>code.text</code> should be used if it represents the textual rendering of coded content, or textual description of the alert.</td>
           </tr>
-          <tr>
+<!--           <tr>
             <td>description</td>
             
             <td>source-is-broader-than-target</td>
             <td>Flag</td><td>code.text</td>
             
             <td class="highlight-yellow"><code>code.text</code> can also be used for textual rendering of coded content, or textual description of the alert.</td>
-          </tr>
+          </tr> -->
           <tr>
             <td>priority</td>
             
