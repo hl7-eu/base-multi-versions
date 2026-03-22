@@ -246,7 +246,7 @@ The models are expected to continue evolving, with updates incorporated into thi
             <td>Composition</td>
             <td>category</td>
             
-            <td>If it is interpreted as a classification of the document. If instead it represents the type of event that occurred, event.code for <span style="color:#2e7d32;font-weight:600;">〔R4〕</span> and event.detail.concept for<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
+            <td>The mapping proposed reflects a possible interpretation of this element as classification of the document; DocumentReference.category should be used if used for filtering document searches. If instead it represents the type of event that occurred, event.code for <span style="color:#2e7d32;font-weight:600;">〔R4〕</span> and event.detail.concept for<span style="color:#2e7d32;font-weight:600;">〔R5〕</span></td>
           </tr>
 
           <tr>
