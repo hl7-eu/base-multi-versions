@@ -6,7 +6,7 @@ Title:    "MedicationStatement (EU core)"
 Description: """This profile introduces essential constraints and extensions for the MedicationStatement resource that apply across multiple use cases."""
 //-------------------------------------------------------------------------------------------
 
-* insert SetFmmandStatusRule (1, draft)
+* insert SetFmmandStatusRule (2, trial-use)
 
 * derivedFrom ^short = "The reference to the source of the statement"
 * language ^short = "Language of the statement"

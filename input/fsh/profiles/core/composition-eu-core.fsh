@@ -7,7 +7,7 @@ Description: """This profile introduces essential constraints and extensions for
 
 //-------------------------------------------------------------------------------------------
 
-* insert SetFmmandStatusRule (1, draft)
+* insert SetFmmandStatusRule (2, trial-use)
 * ^experimental = false
 * ^purpose = "This profile constrains the Composition resource for the purpose of this guide."
 

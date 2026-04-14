@@ -7,7 +7,7 @@ Description: """This profile introduces essential constraints and extensions for
 
 // * insert ImposeProfile ( $Procedure-uv-ips, 0 )  // Check if this is appropriate (see  support)
 
-* insert SetFmmandStatusRule (1, draft)
+* insert SetFmmandStatusRule (2, trial-use)
 [r4-init]
 * asserter ^short = "The person or organization who asserts the procedure"
 [r4-end]

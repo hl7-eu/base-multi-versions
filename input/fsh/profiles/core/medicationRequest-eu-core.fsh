@@ -6,7 +6,7 @@ Title:    "MedicationRequest (EU core)"
 Description: """This profile introduces essential constraints and extensions for the MedicationRequest resource that apply across multiple use cases."""
 //-------------------------------------------------------------------------------------------
 
-* insert SetFmmandStatusRule (1, draft)
+* insert SetFmmandStatusRule (2, trial-use)
 
 * category ^short = "Category of the medication request"
 * groupIdentifier ^short = "Group identifier"

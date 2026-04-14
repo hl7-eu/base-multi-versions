@@ -8,7 +8,7 @@ Description: """This profile introduces essential constraints and extensions for
 
 // follow the same approach of lab for collection or add laterality to the bodySite ?
 
-* insert SetFmmandStatusRule (1, draft)
+* insert SetFmmandStatusRule (2, trial-use)
 
 * extension contains $condition-assertedDate named assertedDate 0..1
 * extension[assertedDate].valueDateTime ^short = "Date and time of the diagnosis assertion"
