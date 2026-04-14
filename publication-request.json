@@ -13,6 +13,6 @@
   "descmd" : "This publication represents a new STU release (version 2.0.0) of the HL7 Europe Base and Core FHIR IG",
   "status" : "ballot",
   "sequence" : "Release",
-  "mode": "release",
+  "mode": "milestone",
   "changes" : "changes.html"
 }
