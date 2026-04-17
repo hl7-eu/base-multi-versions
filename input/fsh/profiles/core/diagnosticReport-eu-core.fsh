@@ -36,10 +36,14 @@ Description: """This profile introduces essential constraints and extensions for
   * ^short = "Status of the Report"
   * ^comment = "DiagnosticReport.status and Composition.status shall be aligned"
 
+[r4-init]
 * extension contains http://hl7.org/fhir/5.0/StructureDefinition/extension-DiagnosticReport.note named note 0..*
 * extension[note].valueAnnotation.extension contains $annotation-type named annotation-type 0..*
 * extension[note].valueAnnotation.extension[annotation-type].valueCodeableConcept ^short = "Type of note"
-
+[r4-end]
+[r5-init]
+* note ^short = "Note about the report"
+[r5-end]
 
 /* See FHIR-55541
 * category insert SliceElement( #value, $this )
