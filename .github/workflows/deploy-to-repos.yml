@@ -23,23 +23,10 @@ jobs:
       - name: Install Sushi
         run: sudo npm install -g fsh-sushi
 
-      - name: Preprocess
+      - name: Preprocess and validate R4 IG
         run: |
           chmod u+x *.sh
-          ./_preprocessMultiVersion.sh
-
-      - name: Update IG publisher
-        working-directory: ./igs/imaging-r4
-        run: |
-          pwd
-          chmod +x ./_updatePublisher.sh
-          ./_updatePublisher.sh -y
-      
-      - name: Validate R4 IG
-        working-directory: ./igs/imaging-r4
-        run: |
-          pwd
-          ./_genonce.sh
+          ./_preProcessAndCheckAll.sh 4.0.1
 
   validate-r5:
     runs-on: ubuntu-latest
@@ -56,23 +43,10 @@ jobs:
       - name: Install Sushi
         run: sudo npm install -g fsh-sushi
 
-      - name: Preprocess
+      - name: Preprocess and validate R5 IG
         run: |
           chmod u+x *.sh
-          ./_preprocessMultiVersion.sh
-
-      - name: Update IG publisher
-        working-directory: ./igs/imaging-r5
-        run: |
-          pwd
-          chmod +x ./_updatePublisher.sh
-          ./_updatePublisher.sh -y
-      
-      - name: Validate R5 IG
-        working-directory: ./igs/imaging-r5
-        run: |
-          pwd
-          ./_genonce.sh
+          ./_preProcessAndCheckAll.sh 5.0.0
 
   # Deployment jobs only run if validation passes
   deploy-r4:

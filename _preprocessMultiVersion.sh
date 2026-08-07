@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Optional CLI usage:
 #   ./_preprocessMultiVersion.sh           -> build both 4.0.1 and 5.0.0
 #   ./_preprocessMultiVersion.sh 4.0.1     -> build only 4.0.1
@@ -15,6 +17,13 @@ fi
 
 ig_base="base"
 
+# Warm the liquidjs package into the npx cache once, serially, before the
+# parallel processing loop below. On a cold cache (e.g. CI), multiple concurrent
+# `npx --yes liquidjs` calls race to install the package and can produce empty
+# output.
+echo "Ensuring liquidjs is available (warming npx cache)"
+npx --yes liquidjs --help >/dev/null 2>&1 || true
+
 for version in "${versions[@]}"; do
     if [ "$version" = "4.0.1" ]; then
         context_version="R4"
@@ -24,33 +33,46 @@ for version in "${versions[@]}"; do
         build_dir="igs/${ig_base}-r5"
     fi
 
+    mkdir -p "$build_dir"
+
     echo remove all files from $build_dir
     # rm -Rf $build_dir/*
     echo Setting read-only permissions on $build_dir
-    chmod -R a+w $build_dir
-    find $build_dir -maxdepth 1 -type f -exec rm -f {} +
-    rm -Rf $build_dir/input
-    rm -Rf $build_dir/output
-    rm -Rf $build_dir/ig-template
+    chmod -R a+w "$build_dir"
+    find "$build_dir" -maxdepth 1 -type f -exec rm -f {} +
+    rm -Rf "$build_dir/input"
+    rm -Rf "$build_dir/output"
+    rm -Rf "$build_dir/ig-template"
     
     echo copy all files to  $build_dir
-    find ig-src/ -maxdepth 1 -type f -exec cp {} $build_dir \;
-    cp -R ig-src/input $build_dir 
-    cp -R ig-src/ig-template $build_dir 
+    find ig-src/ -maxdepth 1 -type f -exec cp {} "$build_dir" \;
+    cp -R ig-src/input "$build_dir"
+    cp -R ig-src/ig-template "$build_dir"
     
     # Process all liquid files
     echo Processing liquid files
-    find $build_dir -type f -name "*.liquid.*" | while read file; do
+    pids=()
+    while IFS= read -r -d '' file; do
         if [ -f "$file" ]; then
-            file_path=${file}
-            clean_file_path=${file_path/\.liquid\./\.}
-            echo "- $file_path --> $clean_file_path"
+            (
+                file_path=${file}
+                clean_file_path=${file_path/\.liquid\./\.}
+                echo "- $file_path --> $clean_file_path"
 
-            # Process liquid template and inline version tags
-            content=$(npx --yes liquidjs -t @"$file" --context @"context-${context_version}.json")
-            echo "$content" > "$clean_file_path"
-            rm -f $file
+                # Process liquid template and inline version tags
+                if ! content=$(npx --yes liquidjs -t @"$file" --context @"context-${context_version}.json"); then
+                    echo "Failed to process liquid file: $file"
+                    exit 1
+                fi
+                printf '%s\n' "$content" > "$clean_file_path"
+                rm -f "$file"
+            ) &
+            pids+=("$!")
         fi
+    done < <(find "$build_dir" -type f -name "*.liquid.*" -print0)
+
+    for pid in "${pids[@]}"; do
+        wait "$pid"
     done
 
     # # make readonly

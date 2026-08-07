@@ -44,14 +44,8 @@ Make sure the target repositories (`ehdsimaging-r4` and `ehdsimaging-r5`) exist 
 The workflow (`deploy-to-repos.yml`) triggers on any push to any branch and follows this sequence:
 
 ### **Step 1: Validation (Parallel)**
-- **validate-r4**: Validates the R4 IG
-  - Runs preprocessing (`_preprocessMultiVersion.sh`)
-  - Updates IG Publisher
-  - Runs full validation (`_genonce.sh`)
-- **validate-r5**: Validates the R5 IG
-  - Runs preprocessing (`_preprocessMultiVersion.sh`)
-  - Updates IG Publisher
-  - Runs full validation (`_genonce.sh`)
+- **validate-r4**: Validates the R4 IG by running `_preProcessAndCheckAll.sh 4.0.1`, which runs the preprocessing, downloads the IG Publisher and runs the full validation
+- **validate-r5**: Validates the R5 IG by running `_preProcessAndCheckAll.sh 5.0.0`
 
 ### **Step 2: Deployment (Only if validation passes)**
 If both validations succeed:

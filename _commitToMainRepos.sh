@@ -22,8 +22,15 @@ fi
 
 for version in "${versions[@]}"; do
 
-  full_src_dir=${src_dir}imaging-${version}
-  full_tgt_dir=${subrepo_dir}imaging-${version}
+  if [ "$version" = "r4" ]; then
+    full_src_dir="${src_dir}base-r4"
+    full_tgt_dir="${subrepo_dir}base"
+    target_repo="base"
+  else
+    full_src_dir="${src_dir}base-r5"
+    full_tgt_dir="${subrepo_dir}base-r5"
+    target_repo="base-r5"
+  fi
 
   if [ ! -d "$full_src_dir" ]; then
     mkdir -p "$full_src_dir"
@@ -44,8 +51,8 @@ for version in "${versions[@]}"; do
     popd > /dev/null
   else
     echo "Directory $full_tgt_dir is not a git repository."
-    # git clone https://github.com/hl7-eu/imaging-r4 "$subrepo_dir$version"
-    git clone git@github.com:hl7-eu/imaging-$version.git "$full_tgt_dir"
+    # git clone https://github.com/hl7-eu/base "$full_tgt_dir"
+    git clone "git@github.com:hl7-eu/${target_repo}.git" "$full_tgt_dir"
   fi
 
   # Copy contents from igs/r4 to the current directory
@@ -74,7 +81,7 @@ for version in "${versions[@]}"; do
   else
     last_commit_message=$(git log -1 --pretty=%B)
 
-    git commit -m "$last_commit_message" -m "Sync from https://github.com/hl7-eu/imaging for commit $main_repo_commit from $main_repo_url."
+    git commit -m "$last_commit_message" -m "Sync from $main_repo_url for commit $main_repo_commit."
     git push origin "$current_branch"
     echo "Committed and pushed changes in $full_tgt_dir."
   fi

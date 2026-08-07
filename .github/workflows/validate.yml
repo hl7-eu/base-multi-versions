@@ -8,28 +8,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  ig-publisher:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Install Jekyll
-        run: sudo gem install jekyll
-
-      - name: Install Sushi
-        run: sudo npm install -g fsh-sushi
-      
-      - name: Install IG publisher
-        run: |
-          chmod +x ./_updatePublisher.sh
-          ./_updatePublisher.sh -y
-
-      - name: Validate IG
-        run: |
-          chmod +x ./_genonce.sh
-          ./_genonce.sh
-                
   ig-publisher-r4:
     runs-on: ubuntu-latest
 
@@ -42,23 +20,10 @@ jobs:
       - name: Install Sushi
         run: sudo npm install -g fsh-sushi
 
-      - name: Preprocess
+      - name: Preprocess and validate R4 IG
         run: |
           chmod u+x *.sh
-          ./_preprocessMultiVersion.sh
-
-      - name: update IG publisher
-        working-directory: ./igs/imaging-r4
-        run: |
-          pwd
-          chmod +x ./_updatePublisher.sh
-          ./_updatePublisher.sh -y
-      
-      - name: Validate R4 IG
-        working-directory: ./igs/imaging-r4
-        run: |
-          pwd
-          ./_genonce.sh
+          ./_preProcessAndCheckAll.sh 4.0.1
 
 
   ig-publisher-r5:
@@ -73,21 +38,8 @@ jobs:
       - name: Install Sushi
         run: sudo npm install -g fsh-sushi
 
-      - name: Preprocess
+      - name: Preprocess and validate R5 IG
         run: |
           chmod u+x *.sh
-          ./_preprocessMultiVersion.sh
-
-      - name: update IG publisher
-        working-directory: ./igs/imaging-r5
-        run: |
-          pwd
-          chmod +x ./_updatePublisher.sh
-          ./_updatePublisher.sh -y
-      
-      - name: Validate R5 IG
-        working-directory: ./igs/imaging-r5
-        run: |
-          pwd
-          ./_genonce.sh
+          ./_preProcessAndCheckAll.sh 5.0.0
 
