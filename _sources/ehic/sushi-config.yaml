@@ -1,14 +1,14 @@
 # Check the link to the r4 and r5 versions
-[r4-init]
+{% if isR4 %}
 id: hl7.fhir.eu.base
 canonical: http://hl7.eu/fhir/base
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
-[r4-end]
-[r5-init]
+{% endif %}
+{% if isR5 %}
 id: hl7.fhir.eu.base-r5
 canonical: http://hl7.eu/fhir/base-r5
 fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
-[r5-end]
+{% endif %}
 
 title: HL7 Europe Base and Core FHIR IG
 name:  Hl7EuBaseIg
@@ -34,14 +34,14 @@ copyright: >-
 dependencies:
   # hl7.fhir.uv.ips: current
   
-  [r4-init]
+  {% if isR4 %}
   hl7.fhir.uv.ips: 1.1.0
   hl7.fhir.extensions.r5: 4.0.1
   hl7.fhir.eu.extensions.r4: 0.1.1-ballot
-  [r4-end]
-  [r5-init]
+  {% endif %}
+  {% if isR5 %}
   hl7.fhir.eu.extensions.r5: 0.1.1-ballot
-  [r5-end]
+  {% endif %}
   # eu.terminology.ehdsi: 0.1.0
 
 #   hl7.fhir.us.mcode:
@@ -171,19 +171,19 @@ menu:
     Copyright: copyright.html
     Cross-version Analysis: crossversionanalysis.html
   Artifacts: artifacts.html
-  [r4-build-init]
+  {% if false %}
   R5 IG: https://build.fhir.org/ig/hl7-eu/base-r5
-  [r4-build-end]
-  [r5-build-init]
+  {% endif %}
+  {% if false %}
   R4 IG: https://build.fhir.org/ig/hl7-eu/base
-  [r5-build-end]
+  {% endif %}
 
-  [r4-init]
+  {% if isR4 %}
   R5 IG: https://hl7.eu/fhir/base-r5
-  [r4-end]
-  [r5-init]
+  {% endif %}
+  {% if isR5 %}
   R4 IG: https://hl7.eu/fhir/base
-  [r5-end]
+  {% endif %}
 
 
 # ╭───────────────────────────Less Common Implementation Guide Properties──────────────────────────╮
@@ -245,7 +245,7 @@ resources:
 
 
 #------------ Logical Models -------------
-  [r4-init]
+  {% if isR4 %}
   Patient/patient-eu-core-example:
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/patient-eu
   Practitioner/practitioner-eu-core-example:
@@ -254,9 +254,9 @@ resources:
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/practitionerRole-eu
   Organization/organization-eu-core-example :
     exampleCanonical: http://hl7.eu/fhir/base/StructureDefinition/organization-eu
-  [r4-end]
+  {% endif %}
 
-  [r5-init]
+  {% if isR5 %}
   Patient/patient-eu-core-example:
     exampleCanonical: http://hl7.eu/fhir/base-r5/StructureDefinition/patient-eu
   Practitioner/practitioner-eu-core-example:
@@ -265,7 +265,7 @@ resources:
     exampleCanonical: http://hl7.eu/fhir/base-r5/StructureDefinition/practitionerRole-eu
   Organization/organization-eu-core-example :
     exampleCanonical: http://hl7.eu/fhir/base-r5/StructureDefinition/organization-eu
-  [r5-end]
+  {% endif %}
 
 #  StructureDefinition/Subject:
 #    name: A.1.1, A.1.2 - Subject of care
