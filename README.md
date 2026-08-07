@@ -198,7 +198,6 @@ For each FHIR version this will clone the target repository to `subigs/` (or reu
 
 ## Continuous integration
 
-Two GitHub workflows use the same scripts, see [.github/workflows/README.md](.github/workflows/README.md) for details:
+Every push runs [.github/workflows/deploy-to-repos.yml](.github/workflows/deploy-to-repos.yml), which uses the same scripts as a local build — see [.github/workflows/README.md](.github/workflows/README.md) for details. It builds both FHIR versions with `_preProcessAndCheckAll.sh`, one job per version, and only if both succeed it syncs them to the `base` and `base-r5` repositories, into a branch of the same name as the branch that was pushed.
 
-- `validate.yml` — preprocesses and builds both FHIR versions on pull requests and on pushes to `master`.
-- `deploy-to-repos.yml` — validates both versions and, if that succeeds, syncs them to the `base` and `base-r5` repositories.
+Validation is deliberately not split into a second workflow: a pull request from a branch of this repository raises both a `push` and a `pull_request` event, which would build every IG twice.

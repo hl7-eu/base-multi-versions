@@ -41,7 +41,7 @@ Make sure the target repositories (`base` and `base-r5`) exist and the token has
 
 ## How It Works
 
-The workflow (`deploy-to-repos.yml`) triggers on any push to any branch and follows this sequence:
+`deploy-to-repos.yml` is the only workflow of this repository: it triggers on any push to any branch, and can also be started manually. Pushing again to the same branch cancels a run that is still going. It follows this sequence:
 
 ### **Step 1: Validation (Parallel)**
 - **validate-r4**: Validates the R4 IG by running `_preProcessAndCheckAll.sh 4.0.1`, which runs the preprocessing, downloads the IG Publisher and runs the full validation

@@ -6,6 +6,12 @@ on:
       # - '1.0.0-ballot'  # Never run on pushes from this branch
   workflow_dispatch:  # Allow manual triggering
 
+# Pushing again to the same branch cancels a run that is still going, rather
+# than building both IGs twice in parallel.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   # Validation jobs run first
   validate-r4:
