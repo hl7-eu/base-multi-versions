@@ -21,7 +21,7 @@ jobs:
       JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Jekyll
         run: sudo gem install jekyll
@@ -41,7 +41,7 @@ jobs:
       JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install Jekyll
         run: sudo gem install jekyll
@@ -58,11 +58,12 @@ jobs:
   deploy-r4:
     runs-on: ubuntu-latest
     needs: [validate-r4, validate-r5]  # Wait for both validations to pass
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    # Dependabot branches are validated but not published as a preview
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !startsWith(github.ref, 'refs/heads/dependabot/')
     
     steps:
       - name: Checkout source repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0  # Fetch full history for proper branch handling
           token: ${{ secrets.DEPLOY_TOKEN || github.token }}
@@ -142,11 +143,12 @@ jobs:
   deploy-r5:
     runs-on: ubuntu-latest
     needs: [validate-r4, validate-r5]  # Wait for both validations to pass
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    # Dependabot branches are validated but not published as a preview
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && !startsWith(github.ref, 'refs/heads/dependabot/')
     
     steps:
       - name: Checkout source repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0  # Fetch full history for proper branch handling
           token: ${{ secrets.DEPLOY_TOKEN || github.token }}

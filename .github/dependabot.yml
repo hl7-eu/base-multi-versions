@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # The workflow is the only place with external dependencies: the scripts get
+  # the IG publisher and the HL7 build scripts at run time, see
+  # _updateBuildTools.sh
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      actions:
+        patterns:
+          - "*"
