@@ -9,6 +9,11 @@ ig-template/**/*.db
 ig-template/**/*index.json
 publisher.jar
 
+# Written by the IG publisher into the root of the IG: the proposed Jira
+# specification file and the requirements collected from the narrative
+/FHIR-*.xml
+/Requirements-fromNarrative.json
+
 # OS generated files #
 .DS_Store
 .DS_Store?
