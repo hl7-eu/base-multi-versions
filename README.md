@@ -79,7 +79,7 @@ A full build of both versions takes a while. To work on a single FHIR version, p
 
 | Path | Description |
 | --- | --- |
-| `ig-src/` | **The IG sources — this is where all edits are made.** Contains `input/` (FSH files, page content, images), the `ig-template`, and the liquid templates for `sushi-config.yaml`, `ig.ini` and `publication-request.json`. |
+| `ig-src/` | **The IG sources — this is where all edits are made.** Contains `input/` (FSH files, page content, images), the `ig-template`, and the liquid templates for `sushi-config.yaml`, `ig.ini` and `publication-request.json`. Everything the `base` and `base-r5` repositories should contain lives here, including their `.gitignore`, `LICENSE` and `README.liquid.md`. |
 | `context-R4.json`, `context-R5.json` | The variables used to render the liquid templates, one file per FHIR version. |
 | `igs/base-r4/`, `igs/base-r5/` | Generated, version-specific IGs, including the build results in their `output/` directory. Not edited by hand. |
 | `igs/publisher.jar` | The IG publisher, shared by all generated IGs. Downloaded on demand. |

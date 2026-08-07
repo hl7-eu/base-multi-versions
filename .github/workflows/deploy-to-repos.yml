@@ -81,7 +81,7 @@ jobs:
             echo "Add secret DEPLOY_TOKEN with write access to $R4_REPO_URL."
             exit 1
           fi
-          git clone https://$DEPLOY_TOKEN@github.com/$R4_REPO_URL.git r4-repo
+          git clone https://x-access-token:$DEPLOY_TOKEN@github.com/$R4_REPO_URL.git r4-repo
 
       - name: Prepare R4 repository branch
         working-directory: ./r4-repo
@@ -163,7 +163,7 @@ jobs:
             echo "Add secret DEPLOY_TOKEN with write access to $R5_REPO_URL."
             exit 1
           fi
-          git clone https://$DEPLOY_TOKEN@github.com/$R5_REPO_URL.git r5-repo
+          git clone https://x-access-token:$DEPLOY_TOKEN@github.com/$R5_REPO_URL.git r5-repo
 
       - name: Prepare R5 repository branch
         working-directory: ./r5-repo
