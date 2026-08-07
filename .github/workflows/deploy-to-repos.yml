@@ -113,8 +113,10 @@ jobs:
           # Copy base-r4 content to root of target repository
           cp -r ./igs/base-r4/* ./r4-repo/
 
-          # Ensure hidden files are copied too (excluding .git)
-          find ./igs/base-r4 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r4-repo/ \; 2>/dev/null || true
+          # Ensure the hidden files of the top level are copied too, as the copy
+          # above does not include them. Without -maxdepth 1 this collects hidden
+          # files from the whole tree and flattens them into the repository root.
+          find ./igs/base-r4 -maxdepth 1 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r4-repo/ \; 2>/dev/null || true
 
       - name: Commit and push R4 changes
         working-directory: ./r4-repo
@@ -195,8 +197,10 @@ jobs:
           # Copy base-r5 content to root of target repository
           cp -r ./igs/base-r5/* ./r5-repo/
 
-          # Ensure hidden files are copied too (excluding .git)
-          find ./igs/base-r5 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r5-repo/ \; 2>/dev/null || true
+          # Ensure the hidden files of the top level are copied too, as the copy
+          # above does not include them. Without -maxdepth 1 this collects hidden
+          # files from the whole tree and flattens them into the repository root.
+          find ./igs/base-r5 -maxdepth 1 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r5-repo/ \; 2>/dev/null || true
 
       - name: Commit and push R5 changes
         working-directory: ./r5-repo
