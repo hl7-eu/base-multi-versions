@@ -60,16 +60,38 @@ build_ig() {
 	ensure_build_assets_for_ig "$ig_dir" || exit 1
 
 	echo ==================================================================================
-	echo "build $ig_dir using _build.sh"
+	echo "build $ig_dir using _build.sh ${build_args[*]}"
 	(
 		cd "$ig_dir" || exit 1
-		./_build.sh build
+		# The terminology server is passed explicitly instead of using the build
+		# option of _build.sh: that option decides between online and offline with
+		# `ping tx.fhir.org`, which fails wherever ICMP is blocked - CI runners in
+		# particular - and then silently builds with `-tx n/a`, which makes the
+		# publisher fail while rendering value set narratives. An argument that is
+		# not one of its own options is passed straight through to the publisher.
+		./_build.sh "${build_args[@]}"
 	)
+}
+
+# Determine the terminology server to use. curl is used rather than ping, as it
+# reports what actually matters here and works where ICMP is blocked.
+determine_tx_server() {
+	if curl -sSf --max-time 10 -o /dev/null https://tx.fhir.org; then
+		echo "Terminology server tx.fhir.org is available"
+		build_args=(-tx https://tx.fhir.org)
+	else
+		echo "WARNING: tx.fhir.org is not reachable, building without terminology server."
+		echo "         Terminology content will not publish correctly."
+		build_args=(-tx n/a)
+	fi
 }
 
 echo ==================================================================================
 echo Preprocessing - generate FHIR version specific IG
 ./_preprocessMultiVersion.sh "$@"
+
+echo ==================================================================================
+determine_tx_server
 
 for version in "${selected_versions[@]}"; do
 	build_ig "$version"
