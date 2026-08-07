@@ -4,6 +4,7 @@ on:
   push:
     # branches-ignore:
       # - '1.0.0-ballot'  # Never run on pushes from this branch
+  delete:  # Removes the preview a deleted branch left in the target repositories
   workflow_dispatch:  # Allow manual triggering
 
 # Pushing again to the same branch cancels a run that is still going, rather
@@ -17,6 +18,7 @@ jobs:
   validate-r4:
     runs-on: ubuntu-latest
     name: Validate R4 IG
+    if: github.event_name != 'delete'
     env:
       JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
     
@@ -37,6 +39,7 @@ jobs:
   validate-r5:
     runs-on: ubuntu-latest
     name: Validate R5 IG
+    if: github.event_name != 'delete'
     env:
       JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
     
@@ -224,3 +227,41 @@ jobs:
           
           git push origin ${{ github.ref_name }}
           echo "R5 repository updated successfully - auto-ig-builder should trigger"
+
+  # Deleting a branch here removes the preview it left in the target
+  # repositories. This works because the delete event runs the workflow from the
+  # default branch: the branch it reacts to is already gone.
+  remove-previews:
+    runs-on: ubuntu-latest
+    name: Remove branch previews
+    if: github.event_name == 'delete' && github.event.ref_type == 'branch'
+
+    steps:
+      - name: Delete the branch in the target repositories
+        env:
+          GH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          BRANCH: ${{ github.event.ref }}
+          R4_REPO_URL: ${{ vars.R4_REPO_URL || format('{0}/base', github.repository_owner) }}
+          R5_REPO_URL: ${{ vars.R5_REPO_URL || format('{0}/base-r5', github.repository_owner) }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "Error: DEPLOY_TOKEN secret not configured."
+            exit 1
+          fi
+
+          # The guides are published from these branches, they are never a preview
+          case "$BRANCH" in
+            master|main)
+              echo "Refusing to delete $BRANCH in the target repositories"
+              exit 0
+              ;;
+          esac
+
+          for repo in "$R4_REPO_URL" "$R5_REPO_URL"; do
+            if gh api "repos/$repo/git/ref/heads/$BRANCH" >/dev/null 2>&1; then
+              gh api -X DELETE "repos/$repo/git/refs/heads/$BRANCH"
+              echo "Deleted branch $BRANCH in $repo"
+            else
+              echo "No branch $BRANCH in $repo, nothing to do"
+            fi
+          done

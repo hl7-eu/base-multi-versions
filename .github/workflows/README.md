@@ -66,11 +66,15 @@ If both validations succeed:
 
 **If validation fails**: Deployment is skipped and the workflow stops with an error.
 
+### **On deleting a branch**
+- **remove-previews**: deletes the branch of the same name in both target repositories, so that the preview of a branch does not outlive it. `master` and `main` are never deleted, and a branch that does not exist in a target repository is skipped. Deleting a tag does nothing.
+
 ## Branch Handling
 
 - The workflow preserves branch names across repositories
 - If a branch doesn't exist in the target repository, it creates a new one
 - If a branch exists, it updates the existing branch
+- Every branch is deployed, so that each one has a preview build; the exception are `dependabot/**` branches, which are validated but not deployed
 
 ## Security Notes
 
