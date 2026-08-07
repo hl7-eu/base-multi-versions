@@ -74,7 +74,7 @@ jobs:
       - name: Clone R4 target repository
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-          R4_REPO_URL: ${{ vars.R4_REPO_URL || format('{0}/{1}-r4', github.repository_owner, github.event.repository.name) }}
+          R4_REPO_URL: ${{ vars.R4_REPO_URL || format('{0}/base', github.repository_owner) }}
         run: |
           if [ -z "$DEPLOY_TOKEN" ]; then
             echo "Error: DEPLOY_TOKEN secret not configured."
@@ -104,11 +104,11 @@ jobs:
           # Remove all content from target repo except .git
           find ./r4-repo -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
-          # Copy imaging-r4 content to root of target repository
-          cp -r ./igs/imaging-r4/* ./r4-repo/
-          
+          # Copy base-r4 content to root of target repository
+          cp -r ./igs/base-r4/* ./r4-repo/
+
           # Ensure hidden files are copied too (excluding .git)
-          find ./igs/imaging-r4 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r4-repo/ \; 2>/dev/null || true
+          find ./igs/base-r4 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r4-repo/ \; 2>/dev/null || true
 
       - name: Commit and push R4 changes
         working-directory: ./r4-repo
@@ -125,7 +125,7 @@ jobs:
             echo "No content changes, but creating trigger commit for auto-ig-builder"
             git commit -m "Trigger auto-ig-builder - no content changes - source: ${{ github.sha }}"
           else
-            git commit -m "Auto-sync from imaging repository - commit ${{ github.sha }}"
+            git commit -m "Auto-sync from base-multi-versions repository - commit ${{ github.sha }}"
           fi
           
           git push origin ${{ github.ref_name }}
@@ -156,7 +156,7 @@ jobs:
       - name: Clone R5 target repository
         env:
           DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
-          R5_REPO_URL: ${{ vars.R5_REPO_URL || format('{0}/{1}-r5', github.repository_owner, github.event.repository.name) }}
+          R5_REPO_URL: ${{ vars.R5_REPO_URL || format('{0}/base-r5', github.repository_owner) }}
         run: |
           if [ -z "$DEPLOY_TOKEN" ]; then
             echo "Error: DEPLOY_TOKEN secret not configured."
@@ -186,11 +186,11 @@ jobs:
           # Remove all content from target repo except .git
           find ./r5-repo -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
 
-          # Copy imaging-r5 content to root of target repository
-          cp -r ./igs/imaging-r5/* ./r5-repo/
-          
+          # Copy base-r5 content to root of target repository
+          cp -r ./igs/base-r5/* ./r5-repo/
+
           # Ensure hidden files are copied too (excluding .git)
-          find ./igs/imaging-r5 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r5-repo/ \; 2>/dev/null || true
+          find ./igs/base-r5 -name ".*" -not -name ".git" -not -name "." -not -name ".." -exec cp -r {} ./r5-repo/ \; 2>/dev/null || true
 
       - name: Commit and push R5 changes
         working-directory: ./r5-repo
@@ -207,7 +207,7 @@ jobs:
             echo "No content changes, but creating trigger commit for auto-ig-builder"
             git commit -m "Trigger auto-ig-builder - no content changes - source: ${{ github.sha }}"
           else
-            git commit -m "Auto-sync from imaging repository - commit ${{ github.sha }}"
+            git commit -m "Auto-sync from base-multi-versions repository - commit ${{ github.sha }}"
           fi
           
           git push origin ${{ github.ref_name }}

@@ -3,7 +3,7 @@
 This document explains how to configure the automatic validation and deployment workflow that:
 1. Validates R4 and R5 IGs using the FHIR IG Publisher
 2. Only deploys to child repositories if validation passes successfully
-3. Syncs the content of `igs/imaging-r4` and `igs/imaging-r5` folders to separate repositories
+3. Syncs the content of `igs/base-r4` and `igs/base-r5` folders to separate repositories
 
 ## Required Setup
 
@@ -27,17 +27,17 @@ You can optionally configure the following variables to specify custom repositor
 
 #### `R4_REPO_URL`
 - **Type**: Repository Variable
-- **Default**: `oijauregui/ehdsimaging-r4`
+- **Default**: `<owner>/base`, i.e. https://github.com/hl7-eu/base
 - **Description**: The target repository for R4 content in format `owner/repo-name`
 
 #### `R5_REPO_URL`
 - **Type**: Repository Variable
-- **Default**: `oijauregui/ehdsimaging-r5`
+- **Default**: `<owner>/base-r5`, i.e. https://github.com/hl7-eu/base-r5
 - **Description**: The target repository for R5 content in format `owner/repo-name`
 
 ### 3. Target Repository Setup
 
-Make sure the target repositories (`ehdsimaging-r4` and `ehdsimaging-r5`) exist and the token has write access to them.
+Make sure the target repositories (`base` and `base-r5`) exist and the token has write access to them.
 
 ## How It Works
 
@@ -53,14 +53,14 @@ If both validations succeed:
   - Runs preprocessing
   - Clones target R4 repository
   - Creates or switches to the same branch name as the source
-  - Syncs content from `igs/imaging-r4/` to repository root
+  - Syncs content from `igs/base-r4/` to repository root
   - Commits and pushes changes
   - Creates build trigger for auto-ig-builder
 - **deploy-r5**: Deploys to R5 repository
   - Runs preprocessing
   - Clones target R5 repository
   - Creates or switches to the same branch name as the source
-  - Syncs content from `igs/imaging-r5/` to repository root
+  - Syncs content from `igs/base-r5/` to repository root
   - Commits and pushes changes
   - Creates build trigger for auto-ig-builder
 
