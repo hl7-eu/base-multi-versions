@@ -8,9 +8,11 @@ on:
   workflow_dispatch:  # Allow manual triggering
 
 # Pushing again to the same branch cancels a run that is still going, rather
-# than building both IGs twice in parallel.
+# than building both IGs twice in parallel. A delete event reports the default
+# branch as github.ref, so it needs a group of its own: merging a pull request
+# and deleting its branch would otherwise cancel the deploy of the merge.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.event_name == 'delete' && format('delete-{0}', github.event.ref) || github.ref }}
   cancel-in-progress: true
 
 jobs:
