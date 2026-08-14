@@ -11,15 +11,15 @@ Description: "Example of an Italian European Health Insurance Card (Tessera TEAM
 * type = EuV3ActCode#ehic "European Health Insurance Card"
 * beneficiary = Reference(PatientEhicInline)
 * period.end = 2022-01-19
-[r4-init]
+{% if isR4 %}
 // * payor = Reference(Organization/example-rt)
 * payor.display = "SSN-MIN SALUTE - 500001"
-[r4-end]
-[r5-init]
+{% endif %}
+{% if isR5 %}
 * kind = http://hl7.org/fhir/coverage-kind#other
 // * insurer = Reference(Organization/example-rt)
 * insurer.display = "SSN-MIN SALUTE - 500001"
-[r5-end]
+{% endif %}
 
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

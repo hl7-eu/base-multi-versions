@@ -1,11 +1,13 @@
 # Check the link to the r4 and r5 versions
 {% if isR4 %}
 id: hl7.fhir.eu.base
+url: http://hl7.eu/fhir/base/ImplementationGuide/base
 canonical: http://hl7.eu/fhir/base
 fhirVersion: 4.0.1 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 {% endif %}
 {% if isR5 %}
 id: hl7.fhir.eu.base-r5
+url: http://hl7.eu/fhir/base-r5/ImplementationGuide/base-r5
 canonical: http://hl7.eu/fhir/base-r5
 fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 {% endif %}
@@ -13,10 +15,10 @@ fhirVersion: 5.0.0 # https://www.hl7.org/fhir/valueset-FHIR-version.html
 title: HL7 Europe Base and Core FHIR IG
 name:  Hl7EuBaseIg
 description: This guide collects base and core profiles to be used in the European context. It also includes common artifacts, such as the profiles describing the European Health Insurance Card.
-status: draft # draft | active | retired | unknown
-version: 0.1.0-ballotRecon #
+status: active # draft | active | retired | unknown
+version: 2.0.0
 copyrightYear: 2024+
-releaseLabel: ci-build # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
+releaseLabel: trial-use # ci-build | draft | qa-preview | ballot | trial-use | release | update | normative+trial-use
 # license: CC0-1.0 # https://www.hl7.org/fhir/valueset-spdx-license.html
 # https://www.hl7.org/fhir/valueset-jurisdiction.html
 jurisdiction: 	http://unstats.un.org/unsd/methods/m49/m49.htm#150 "Europe" # urn:iso:std:iso:3166#EU
@@ -35,14 +37,22 @@ dependencies:
   # hl7.fhir.uv.ips: current
   
   {% if isR4 %}
-  hl7.fhir.uv.ips: 1.1.0
-  hl7.fhir.extensions.r5: 4.0.1
-  hl7.fhir.eu.extensions.r4: 0.1.1-ballot
+  hl7.fhir.uv.extensions.r4: 5.2.0
+  hl7.fhir.uv.xver-r5.r4: 0.1.0
+  hl7.fhir.eu.extensions.r4:
+    uri: http://hl7.eu/fhir/extensions/ImplementationGuide/hl7.fhir.eu.extensions
+    version: 1.3.0
+  ihe.pharm.mpd.r4: 
+    uri: https://profiles.ihe.net/PHARM/MPD/ImplementationGuide/ihe.pharm.mpd
+    version: 1.0.0-comment-2
   {% endif %}
   {% if isR5 %}
-  hl7.fhir.eu.extensions.r5: 0.1.1-ballot
+  hl7.fhir.eu.extensions.r5:
+    uri: http://hl7.eu/fhir/extensions/ImplementationGuide/hl7.fhir.eu.extensions
+    version: 1.3.0
+  ihe.pharm.mpd: 1.0.0-comment-2
   {% endif %}
-  # eu.terminology.ehdsi: 0.1.0
+ 
 
 #   hl7.fhir.us.mcode:
 #     id: mcode
@@ -77,13 +87,59 @@ pages:
   dependencies.md:
     title: Dependencies
   knownissues.md:
-    title: Known Issues
+    title: Known/Open Issues
   introduction.md:
     title: Introduction
   modelmap.html:
     title: Model Map
   logicalmodels.md:
     title: Logical Models
+  missing-data.md:
+    title: Handling Missing Data
+  changes.md:
+    title: Change Log
+
+
+  # Model Mapping
+  map-ehdsaddress.html:
+     title: EHDSAddress to FHIR Address Mapping
+  map-ehdsbodystructure.html:
+     title: EHDSBodyStructure to FHIR BodyStructure Mapping
+  map-ehdshealthprofessional.html:
+     title: EHDSHealthProfessional to FHIR PractitionerRole, Practitioner Mapping
+  map-ehdsorganisation.html:
+     title: EHDSOrganisation to FHIR Organization Mapping
+  map-ehdslocation.html:
+     title: EHDSLocation to FHIR Location Mapping
+  map-ehdshumanname.html:
+     title: EHDSHumanName to FHIR HumanName Mapping
+  map-ehdspatient.html:
+     title: EHDSPatient to FHIR Patient Mapping
+  map-ehdstelecom.html:
+     title: EHDSTelecom to FHIR ContactPoint Mapping
+  map-ehdsalert.html:
+     title: EHDSAlert to FHIR Flag Mapping
+  map-ehdsallergyintolerance.html:
+     title: EHDSAllergyIntolerance to FHIR AllergyIntolerance Mapping
+  map-ehdscondition.html:
+     title: EHDSCondition to FHIR Condition Mapping
+  map-ehdsobservation.html:
+     title: EHDSObservation to FHIR Observation Mapping
+  map-ehdsprocedure.html:
+     title: EHDSProcedure to FHIR Procedure Mapping
+  map-ehdsimmunisation.html:
+     title: EHDSImmunisation to FHIR Immunization Mapping
+  map-ehdsdocument.html:
+     title: EHDSDocument to FHIR Composition Mapping
+  map-ehdsdocument-report.html:
+     title: EHDSDocument to FHIR DiagnosticReport Mapping
+  map-ehdsmedication.html:
+     title: EHDSMedication to FHIR Medication Mapping
+  map-ehdsmedicationstatement.html:
+     title: EHDSMedicationStatement to FHIR MedicationStatement Mapping
+  #  map-ehdsmedicationprescription.html:
+  #   title: EHDSMedicationprescription to FHIR MedicationRequest Mapping
+
 
  #  recommendations.md:
 #    title: Recommendations
@@ -108,8 +164,9 @@ parameters: #see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Pa
 # path-resource:
 #    - input/resources
 #    - fsh-generated/resources
-#  path-pages:
-#    - input/pagecontent
+  path-pages:
+    - input/pagecontent
+    - input/pagecontent/model-maps
 #    - input/intro-notes
 #  active-tables: false
   apply-contact: true
@@ -118,6 +175,7 @@ parameters: #see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Pa
   apply-version: true
   show-inherited-invariants: true
   usage-stats-opt-out: true
+  ips-comparison: 2.0.0
   # excludexml: false
   # excludejson: false
   # excludettl: true
@@ -150,7 +208,9 @@ parameters: #see https://confluence.hl7.org/display/FHIR/Implementation+Guide+Pa
 # ╰────────────────────────────────────────────────────────────────────────────────────────────────╯
 menu:
   Home: index.html
-  Introduction: introduction.html
+  Introduction: 
+    Base and Core: introduction.html
+    Handling Missing Data: missing-data.html
 #    Scope and Content: scope.html
 #    Background: background.html
 #    Challenges: challenges.html
@@ -165,12 +225,14 @@ menu:
 #    Implementation Notes: implementationnotes.html  
   About:
     Authors and Contributors: authors.html
-    Known Issues: knownissues.html
+    Known/Open Issues: knownissues.html
     Download: downloads.html
     Dependencies: dependencies.html
+    Change Log: changes.html
     Copyright: copyright.html
     Cross-version Analysis: crossversionanalysis.html
   Artifacts: artifacts.html
+  
   {% if false %}
   R5 IG: https://build.fhir.org/ig/hl7-eu/base-r5
   {% endif %}
@@ -271,10 +333,7 @@ resources:
 #    name: A.1.1, A.1.2 - Subject of care
 #    description: Patient or Subject of care. Sections A.1.1 and A.1.2 of the eHN guideline.
 
-#----------- Examples -------------
-#  Specimen/Specimen-animal-example:
-#    name: "Specimen: animal example"
-#    description: Example of Specimen collected from an animal.
+
 
 # -------------  Obligations
 # StructureDefinition/Patient-obl-eu-lab:
@@ -306,36 +365,32 @@ groups:
      name:  HL7 Europe Base Profiles
      description: Base profiles for the European context.
      resources:
-       - StructureDefinition/bodyStructure-eu
        - StructureDefinition/patient-eu
        - StructureDefinition/practitioner-eu
        - StructureDefinition/practitionerRole-eu
        - StructureDefinition/organization-eu
-       - StructureDefinition/location-eu
 
-   EuCoreProfiles:
-      name:  HL7 Europe Core Profiles
-      description: Core profiles for the European context.
-      resources:
-        - StructureDefinition/patient-eu-core
-        - StructureDefinition/practitioner-eu-core
-        - StructureDefinition/practitionerRole-eu-core
-        - StructureDefinition/organization-eu-core
-        - StructureDefinition/patient-animal-eu-core
-
-
-   EHICLogicalModels:
-      name:  European Health Insurance Card Model (Informative)
-      description: Logical models representing the European Health Insurance Card. This is informative material.
-      resources:
-        - StructureDefinition/EHIC
-
-   EHICProfiles:
-      name:  European Health Insurance Card Profiles
-      description: Profiles representing the European Health Insurance Card.
-      resources:
-        - StructureDefinition/coverage-eu-ehic
-        - StructureDefinition/patient-eu-ehic
+   EuCoreProfilesSTU1:
+     name: HL7 Europe Core Profiles
+     description: Core profiles for the European context.
+     resources:
+       - StructureDefinition/allergyIntolerance-eu-core
+       - StructureDefinition/bodyStructure-eu-core
+       - StructureDefinition/composition-eu-core
+       - StructureDefinition/condition-eu-core
+       - StructureDefinition/diagnosticReport-eu-core
+       - StructureDefinition/flag-patient-eu-core
+       - StructureDefinition/immunization-eu-core
+       - StructureDefinition/location-eu-core
+       - StructureDefinition/medicalTestResult-eu-core
+       - StructureDefinition/medication-eu-core
+       - StructureDefinition/medicationRequest-eu-core
+       - StructureDefinition/medicationStatement-eu-core
+       - StructureDefinition/organization-eu-core
+       - StructureDefinition/patient-eu-core
+       - StructureDefinition/practitioner-eu-core
+       - StructureDefinition/practitionerRole-eu-core
+       - StructureDefinition/procedure-eu-core
 
 #
 # The ImplementationGuide resource defines several other properties

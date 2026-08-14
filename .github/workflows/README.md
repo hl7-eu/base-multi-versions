@@ -1,0 +1,97 @@
+# Repository Validation and Deployment Setup
+
+This document explains how to configure the automatic validation and deployment workflow that:
+1. Validates R4 and R5 IGs using the FHIR IG Publisher
+2. Only deploys to child repositories if validation passes successfully
+3. Syncs the content of `igs/base-r4` and `igs/base-r5` folders to separate repositories
+
+## Required Setup
+
+### 1. GitHub Secrets
+
+You need to create the following secret in your repository settings:
+
+#### `DEPLOY_TOKEN`
+- **Type**: Repository Secret
+- **Description**: A GitHub Personal Access Token with repository permissions
+- **How to create**:
+  1. Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+  2. Generate a new token with the following scopes:
+     - `repo` (Full control of private repositories)
+     - `workflow` (Update GitHub Action workflows)
+  3. Copy the token and add it as a secret named `DEPLOY_TOKEN`
+
+### 2. Repository Variables (Optional)
+
+You can optionally configure the following variables to specify custom repository URLs:
+
+#### `R4_REPO_URL`
+- **Type**: Repository Variable
+- **Default**: `<owner>/base`, i.e. https://github.com/hl7-eu/base
+- **Description**: The target repository for R4 content in format `owner/repo-name`
+
+#### `R5_REPO_URL`
+- **Type**: Repository Variable
+- **Default**: `<owner>/base-r5`, i.e. https://github.com/hl7-eu/base-r5
+- **Description**: The target repository for R5 content in format `owner/repo-name`
+
+### 3. Target Repository Setup
+
+Make sure the target repositories (`base` and `base-r5`) exist and the token has write access to them.
+
+## How It Works
+
+`deploy-to-repos.yml` is the only workflow of this repository: it triggers on any push to any branch, and can also be started manually. Pushing again to the same branch cancels a run that is still going. It follows this sequence:
+
+### **Step 1: Validation (Parallel)**
+- **validate-r4**: Validates the R4 IG by running `_preProcessAndCheckAll.sh 4.0.1`, which runs the preprocessing, downloads the IG Publisher and runs the full validation
+- **validate-r5**: Validates the R5 IG by running `_preProcessAndCheckAll.sh 5.0.0`
+
+### **Step 2: Deployment (Only if validation passes)**
+If both validations succeed:
+- **deploy-r4**: Deploys to R4 repository
+  - Runs preprocessing
+  - Clones target R4 repository
+  - Creates or switches to the same branch name as the source
+  - Syncs content from `igs/base-r4/` to repository root
+  - Commits and pushes changes
+  - Creates build trigger for auto-ig-builder
+- **deploy-r5**: Deploys to R5 repository
+  - Runs preprocessing
+  - Clones target R5 repository
+  - Creates or switches to the same branch name as the source
+  - Syncs content from `igs/base-r5/` to repository root
+  - Commits and pushes changes
+  - Creates build trigger for auto-ig-builder
+
+**If validation fails**: Deployment is skipped and the workflow stops with an error.
+
+### **On deleting a branch**
+- **remove-previews**: deletes the branch of the same name in both target repositories, so that the preview of a branch does not outlive it. `master` and `main` are never deleted, and a branch that does not exist in a target repository is skipped. Deleting a tag does nothing.
+
+## Branch Handling
+
+- The workflow preserves branch names across repositories
+- If a branch doesn't exist in the target repository, it creates a new one
+- If a branch exists, it updates the existing branch
+- Every branch is deployed, so that each one has a preview build; the exception are `dependabot/**` branches, which are validated but not deployed
+
+## Security Notes
+
+- The `DEPLOY_TOKEN` should be kept secure and rotated regularly
+- Consider using fine-grained personal access tokens for better security
+- The token should have minimal required permissions (repository access only)
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Permission Denied**: Ensure the `DEPLOY_TOKEN` has write access to target repositories
+2. **Repository Not Found**: Check that the repository URLs are correct and accessible
+3. **Branch Creation Fails**: Ensure the token has permission to create branches
+
+### Viewing Workflow Logs
+
+1. Go to the Actions tab in your GitHub repository
+2. Select the "Deploy to Separate Repositories" workflow
+3. Click on a specific run to view detailed logs for each step
