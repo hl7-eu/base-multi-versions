@@ -155,13 +155,13 @@
             <td>for the country name</td>
           </tr>
           <tr>
-            <td>""</td>
+            <td>country</td>
 
             <td>equivalent</td>
             <td>Address</td>
             <td>extension:countryCode</td>
 
-            <td>for the country name</td>
+            <td>for the country code</td>
           </tr>
         </tbody>
       </table>
