@@ -127,12 +127,12 @@
           </tr>
           <tr>
             <td>header.source</td>
-            
+
             <td>no-map</td>
             <td>Observation</td>
             <td>-</td>
-            
-            <td>No direct native Flag element; consider extension if needed.</td>
+
+            <td>No direct native Observation element; consider extension if needed.</td>
                </tr>
           <tr>
             <td>header.language</td>
@@ -334,8 +334,8 @@
             <td></td>
           </tr>
           <tr>
-            <td>component.code</td>
-            
+            <td>component.type</td>
+
             <td>equivalent</td>
             <td>Observation</td>
             <td>component.code</td>
