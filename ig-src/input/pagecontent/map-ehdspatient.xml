@@ -90,10 +90,18 @@ The models are expected to continue evolving, with updates incorporated into thi
           </tr>
           <tr>
             <td>dateOfBirth</td>
-            
+
             <td>equivalent</td>
             <td>Patient</td><td>birthDate</td>
-            
+
+            <td></td>
+          </tr>
+          <tr>
+            <td>deceased[x]</td>
+
+            <td>equivalent</td>
+            <td>Patient</td><td>deceased[x]</td>
+
             <td></td>
           </tr>
           <tr>
