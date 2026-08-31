@@ -72,8 +72,9 @@ Every `.sh` script that builds the IGs has a `.ps1` equivalent, for building on 
 #    igs/base-r4/output/index.html
 #    igs/base-r5/output/index.html
 
-# 4. once the result is fine, publish it to the base and base-r5 repositories
-./_commitToMainRepos.sh
+# 4. once the result is fine, commit and push — CI builds both versions again
+#    and publishes them to the base and base-r5 repositories
+git push
 ```
 
 A full build of both versions takes a while. To work on a single FHIR version, pass its version number: `./_preProcessAndCheckAll.sh 4.0.1` or `./_preProcessAndCheckAll.sh 5.0.0` (`.ps1` on Windows).
@@ -86,7 +87,6 @@ A full build of both versions takes a while. To work on a single FHIR version, p
 | `context-R4.json`, `context-R5.json` | The variables used to render the liquid templates, one file per FHIR version. |
 | `igs/base-r4/`, `igs/base-r5/` | Generated, version-specific IGs, including the build results in their `output/` directory. Not edited by hand. |
 | `igs/publisher.jar` | The IG publisher, shared by all generated IGs. Downloaded on demand. |
-| `subigs/` | Working copies of the `base` and `base-r5` repositories, used by `_commitToMainRepos.sh`. Cloned on demand. |
 
 ### Scripts
 
@@ -95,7 +95,6 @@ A full build of both versions takes a while. To work on a single FHIR version, p
 | `_preProcessAndCheckAll.sh` / `.ps1` `[4.0.1\|5.0.0]` | Preprocessing plus a full IG publisher build of the generated IGs. The usual entry point. |
 | `_preprocessMultiVersion.sh` / `.ps1` `[4.0.1\|5.0.0]` | Preprocessing only: generates `igs/base-r4` and `igs/base-r5` from `ig-src`. |
 | `_updateBuildTools.sh` / `.ps1` `[scripts\|publisher]` | Downloads the IG publisher and the HL7 build scripts. |
-| `_commitToMainRepos.sh` | Publishes the generated IGs to the `base` and `base-r5` repositories. |
 | `igs/base-<rx>/_build.sh` / `_build.bat` | The HL7 build script, used to build a single generated IG. |
 
 Without an argument, the scripts that take a FHIR version process both versions. The `.ps1` scripts are PowerShell equivalents of the `.sh` ones, for use on Windows; `_build.bat` is the Windows counterpart of `_build.sh` and is called by the `.ps1` scripts instead.
@@ -196,15 +195,9 @@ The `update` option built into `_build.sh` is deliberately not used for either: 
 
 ## Publishing to the base and base-r5 repositories
 
-Once the changes have been checked and the results can be committed, run:
+Publishing is done by CI rather than from a working copy: pushing a branch builds both FHIR versions and, if both succeed, syncs them to the `base` and `base-r5` repositories — see [Continuous integration](#continuous-integration) below.
 
-```sh
-./_commitToMainRepos.sh
-```
-
-For each FHIR version this will clone the target repository to `subigs/` (or reuse an existing working copy), check out the branch with the same name as the current branch of this repository, creating it if needed, copy the contents of `igs/base-r4` / `igs/base-r5` into it, and commit and push the result. The commit message of the last commit in this repository is reused, with a reference to the source commit.
-
-This script has no PowerShell counterpart: publishing is what the deployment workflow does on every push, so there is no reason to maintain a second implementation of it per platform.
+To publish again without changing anything, start the workflow by hand from the Actions tab of this repository (*Validate and Deploy to Separate Repositories* → *Run workflow*), which its `workflow_dispatch` trigger allows.
 
 ## Continuous integration
 
