@@ -77,6 +77,18 @@ jobs:
       - name: Install Sushi
         run: npm install -g fsh-sushi
 
+      # Downloading the packages takes minutes and says nothing about the
+      # PowerShell scripts: of the SUSHI step, more than three minutes went into
+      # fetching them and six seconds into the actual compile. The key follows
+      # the dependency list, and an outdated cache is still worth restoring, as
+      # only the packages that changed are fetched again.
+      - name: Cache the FHIR packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.fhir/packages
+          key: fhir-packages-${{ runner.os }}-${{ hashFiles('ig-src/sushi-config.liquid.yaml') }}
+          restore-keys: fhir-packages-${{ runner.os }}-
+
       - name: Preprocess the R4 IG with PowerShell
         # Windows PowerShell 5.1 rather than pwsh: it is the stricter of the two
         # and the one a Windows machine has without installing anything.

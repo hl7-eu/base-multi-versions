@@ -46,7 +46,7 @@ Make sure the target repositories (`base` and `base-r5`) exist and the token has
 ### **Step 1: Validation (Parallel)**
 - **validate-r4**: Validates the R4 IG by running `_preProcessAndCheckAll.sh 4.0.1`, which runs the preprocessing, downloads the IG Publisher and runs the full validation
 - **validate-r5**: Validates the R5 IG by running `_preProcessAndCheckAll.sh 5.0.0`
-- **validate-powershell**: Smoke test for the PowerShell scripts on a Windows runner, which the two jobs above never touch. It renders the liquid templates with `_preprocessMultiVersion.ps1 4.0.1` and compiles the result with SUSHI, without the IG Publisher build. Deployment does not depend on it, as the PowerShell scripts have no influence on what is published.
+- **validate-powershell**: Smoke test for the PowerShell scripts on a Windows runner, which the two jobs above never touch. It renders the liquid templates with `_preprocessMultiVersion.ps1 4.0.1` and compiles the result with SUSHI, without the IG Publisher build. The FHIR packages SUSHI needs are cached, as downloading them dominates the job and says nothing about the scripts under test. Deployment does not depend on it, as the PowerShell scripts have no influence on what is published.
 
 ### **Step 2: Deployment (Only if validation passes)**
 If both IG validations succeed:
