@@ -8,3 +8,7 @@
 # shared publisher.jar. The content is published to the base and base-r5
 # repositories by the deployment workflow, not committed here.
 /igs
+
+# liquidjs, installed on demand by _preprocessMultiVersion.sh so that the
+# templates can be rendered without going through npx on every file
+/.liquidjs
