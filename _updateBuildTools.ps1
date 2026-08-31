@@ -57,12 +57,18 @@ if ($update_publisher) {
     New-Item -ItemType Directory -Force -Path $publisherDir | Out-Null
 
     Write-Host "Downloading $publisher_jar (~200 MB)"
+    # Invoke-WebRequest redraws its progress bar for every chunk it receives,
+    # which on a download this size costs far more than the transfer itself.
+    $previousProgressPreference = $ProgressPreference
+    $ProgressPreference = "SilentlyContinue"
     try {
         Invoke-WebRequest -Uri $publisher_dlurl -OutFile "$publisher_jar.new"
     } catch {
         Remove-Item -Force -ErrorAction SilentlyContinue "$publisher_jar.new"
         Write-Host "Downloading the IG Publisher failed. Aborting..."
         exit 1
+    } finally {
+        $ProgressPreference = $previousProgressPreference
     }
     Move-Item -Force "$publisher_jar.new" $publisher_jar
 

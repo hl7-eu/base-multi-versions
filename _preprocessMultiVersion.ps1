@@ -29,8 +29,6 @@ $ig_base = "base"
 Write-Host "Ensuring liquidjs is available (warming npx cache)"
 try { npx --yes liquidjs --help *> $null } catch {}
 
-$rootDir = (Get-Location).Path
-
 foreach ($version in $versions) {
     if ($version -eq "4.0.1") {
         $context_version = "R4"
@@ -59,46 +57,47 @@ foreach ($version in $versions) {
 
     # Process all liquid files
     Write-Host "Processing liquid files"
-    $liquidFiles = Get-ChildItem -Path $build_dir -Recurse -File -Filter "*.liquid.*"
+    # The names are matched here rather than with -Filter, which is the Windows
+    # filesystem matcher and not the exact glob `find -name` applies: it lets a
+    # trailing .* match a name that has nothing after the dot at all. Every hit
+    # is deleted after rendering, so it is worth being precise.
+    $liquidFiles = Get-ChildItem -Path $build_dir -Recurse -File |
+        Where-Object { $_.Name -like "*.liquid.*" }
 
-    $jobs = foreach ($file in $liquidFiles) {
-        Start-Job -ScriptBlock {
-            param($rootDir, $filePath, $contextVersion)
-            Set-Location $rootDir
+    # liquidjs writes UTF-8 to stdout (templates can contain box-drawing
+    # characters, e.g. sushi-config.liquid.yaml). Without this, PowerShell
+    # decodes native-command output using the legacy OEM/ANSI codepage, which
+    # corrupts any multi-byte characters into garbage that later trips up the
+    # FHIR IG Publisher's UTF-8 reader.
+    $previousOutputEncoding = [Console]::OutputEncoding
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-            # liquidjs writes UTF-8 to stdout (templates can contain box-drawing
-            # characters, e.g. sushi-config.liquid.yaml). Without this, PowerShell
-            # decodes native-command output using the legacy OEM/ANSI codepage,
-            # which corrupts any multi-byte characters into garbage that later
-            # trips up the FHIR IG Publisher's UTF-8 reader.
-            $OutputEncoding = [System.Text.Encoding]::UTF8
-            [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+    # Write back out as UTF-8 without a BOM (Set-Content's default encoding
+    # would re-corrupt the same characters on the way out).
+    $utf8NoBom = New-Object System.Text.UTF8Encoding $false
 
+    # The bash script forks a subshell per file, which is cheap. Start-Job is
+    # not that: it starts a whole PowerShell process per file, and with thirty
+    # templates that is thirty runspaces, each starting npx on top, so on
+    # Windows the process creation costs more than the parallelism saves. The
+    # files are rendered one after another instead.
+    try {
+        foreach ($file in $liquidFiles) {
+            $filePath = $file.FullName
             $cleanFilePath = $filePath -replace '\.liquid\.', '.'
             Write-Host "- $filePath --> $cleanFilePath"
 
-            $content = npx --yes liquidjs -t "@$filePath" --context "@context-$contextVersion.json"
+            $content = npx --yes liquidjs -t "@$filePath" --context "@context-$context_version.json"
             if ($LASTEXITCODE -ne 0) {
-                throw "Failed to process liquid file: $filePath"
+                Write-Host "Failed to process liquid file: $filePath"
+                exit 1
             }
-            # Write back out as UTF-8 without a BOM (Set-Content's default encoding
-            # would re-corrupt the same characters on the way out).
-            $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+
             [System.IO.File]::WriteAllLines($cleanFilePath, $content, $utf8NoBom)
             Remove-Item -Force $filePath
-        } -ArgumentList $rootDir, $file.FullName, $context_version
-    }
-
-    if ($jobs) {
-        $jobs | Wait-Job | Out-Null
-        $jobs | Receive-Job -ErrorAction SilentlyContinue
-        $failed = $jobs | Where-Object { $_.State -eq 'Failed' }
-        $jobs | Remove-Job -Force
-
-        if ($failed) {
-            Write-Host "One or more liquid files failed to process."
-            exit 1
         }
+    } finally {
+        [Console]::OutputEncoding = $previousOutputEncoding
     }
 
     # make readonly (kept disabled to mirror the original script)

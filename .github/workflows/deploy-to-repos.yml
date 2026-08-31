@@ -59,6 +59,34 @@ jobs:
           chmod u+x *.sh
           ./_preProcessAndCheckAll.sh 5.0.0
 
+  # A smoke test for the PowerShell scripts, which the jobs above never touch:
+  # without it they would drift away from their bash counterparts unnoticed. It
+  # renders the liquid templates and compiles the result with SUSHI, which is
+  # enough to catch a broken script, a botched copy or mangled encoding. The IG
+  # publisher build is left to the jobs above, as it is slow and Windows runner
+  # minutes are billed at a higher rate. Deployment deliberately does not depend
+  # on this job: the PowerShell scripts have no influence on what is published.
+  validate-powershell:
+    runs-on: windows-latest
+    name: Validate the PowerShell scripts
+    if: github.event_name != 'delete'
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Sushi
+        run: npm install -g fsh-sushi
+
+      - name: Preprocess the R4 IG with PowerShell
+        # Windows PowerShell 5.1 rather than pwsh: it is the stricter of the two
+        # and the one a Windows machine has without installing anything.
+        shell: powershell
+        run: ./_preprocessMultiVersion.ps1 4.0.1
+
+      - name: Compile the generated FSH
+        working-directory: igs/base-r4
+        run: sushi .
+
   # Deployment jobs only run if validation passes
   deploy-r4:
     runs-on: ubuntu-latest
