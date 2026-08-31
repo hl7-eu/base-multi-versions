@@ -18,6 +18,7 @@ This page summarizes the main changes applied to this version of the guide.
   * FHIR-55424: Removed category slice in `MedicalTestResultEuCore`.
   * FHIR-55639: Added missing target elements referenced by model maps and reviewed all profiles.
   * FHIR-56415: fixed misalignemnt between MedicalTestResultEuCore and LaboratoryObservations.
+  * FHIR-56515: Set `Observation.performer.extension:performerFunction` to `0..1` in `MedicalTestResultEuCore`, matching the cardinality the `event-performerFunction` extension itself allows, and added a comment that a Practitioner(Role) acting in multiple roles has to be listed as `performer` multiple times.
 
 * Editorial and documentation updates
   * FHIR-55553: Partial typo fixes.
