@@ -63,9 +63,10 @@ jobs:
   # without it they would drift away from their bash counterparts unnoticed. It
   # renders the liquid templates and compiles the result with SUSHI, which is
   # enough to catch a broken script, a botched copy or mangled encoding. The IG
-  # publisher build is left to the jobs above, as it is slow and Windows runner
-  # minutes are billed at a higher rate. Deployment deliberately does not depend
-  # on this job: the PowerShell scripts have no influence on what is published.
+  # publisher build is left to the jobs above: this job only has to show that
+  # the scripts work, and it is already the slowest of the three. Deployment
+  # deliberately does not depend on it, as the PowerShell scripts have no
+  # influence on what is published.
   validate-powershell:
     runs-on: windows-latest
     name: Validate the PowerShell scripts
@@ -77,8 +78,8 @@ jobs:
       - name: Install Sushi
         run: npm install -g fsh-sushi
 
-      # Downloading the packages takes minutes and says nothing about the
-      # PowerShell scripts: of the SUSHI step, more than three minutes went into
+      # Downloading the packages says nothing about the PowerShell scripts and
+      # dominates the job: of the SUSHI step, three and a half minutes went into
       # fetching them and six seconds into the actual compile. The key follows
       # the dependency list, and an outdated cache is still worth restoring, as
       # only the packages that changed are fetched again.
