@@ -139,6 +139,25 @@ This keeps the different sections clearly marked and preserves line numbers, at 
 
 The main files on which this process is typically used are `sushi-config.yaml`, `ig.ini` and `fsh` files. FHIR release specific pages are generated using the standard variables made available by the IG-publisher, mainly `site.data.fhir.version`.
 
+### Jekyll variables in a template
+
+Those publisher variables — `site.data.fhir.path`, `site.data.fhir.version` and the dozen or so data files behind `site.data.*` — are resolved by Jekyll when it renders the page. Jekyll uses Liquid for that, and so does the preprocessing, so a page that is also a template is rendered twice, by two different engines.
+
+The first pass only knows the variables from `context-<Rx>.json`. It resolves everything else to an empty string, and the expression never reaches Jekyll:
+
+```text
+in ig-src              [validating FHIR profiles]({{ site.data.fhir.path }}validation.html)
+after preprocessing    [validating FHIR profiles](validation.html)
+```
+
+Nothing reports this — the link simply points at the wrong place. Wrap the expression in `{% raw %}` to hand it through the first pass untouched. That tag is consumed there, so Jekyll sees a plain expression and resolves it as usual:
+
+```text
+[validating FHIR profiles]({% raw %}{{ site.data.fhir.path }}{% endraw %}validation.html)
+```
+
+This applies to files with `.liquid.` in their name only. Everything else is copied unchanged and reaches Jekyll as written.
+
 ## Building the IGs
 
 The simplest way is to run preprocessing and the IG publisher builds in one step. From the root directory, run:
