@@ -22,14 +22,27 @@ if (-not $Version) {
 
 $ig_base = "base"
 
-# Warm the liquidjs package into the npx cache once, serially, before the
-# parallel processing loop below. On a cold cache, multiple concurrent
-# `npx --yes liquidjs` calls race to install the package and can produce empty
-# output.
-Write-Host "Ensuring liquidjs is available (warming npx cache)"
-try { npx --yes liquidjs --help *> $null } catch {}
+# liquidjs is installed once and then run through node directly. `npx --yes
+# liquidjs` re-resolves the package on every single call, which stats its way
+# through thousands of files in the npx cache and now and then asks the
+# registry. Windows pays that overhead several times over: process creation is
+# expensive, the npx shim adds a cmd.exe layer, and Defender scans every file
+# the resolution touches, which added up to roughly two seconds per template.
+#
+# bin/liquid.js is called rather than the wrapper in node_modules/.bin: that
+# wrapper is an extensionless shell script Windows cannot execute, whereas the
+# .js entry point is the same code path on every platform.
+$liquidDir = Join-Path (Get-Location).Path ".liquidjs"
+$liquidJs = Join-Path $liquidDir "node_modules/liquidjs/bin/liquid.js"
 
-$rootDir = (Get-Location).Path
+if (-not (Test-Path $liquidJs)) {
+    Write-Host "Installing liquidjs into $liquidDir"
+    npm install --prefix $liquidDir --no-save --no-audit --no-fund --silent liquidjs
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Failed to install liquidjs. Aborting..."
+        exit 1
+    }
+}
 
 foreach ($version in $versions) {
     if ($version -eq "4.0.1") {
@@ -59,46 +72,48 @@ foreach ($version in $versions) {
 
     # Process all liquid files
     Write-Host "Processing liquid files"
-    $liquidFiles = Get-ChildItem -Path $build_dir -Recurse -File -Filter "*.liquid.*"
+    # The names are matched here rather than with -Filter, which is the Windows
+    # filesystem matcher and not the exact glob `find -name` applies: it lets a
+    # trailing .* match a name that has nothing after the dot at all. Every hit
+    # is deleted after rendering, so it is worth being precise.
+    $liquidFiles = Get-ChildItem -Path $build_dir -Recurse -File |
+        Where-Object { $_.Name -like "*.liquid.*" }
 
-    $jobs = foreach ($file in $liquidFiles) {
-        Start-Job -ScriptBlock {
-            param($rootDir, $filePath, $contextVersion)
-            Set-Location $rootDir
+    # liquidjs writes UTF-8 to stdout (templates can contain box-drawing
+    # characters, e.g. sushi-config.liquid.yaml). Without this, PowerShell
+    # decodes native-command output using the legacy OEM/ANSI codepage, which
+    # corrupts any multi-byte characters into garbage that later trips up the
+    # FHIR IG Publisher's UTF-8 reader.
+    $previousOutputEncoding = [Console]::OutputEncoding
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-            # liquidjs writes UTF-8 to stdout (templates can contain box-drawing
-            # characters, e.g. sushi-config.liquid.yaml). Without this, PowerShell
-            # decodes native-command output using the legacy OEM/ANSI codepage,
-            # which corrupts any multi-byte characters into garbage that later
-            # trips up the FHIR IG Publisher's UTF-8 reader.
-            $OutputEncoding = [System.Text.Encoding]::UTF8
-            [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+    # Write back out as UTF-8 without a BOM (Set-Content's default encoding
+    # would re-corrupt the same characters on the way out).
+    $utf8NoBom = New-Object System.Text.UTF8Encoding $false
 
+    # The bash script forks a subshell per file, which is cheap. Start-Job is
+    # not that: it starts a whole PowerShell process per file, and with thirty
+    # templates that is thirty runspaces, so on Windows the process creation
+    # costs more than the parallelism saves. With the render itself down to a
+    # tenth of a second there is little left to parallelise anyway, so the
+    # files are rendered one after another.
+    try {
+        foreach ($file in $liquidFiles) {
+            $filePath = $file.FullName
             $cleanFilePath = $filePath -replace '\.liquid\.', '.'
             Write-Host "- $filePath --> $cleanFilePath"
 
-            $content = npx --yes liquidjs -t "@$filePath" --context "@context-$contextVersion.json"
+            $content = node $liquidJs -t "@$filePath" --context "@context-$context_version.json"
             if ($LASTEXITCODE -ne 0) {
-                throw "Failed to process liquid file: $filePath"
+                Write-Host "Failed to process liquid file: $filePath"
+                exit 1
             }
-            # Write back out as UTF-8 without a BOM (Set-Content's default encoding
-            # would re-corrupt the same characters on the way out).
-            $utf8NoBom = New-Object System.Text.UTF8Encoding $false
+
             [System.IO.File]::WriteAllLines($cleanFilePath, $content, $utf8NoBom)
             Remove-Item -Force $filePath
-        } -ArgumentList $rootDir, $file.FullName, $context_version
-    }
-
-    if ($jobs) {
-        $jobs | Wait-Job | Out-Null
-        $jobs | Receive-Job -ErrorAction SilentlyContinue
-        $failed = $jobs | Where-Object { $_.State -eq 'Failed' }
-        $jobs | Remove-Job -Force
-
-        if ($failed) {
-            Write-Host "One or more liquid files failed to process."
-            exit 1
         }
+    } finally {
+        [Console]::OutputEncoding = $previousOutputEncoding
     }
 
     # make readonly (kept disabled to mirror the original script)
