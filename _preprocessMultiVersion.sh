@@ -17,12 +17,22 @@ fi
 
 ig_base="base"
 
-# Warm the liquidjs package into the npx cache once, serially, before the
-# parallel processing loop below. On a cold cache (e.g. CI), multiple concurrent
-# `npx --yes liquidjs` calls race to install the package and can produce empty
-# output.
-echo "Ensuring liquidjs is available (warming npx cache)"
-npx --yes liquidjs --help >/dev/null 2>&1 || true
+# liquidjs is installed once and then run through node directly. `npx --yes
+# liquidjs` re-resolves the package on every single call, which stats its way
+# through thousands of files in the npx cache and now and then asks the
+# registry: about a second per template, against a tenth of a second for the
+# render itself. Windows pays that overhead several times over.
+#
+# Installing once also removes the race this warm-up used to work around, where
+# concurrent `npx --yes` calls could each try to populate the cache and produce
+# empty output.
+liquid_dir="$(pwd)/.liquidjs"
+liquid_js="$liquid_dir/node_modules/liquidjs/bin/liquid.js"
+
+if [ ! -f "$liquid_js" ]; then
+    echo "Installing liquidjs into $liquid_dir"
+    npm install --prefix "$liquid_dir" --no-save --no-audit --no-fund --silent liquidjs
+fi
 
 for version in "${versions[@]}"; do
     if [ "$version" = "4.0.1" ]; then
@@ -60,7 +70,7 @@ for version in "${versions[@]}"; do
                 echo "- $file_path --> $clean_file_path"
 
                 # Process liquid template and inline version tags
-                if ! content=$(npx --yes liquidjs -t @"$file" --context @"context-${context_version}.json"); then
+                if ! content=$(node "$liquid_js" -t @"$file" --context @"context-${context_version}.json"); then
                     echo "Failed to process liquid file: $file"
                     exit 1
                 fi
