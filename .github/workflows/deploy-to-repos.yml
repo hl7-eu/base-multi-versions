@@ -25,7 +25,7 @@ jobs:
       JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
     
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install Jekyll
         run: sudo gem install jekyll
@@ -46,7 +46,7 @@ jobs:
       JAVA_TOOL_OPTIONS: "-Xmx7g -Dfile.encoding=UTF-8"
     
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v7
 
       - name: Install Jekyll
         run: sudo gem install jekyll
@@ -68,7 +68,7 @@ jobs:
     
     steps:
       - name: Checkout source repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0  # Fetch full history for proper branch handling
           token: ${{ secrets.DEPLOY_TOKEN || github.token }}
@@ -153,7 +153,7 @@ jobs:
     
     steps:
       - name: Checkout source repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0  # Fetch full history for proper branch handling
           token: ${{ secrets.DEPLOY_TOKEN || github.token }}
