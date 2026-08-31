@@ -12,3 +12,7 @@
 # Working copies of the base and base-r5 repositories, cloned by
 # _commitToMainRepos.sh
 /subigs
+
+# liquidjs, installed on demand by _preprocessMultiVersion.sh so that the
+# templates can be rendered without going through npx on every file
+/.liquidjs

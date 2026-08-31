@@ -22,12 +22,27 @@ if (-not $Version) {
 
 $ig_base = "base"
 
-# Warm the liquidjs package into the npx cache once, serially, before the
-# parallel processing loop below. On a cold cache, multiple concurrent
-# `npx --yes liquidjs` calls race to install the package and can produce empty
-# output.
-Write-Host "Ensuring liquidjs is available (warming npx cache)"
-try { npx --yes liquidjs --help *> $null } catch {}
+# liquidjs is installed once and then run through node directly. `npx --yes
+# liquidjs` re-resolves the package on every single call, which stats its way
+# through thousands of files in the npx cache and now and then asks the
+# registry. Windows pays that overhead several times over: process creation is
+# expensive, the npx shim adds a cmd.exe layer, and Defender scans every file
+# the resolution touches, which added up to roughly two seconds per template.
+#
+# bin/liquid.js is called rather than the wrapper in node_modules/.bin: that
+# wrapper is an extensionless shell script Windows cannot execute, whereas the
+# .js entry point is the same code path on every platform.
+$liquidDir = Join-Path (Get-Location).Path ".liquidjs"
+$liquidJs = Join-Path $liquidDir "node_modules/liquidjs/bin/liquid.js"
+
+if (-not (Test-Path $liquidJs)) {
+    Write-Host "Installing liquidjs into $liquidDir"
+    npm install --prefix $liquidDir --no-save --no-audit --no-fund --silent liquidjs
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Failed to install liquidjs. Aborting..."
+        exit 1
+    }
+}
 
 foreach ($version in $versions) {
     if ($version -eq "4.0.1") {
@@ -78,16 +93,17 @@ foreach ($version in $versions) {
 
     # The bash script forks a subshell per file, which is cheap. Start-Job is
     # not that: it starts a whole PowerShell process per file, and with thirty
-    # templates that is thirty runspaces, each starting npx on top, so on
-    # Windows the process creation costs more than the parallelism saves. The
-    # files are rendered one after another instead.
+    # templates that is thirty runspaces, so on Windows the process creation
+    # costs more than the parallelism saves. With the render itself down to a
+    # tenth of a second there is little left to parallelise anyway, so the
+    # files are rendered one after another.
     try {
         foreach ($file in $liquidFiles) {
             $filePath = $file.FullName
             $cleanFilePath = $filePath -replace '\.liquid\.', '.'
             Write-Host "- $filePath --> $cleanFilePath"
 
-            $content = npx --yes liquidjs -t "@$filePath" --context "@context-$context_version.json"
+            $content = node $liquidJs -t "@$filePath" --context "@context-$context_version.json"
             if ($LASTEXITCODE -ne 0) {
                 Write-Host "Failed to process liquid file: $filePath"
                 exit 1
