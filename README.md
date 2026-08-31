@@ -107,7 +107,12 @@ The variables available in the templates are defined in `context-R4.json` and `c
 | `isR4` / `isR5` | `true` / `false` | `false` / `true` |
 | `fhirVersion` | `4.0.1` | `5.0.0` |
 | `r-code` / `R-code` | `r4` / `R4` | `r5` / `R5` |
+| `eu-core-r-code` | `""` | `-r5` |
 | `R4` / `R5` | `""` / `//R5` | `//R4` / `""` |
+| `R4-yaml` / `R5-yaml` | `""` / `# R5` | `# R4` / `""` |
+| `R ` (with a trailing space) | `""` | `""` |
+
+The empty cells of the `-yaml` row are not defined at all in that context file. An unknown variable renders as an empty string, which is what the comment markers rely on.
 
 There are two main patterns to write version-specific content.
 
@@ -137,7 +142,44 @@ In the R4 version, `{{R4}}` is replaced by `""` and `{{R5}}` by `"//R5"`.
 In the R5 version, `{{R4}}` is replaced by `"//R4"` and `{{R5}}` by `""`.
 This keeps the different sections clearly marked and preserves line numbers, at the cost of indentation alignment.
 
+`{{R }}` buys that alignment back. Its key ends in a space and it renders as nothing in both versions, so it can carry the lines that belong to *both* through a block whose neighbours are marked:
+
+```text
+{{R4}}* bodySite
+{{R5}}* bodyStructure
+{{R }}  * coding[+].system = "http://snomed.info/sct"
+{{R }}  * coding[=].code = #48694002
+```
+
+Every line starts in the same column, so the nesting of the FSH stays readable while the markers are there.
+
+`{{R4-yaml}}` and `{{R5-yaml}}` do the same for files in which `//` does not start a comment — `ig.ini` and `sushi-config.yaml` — by rendering as `#` instead:
+
+```text
+{{R4-yaml}}ig = fsh-generated/resources/ImplementationGuide-hl7.fhir.eu.base.json
+{{R5-yaml}}ig = fsh-generated/resources/ImplementationGuide-hl7.fhir.eu.base-r5.json
+```
+
 The main files on which this process is typically used are `sushi-config.yaml`, `ig.ini` and `fsh` files. FHIR release specific pages are generated using the standard variables made available by the IG-publisher, mainly `site.data.fhir.version`.
+
+### Jekyll variables in a template
+
+Those publisher variables — `site.data.fhir.path`, `site.data.fhir.version` and the dozen or so data files behind `site.data.*` — are resolved by Jekyll when it renders the page. Jekyll uses Liquid for that, and so does the preprocessing, so a page that is also a template is rendered twice, by two different engines.
+
+The first pass only knows the variables from `context-<Rx>.json`. It resolves everything else to an empty string, and the expression never reaches Jekyll:
+
+```text
+in ig-src              [validating FHIR profiles]({{ site.data.fhir.path }}validation.html)
+after preprocessing    [validating FHIR profiles](validation.html)
+```
+
+Nothing reports this — the link simply points at the wrong place. Wrap the expression in `{% raw %}` to hand it through the first pass untouched. That tag is consumed there, so Jekyll sees a plain expression and resolves it as usual:
+
+```text
+[validating FHIR profiles]({% raw %}{{ site.data.fhir.path }}{% endraw %}validation.html)
+```
+
+This applies to files with `.liquid.` in their name only. Everything else is copied unchanged and reaches Jekyll as written.
 
 ## Building the IGs
 
