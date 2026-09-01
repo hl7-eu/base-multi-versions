@@ -84,7 +84,7 @@ jobs:
       # the dependency list, and an outdated cache is still worth restoring, as
       # only the packages that changed are fetched again.
       - name: Cache the FHIR packages
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: ~/.fhir/packages
           key: fhir-packages-${{ runner.os }}-${{ hashFiles('ig-src/sushi-config.liquid.yaml') }}
