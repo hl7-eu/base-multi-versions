@@ -17,6 +17,8 @@ Description:   "Body Structure site qualifier. It indicates - for example - the 
 * $sct#24028007 "Right (qualifier value)"
 * $sct#46053002 "Distal (qualifier value)"
 * $sct#255554000 "Dorsal (qualifier value)"
+// TODO: should be added when available in SCT
+//* $sct#264147007 "Plantar" inactive concept 
 * $sct#261183002 "Upper (qualifier value)"
 * $sct#261122009 "Lower (qualifier value)"
 * $sct#255561001 "Medial (qualifier value)"
