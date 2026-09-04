@@ -46,9 +46,13 @@ Description: """This profile introduces essential constraints and extensions for
 
 {% if isR4 %}
 * performed[x] 1..1
+* performedDateTime
+  * insert PeriodOfLifeExtension
 {% endif %}
 {% if isR5 %}
 * occurrence[x] 1..1
+* occurrenceDateTime
+  * insert PeriodOfLifeExtension
 {% endif %}
 /* * performed[x].extension contains $data-absent-reason named data-absent-reason 0..1
 * performed[x].extension[data-absent-reason] ^short = "performed[x] absence reason"
