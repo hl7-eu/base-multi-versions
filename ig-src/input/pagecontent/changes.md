@@ -13,7 +13,6 @@ This page summarizes the main changes applied to this version of the guide.
   * FHIR-56515: Set `Observation.performer.extension:performerFunction` to `0..1` in `MedicalTestResultEuCore`. The slice allowed `0..*` although the `event-performerFunction` extension is itself defined as `0..1`, so a second occurrence was never valid. Added a comment that a Practitioner(Role) acting in multiple roles has to be listed as `performer` multiple times.
 
 * Terminology
-  * FHIR-56527: Bound `BodyStructure.morphology` to the new `MorphologyEuVs` instead of the FHIR value set `SNOMEDCTMorphologicAbnormalities`. The latter is based on `< 49755003 |Abnormal tissue appearance|`, whereas SNOMED CT recommended the wider `< 118956008 |Body structure, altered from its original anatomical structure|` in its feedback on Xt-EHR D7.1. The new hierarchy subsumes the previous one, so no code that was valid before falls outside the value set.
   * FHIR-56526: Added the SNOMED CT codes `Left` and `Right` to `SiteQualifierEuVs`, as they can be used both as a laterality and as a site qualifier. This reverses the removal made for FHIR-51391, following the discussion with the Orders & Observations WG. Added `Apical`, `Central` and `Peripheral` as well, completing pairs the value set already builds on: `Basal` was present without its counterpart, and `Central` / `Peripheral` follows the same pattern as `Superficial` / `Deep`.
 
 * Editorial and documentation updates
