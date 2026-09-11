@@ -1,12 +1,21 @@
 This page summarizes the main changes applied to this version of the guide.
 
-### From 2.0.0 to 2.0.1
+### From 2.0.1 to 2.1.0
 
 * Profile and constraint updates
-  * FHIR-58774: Set the cardinality of `BodyStructure.extension:includedStructure` to `1..*` in the R4 profile, aligning it with the cross-version extension definition and with the R5 `BodyStructure.includedStructure` element.
   * FHIR-57206: Added `OrganizationEuCore` to the reference targets of `CompositionEuCore.attester:legalAuthenticator.party`.
-  * FHIR-56556: Added `Substance` and `BiologicallyDerivedProduct` to the reference targets of `MedicalTestResultEuCore.focus`.
   * FHIR-55515: Made the `periodOfLife` extension available beyond `Immunization`, so that a life stage can be recorded where an exact date is not known: on `Condition.onset[x]` and `Condition.abatement[x]`, on `Procedure.performed[x]` (`occurrence[x]` in R5), and on `AllergyIntolerance.onset[x]` and its `abatement` extension. The slice sits on the `dateTime` choice, following the resolution that names `dateTime` as the preferred datatype where an element offers several; as the extension is bound by datatype rather than by element, `Age`, `Period` and `Range` remain available without a slice of their own.
+
+* Terminology
+  * FHIR-56527: Bound `BodyStructure.morphology` to the new `MorphologyEuVs` instead of the FHIR value set `SNOMEDCTMorphologicAbnormalities`. The latter is based on `< 49755003 |Abnormal tissue appearance|`, whereas SNOMED CT recommended the wider `< 118956008 |Body structure, altered from its original anatomical structure|` in its feedback on Xt-EHR D7.1. The new hierarchy subsumes the previous one, so no code that was valid before falls outside the value set.
+
+### From 2.0.0 to 2.0.1
+
+Version 2.0.1 is a technical correction of the 2.0.0 release. It carries the resolutions of tickets recorded as technical corrections, corrections and clarifications, with one exception named below.
+
+* Profile and constraint updates
+  * FHIR-58774: Set the cardinality of `BodyStructure.extension:includedStructure` to `1..*` in the R4 profile, aligning it with the cross-version extension definition and with the R5 `BodyStructure.includedStructure` element. A `BodyStructure` that carried no included structure was valid against 2.0.0 and is not valid against 2.0.1.
+  * FHIR-56556: Added `Substance` and `BiologicallyDerivedProduct` to the reference targets of `MedicalTestResultEuCore.focus`. This is the one substantive addition in this release. It is included because the HL7 Europe Laboratory Report IG cannot apply its own resolution of FHIR-57055 without it: `ObservationResultsLaboratoryEu` derives from `MedicalTestResultEuCore`, and a derived profile cannot add reference targets its parent does not allow. The two tickets were resolved as a pair, the laboratory resolution stating that the targets are to be added "after being added to the EU base/core profiles".
 
 * Technical corrections
   * FHIR-57342: Corrected the slicing of `DiagnosticReportEuCore.performer`. It used a `profile` discriminator on the path `$this`; on a `Reference` element that expression yields the reference itself and not the referenced resource, so the slices could not be discriminated and strict validators rejected the profile and everything derived from it. The discriminator path is now `resolve()`, as it already was on the `resultsInterpreter` slicing in the same profile. The defect was introduced with the profile (FHIR-53481) and is present in 2.0.0.
@@ -14,7 +23,6 @@ This page summarizes the main changes applied to this version of the guide.
   * FHIR-56515: Set `Observation.performer.extension:performerFunction` to `0..1` in `MedicalTestResultEuCore`. The slice allowed `0..*` although the `event-performerFunction` extension is itself defined as `0..1`, so a second occurrence was never valid. Added a comment that a Practitioner(Role) acting in multiple roles has to be listed as `performer` multiple times.
 
 * Terminology
-  * FHIR-56527: Bound `BodyStructure.morphology` to the new `MorphologyEuVs` instead of the FHIR value set `SNOMEDCTMorphologicAbnormalities`. The latter is based on `< 49755003 |Abnormal tissue appearance|`, whereas SNOMED CT recommended the wider `< 118956008 |Body structure, altered from its original anatomical structure|` in its feedback on Xt-EHR D7.1. The new hierarchy subsumes the previous one, so no code that was valid before falls outside the value set.
   * FHIR-56526: Added the SNOMED CT codes `Left` and `Right` to `SiteQualifierEuVs`, as they can be used both as a laterality and as a site qualifier. This reverses the removal made for FHIR-51391, following the discussion with the Orders & Observations WG. Added `Apical`, `Central` and `Peripheral` as well, completing pairs the value set already builds on: `Basal` was present without its counterpart, and `Central` / `Peripheral` follows the same pattern as `Superficial` / `Deep`.
 
 * Editorial and documentation updates
