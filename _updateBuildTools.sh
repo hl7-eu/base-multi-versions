@@ -14,14 +14,17 @@ set -e
 # source for the generated IGs. Run ./_preprocessMultiVersion.sh afterwards to
 # propagate them to the generated IGs.
 #
-# The publisher.jar is placed in the parent directory of the generated IGs, so
-# that all FHIR versions share a single copy.
+# The publisher.jar is placed in the FHIR publisher home, the central location
+# the HL7 build scripts look in as well: $FHIR_PUBLISHER_HOME, or
+# ~/.fhir/tools/publisher if that variable is not set. There it is shared by all
+# FHIR versions of this IG, and by any other IG built on this machine.
 
 cd "$(dirname "$0")"
 
 scriptdlroot="https://raw.githubusercontent.com/HL7/ig-publisher-scripts/main"
 publisher_dlurl="https://github.com/HL7/fhir-ig-publisher/releases/latest/download/publisher.jar"
-publisher_jar="igs/publisher.jar"
+publisher_home="${FHIR_PUBLISHER_HOME:-$HOME/.fhir/tools/publisher}"
+publisher_jar="${publisher_home}/publisher.jar"
 
 update_scripts=false
 update_publisher=false
