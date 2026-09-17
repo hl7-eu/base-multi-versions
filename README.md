@@ -86,7 +86,7 @@ A full build of both versions takes a while. To work on a single FHIR version, p
 | `ig-src/` | **The IG sources — this is where all edits are made.** Contains `input/` (FSH files, page content, images), the `ig-template`, and the liquid templates for `sushi-config.yaml`, `ig.ini` and `publication-request.json`. Everything the `base` and `base-r5` repositories should contain lives here, including their `.gitignore`, `LICENSE` and `README.liquid.md`. |
 | `context-R4.json`, `context-R5.json` | The variables used to render the liquid templates, one file per FHIR version. |
 | `igs/base-r4/`, `igs/base-r5/` | Generated, version-specific IGs, including the build results in their `output/` directory. Not edited by hand. |
-| `igs/publisher.jar` | The IG publisher, shared by all generated IGs. Downloaded on demand. |
+| `~/.fhir/tools/publisher/publisher.jar` | The IG publisher, shared by all generated IGs and by any other IG built on the machine. Downloaded on demand. The location can be changed with the `FHIR_PUBLISHER_HOME` environment variable. |
 
 ### Scripts
 
@@ -199,7 +199,7 @@ On Windows, use `_preProcessAndCheckAll.ps1` with the same arguments.
 This will:
 
 1. Run `./_preprocessMultiVersion.sh` to generate the version-specific IGs.
-2. Make sure a `publisher.jar` is available, downloading it to `igs/publisher.jar` if needed. All generated IGs share that single copy; a `publisher.jar` in the `input-cache` of an individual IG takes precedence over it.
+2. Make sure a `publisher.jar` is available, downloading it to `~/.fhir/tools/publisher/` (or `$FHIR_PUBLISHER_HOME`) if needed. That is the central location the HL7 build scripts use, shared by all IGs on the machine. If the publisher there is older than the latest release, it is updated; when offline, the existing one is used. A `publisher.jar` in the `input-cache` of an individual IG or in `igs/` takes precedence over the central one and is never updated automatically, only reported when outdated.
 3. Build each IG by running `./_build.sh build` in its directory.
 
 The build results are written to `igs/base-r4/output/` and `igs/base-r5/output/`; open the `index.html` in that directory to review them. Build errors and warnings are collected in `qa.html`.
@@ -230,10 +230,10 @@ Both the IG publisher and the HL7 build scripts are updated with:
 
 On Windows, use `_updateBuildTools.ps1` with the same arguments.
 
-- **publisher**: downloads the latest `publisher.jar` from [fhir-ig-publisher](https://github.com/HL7/fhir-ig-publisher) to `igs/publisher.jar`, the single copy shared by all generated IGs.
+- **publisher**: downloads the latest `publisher.jar` from [fhir-ig-publisher](https://github.com/HL7/fhir-ig-publisher) to `~/.fhir/tools/publisher/` (or `$FHIR_PUBLISHER_HOME`), the central location shared by all IGs on the machine. `_preProcessAndCheckAll.sh` does this by itself whenever the central publisher is missing or outdated, so it is rarely needed by hand.
 - **scripts**: downloads `_build.sh` and `_build.bat` from [ig-publisher-scripts](https://github.com/HL7/ig-publisher-scripts) into the `ig-src` directory. Run `./_preprocessMultiVersion.sh` afterwards to propagate them to the generated IGs.
 
-The `update` option built into `_build.sh` is deliberately not used for either: it is interactive, it always puts the jar in the `input-cache` of a single IG instead of the shared location, and updating the scripts in `igs/base-r4` / `igs/base-r5` has no effect, as those directories are overwritten on every preprocessing run.
+The `update` option built into `_build.sh` is deliberately not used for either: it is interactive, and updating the scripts in `igs/base-r4` / `igs/base-r5` has no effect, as those directories are overwritten on every preprocessing run. It does update the jar in the same central location, so running it there is harmless, as long as the IG has no `publisher.jar` of its own in `input-cache`, which it would update instead.
 
 ## Publishing to the base and base-r5 repositories
 
