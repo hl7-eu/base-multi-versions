@@ -278,9 +278,64 @@ jobs:
     runs-on: ubuntu-latest
     name: Remove branch previews
     if: github.event_name == 'delete' && github.event.ref_type == 'branch'
+    permissions:
+      actions: write  # Stop the deploys that are still running for the branch
 
     steps:
+      - name: Check whether the branch is a preview
+        id: check
+        env:
+          BRANCH: ${{ github.event.ref }}
+        run: |
+          # The guides are published from these branches, they are never a preview
+          case "$BRANCH" in
+            master|main)
+              echo "Refusing to remove $BRANCH from the target repositories"
+              echo "preview=false" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "preview=true" >> "$GITHUB_OUTPUT"
+              ;;
+          esac
+
+      # Building both guides takes minutes, so the push that preceded the
+      # deletion is usually still running and pushes the preview back after this
+      # job removed it. The branch is gone, so its deploy has nothing to publish.
+      - name: Stop the deploys still running for the branch
+        if: steps.check.outputs.preview == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BRANCH: ${{ github.event.ref }}
+          REPO: ${{ github.repository }}
+          WORKFLOW_REF: ${{ github.workflow_ref }}
+        run: |
+          WORKFLOW="${WORKFLOW_REF%%@*}"  # Drop the ref the workflow was read from
+          WORKFLOW="${WORKFLOW##*/}"      # Keep the file name the API expects
+
+          # This run reports the default branch, so it never cancels itself
+          unfinished() {
+            gh api "repos/$REPO/actions/workflows/$WORKFLOW/runs?branch=$BRANCH&per_page=100" \
+              --jq '.workflow_runs[] | select(.status != "completed") | .id'
+          }
+
+          for id in $(unfinished); do
+            echo "Cancelling run $id"
+            gh api -X POST "repos/$REPO/actions/runs/$id/cancel" >/dev/null || true
+          done
+
+          # A cancelled job keeps going until its current step gives up, and the
+          # push to the target repositories happens inside one of those steps.
+          for _ in $(seq 60); do
+            count=$(unfinished | wc -l)
+            if [ "$count" -eq 0 ]; then
+              break
+            fi
+            echo "Waiting for $count run(s) to stop"
+            sleep 10
+          done
+
       - name: Delete the branch in the target repositories
+        if: steps.check.outputs.preview == 'true'
         env:
           GH_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
           BRANCH: ${{ github.event.ref }}
@@ -291,14 +346,6 @@ jobs:
             echo "Error: DEPLOY_TOKEN secret not configured."
             exit 1
           fi
-
-          # The guides are published from these branches, they are never a preview
-          case "$BRANCH" in
-            master|main)
-              echo "Refusing to delete $BRANCH in the target repositories"
-              exit 0
-              ;;
-          esac
 
           for repo in "$R4_REPO_URL" "$R5_REPO_URL"; do
             if gh api "repos/$repo/git/ref/heads/$BRANCH" >/dev/null 2>&1; then
